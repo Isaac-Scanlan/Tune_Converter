@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{26EB1105-5CEA-42A6-895F-EA5017339F46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{1979D730-A0DA-4DD8-A356-64A8D92D62C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.TuneComponents", "..\TuneConverter.Framework.TuneComponents\TuneConverter.Framework.TuneComponents.csproj", "{7191A50B-E401-45E8-9274-C4CB2461928B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{6B3F0CDA-6B71-465D-9765-5705B786E670}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.TuneIO", "TuneConverter.Framework.TuneIO\TuneConverter.Framework.TuneIO.csproj", "{1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.PageComponents", "TuneConverter.Framework.PageComponents\TuneConverter.Framework.PageComponents.csproj", "{8218B788-C848-4AFF-8C00-E2171814EC24}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.PageImageIO", "TuneConverter.Framework.PageImageIO\TuneConverter.Framework.PageImageIO.csproj", "{1B0F6AD5-9099-4222-AFFC-D09EE2D8563B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Main.TuneConverterApp", "TuneConverterApp\Main.TuneConverterApp.csproj", "{D33C3A27-805E-4E8E-B17A-5EC1CF698E07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B0F6AD5-9099-4222-AFFC-D09EE2D8563B} = {1B0F6AD5-9099-4222-AFFC-D09EE2D8563B}
+		{1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B} = {1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B}
+		{7191A50B-E401-45E8-9274-C4CB2461928B} = {7191A50B-E401-45E8-9274-C4CB2461928B}
+		{8218B788-C848-4AFF-8C00-E2171814EC24} = {8218B788-C848-4AFF-8C00-E2171814EC24}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.TuneComponents", "TuneConverter.Framework.TuneComponents\TuneConverter.Framework.TuneComponents.csproj", "{F564718F-D036-4E58-BF55-927500B9BDCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7191A50B-E401-45E8-9274-C4CB2461928B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7191A50B-E401-45E8-9274-C4CB2461928B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7191A50B-E401-45E8-9274-C4CB2461928B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7191A50B-E401-45E8-9274-C4CB2461928B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8218B788-C848-4AFF-8C00-E2171814EC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8218B788-C848-4AFF-8C00-E2171814EC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8218B788-C848-4AFF-8C00-E2171814EC24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8218B788-C848-4AFF-8C00-E2171814EC24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B0F6AD5-9099-4222-AFFC-D09EE2D8563B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0F6AD5-9099-4222-AFFC-D09EE2D8563B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0F6AD5-9099-4222-AFFC-D09EE2D8563B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0F6AD5-9099-4222-AFFC-D09EE2D8563B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D33C3A27-805E-4E8E-B17A-5EC1CF698E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D33C3A27-805E-4E8E-B17A-5EC1CF698E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D33C3A27-805E-4E8E-B17A-5EC1CF698E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D33C3A27-805E-4E8E-B17A-5EC1CF698E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F564718F-D036-4E58-BF55-927500B9BDCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F564718F-D036-4E58-BF55-927500B9BDCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F564718F-D036-4E58-BF55-927500B9BDCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F564718F-D036-4E58-BF55-927500B9BDCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7191A50B-E401-45E8-9274-C4CB2461928B} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
+		{1B66A5C6-74DE-46C9-AD70-1BBFA46FF89B} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
+		{8218B788-C848-4AFF-8C00-E2171814EC24} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
+		{1B0F6AD5-9099-4222-AFFC-D09EE2D8563B} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
+		{D33C3A27-805E-4E8E-B17A-5EC1CF698E07} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
+		{F564718F-D036-4E58-BF55-927500B9BDCA} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {656D544E-CE0E-4867-A0A0-5A63E7C6E850}
+	EndGlobalSection
+EndGlobal

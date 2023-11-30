@@ -1,0 +1,4 @@
+C:\Users\Isaac\source\repos\TuneConverter\Util\net8.0\TuneConverter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Isaac\source\repos\TuneConverter\Util\net8.0\TuneConverter.AssemblyInfoInputs.cache
+C:\Users\Isaac\source\repos\TuneConverter\Util\net8.0\TuneConverter.AssemblyInfo.cs
+C:\Users\Isaac\source\repos\TuneConverter\Util\net8.0\TuneConverter.csproj.CoreCompileInputs.cache
