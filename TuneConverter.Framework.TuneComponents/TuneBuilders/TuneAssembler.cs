@@ -14,8 +14,8 @@ namespace TuneConverter.Framework.TuneComponents.TuneBuilders;
 
 public static partial class TuneAssembler
 {
-    public static int LineLength { get; set; } = 4;
-    public static int BarLength { get; set; } = 3;
+    public static int LineLength { get; set; }
+    public static int BarLength { get; set; }
 
     public static TuneFull AssembleTune(List<List<string>> rawTune)
     {
@@ -23,10 +23,13 @@ public static partial class TuneAssembler
 
         AssembleTitle(tune, rawTune);
 
+        BarLength = barAndLineLengths[tune.TuneType][0];
+        LineLength = barAndLineLengths[tune.TuneType][1];
+
         tune.MaxLength = rawTune.Count;
-        foreach (var line in rawTune)
+        foreach (var part in rawTune)
         {
-            tune.AddPart(AssemblePart(line));
+            tune.AddPart(AssemblePart(part));
         }
         return tune;
     }
@@ -59,23 +62,34 @@ public static partial class TuneAssembler
         part.MaxLength = LineLength;
         foreach (var line in rawTune)
         {
-            part.AddLine(AssembleLine(line));
+            if (line.StartsWith("|"))
+            {
+                part.Link = AssembleLine(line, true);
+            }
+            else
+            {
+                part.AddLine(AssembleLine(line));
+            }
+            
         }
         return part;
     }
 
-    public static TuneLine AssembleLine(string rawTune)
+    public static TuneLine AssembleLine(string rawTune, bool ifLink = false)
     {
         var bars = ByBar().Split(rawTune);
+        
         TuneLine tuneLine = new()
         {
-            MaxLength = LineLength,
+            MaxLength = ifLink? bars.Length : LineLength,
         };
 
         foreach (var bar in bars)
         {
             tuneLine.AddNote(AssembleBar(bar));
         }
+
+        
 
         return tuneLine;
     }
@@ -200,8 +214,16 @@ public static partial class TuneAssembler
 
         return note;
     }
+    private static Dictionary<TuneType, List<int>> barAndLineLengths => new()
+    {
+        { TuneType.Polka     , new(){ 2, 4 } },
+        { TuneType.Slipjig   , new(){ 3, 3 } },
+        { TuneType.Jig       , new(){ 3, 4 } },
+        { TuneType.Reel      , new(){ 4, 4 } },
+        { TuneType.Waltz     , new(){ 6, 4 } },
+};
 
-    private static Dictionary<string, NoteType> noteType => new()
+private static Dictionary<string, NoteType> noteType => new()
     {
         { "A" , NoteType.A }
         , { "B" , NoteType.B }

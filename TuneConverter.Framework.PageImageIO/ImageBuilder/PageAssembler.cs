@@ -1,20 +1,9 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TuneConverter.Framework.PageImageIO.ImageComponents;
 using TuneConverter.Framework.TuneComponents.TuneComponents;
 using System.Drawing;
 using Emgu.CV.Structure;
-using Emgu.CV.CvEnum;
-using static System.Formats.Asn1.AsnWriter;
-using static System.Net.Mime.MediaTypeNames;
-using System.Reflection;
-using Emgu.CV.Structure;
-using System.Runtime.InteropServices;
 using TuneConverter.Framework.TuneComponents.Types;
 
 namespace TuneConverter.Framework.PageImageIO.ImageBuilder;
@@ -22,7 +11,7 @@ namespace TuneConverter.Framework.PageImageIO.ImageBuilder;
 public class PageAssembler
 {
     private const int Height = 80;
-    private const int Width = 55;
+    private const int Width = 55 + 5;
 
     private const double A4Width = 210;
     private const double A4Height = 297;
@@ -36,23 +25,28 @@ public class PageAssembler
 
     public Image<Gray, byte> CreateTune(TuneFull tune)
     {
-        List<Image<Gray, byte>> pieces2 = new()
-        { };
+        List<Image<Gray, byte>> pieces = [];
         var pageWidth = (Width + 16) * (int)tune.TuneType;
-        var partSplit = new Image<Gray, byte>(pageWidth, 170, White);
+        var partSplit = new Image<Gray, byte>(pageWidth, 50, White);
 
-        var title = CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString());
-        var part1 = CreatePart(tune.tune[0], tune.TuneType);
-        var part2 = CreatePart(tune.tune[1], tune.TuneType);
-        
-        var pageHeight = (title.Height + part1.Height + part2.Height + (partSplit.Height * 2));
+        pieces.Add(CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString()));
+
+        int pageHeight = pieces[0].Height;
+        foreach (var part in tune.tune.Select((value, i) => (value, i)))
+        {
+            var newPart = CreatePart(part.value, tune.TuneType, part.i + 1);
+            pieces.Add(newPart);
+
+            if (part.value.Link.line.Count > 0)
+            {
+                pieces.Add(CreateTuneLink(part.value.Link, tune.TuneType));
+                pieces.Add(partSplit);
+                pageHeight += 120;
+            }
+            pageHeight += newPart.Height + partSplit.Height;
+        }
 
         var image = new Image<Gray, byte>(pageWidth, pageHeight, White);
-
-        List<Image<Gray, byte>> pieces = new()
-        {
-            title, part1, partSplit, part2, partSplit
-        };
 
         return CreatePage(pieces, image);
     }
@@ -67,8 +61,8 @@ public class PageAssembler
         
         var titlePage = CreateTitle(image, title, pageWidth, pageHeight);
 
-        titlePage = CreateTitleSideText(titlePage, tuneType.ToString(), 70);
-        titlePage = CreateTitleSideText(titlePage, key, 95);
+        titlePage = CreateTitleSideText(titlePage, tuneType.ToString(), 150);
+        titlePage = CreateTitleSideText(titlePage, key, 175);
 
         CvInvoke.BitwiseNot(titlePage, titlePage);
 
@@ -102,8 +96,8 @@ public class PageAssembler
     {
         int lineThickness = 3;
 
-        var startX = titleStartX - 120;
-        var endX = titleStartX + width + 120;
+        var startX = titleStartX - 80;
+        var endX = titleStartX + width + 80;
         var lineHeight = titleStartY + 30;
 
         Point startPoint = new(startX, lineHeight);
@@ -119,7 +113,7 @@ public class PageAssembler
         double titleFontScale = 0.65;
         int titleFontThickness = 1;
 
-        Point tuneTypePoint = new((Width + 16), height);
+        Point tuneTypePoint = new((16), height + 30);
 
         CvInvoke.PutText(titlePage, text, tuneTypePoint, font, titleFontScale, scale, titleFontThickness, lineType);
 
@@ -136,6 +130,13 @@ public class PageAssembler
 
         foreach (var piece in pieces)
         {
+            if (piece.Height == 120)
+            {
+                var start = (image.Width) - piece.Width - 122;
+                image = SetRoi(image, piece, start, pageMarker - 70);
+                pageMarker += piece.Height;
+                continue;
+            }
             image = SetRoi(image, piece, 0, pageMarker);
             pageMarker += piece.Height;
         }
@@ -144,14 +145,14 @@ public class PageAssembler
         int a4Width = (int)(image.Height * widthRatio);
         var imageA4 = new Image<Gray, byte>(a4Width, image.Height, White);
 
-        var middleMark = (imageA4.Width - image.Width) / 2;
+        var middleMark = ((imageA4.Width - image.Width) / 2) + 10;
 
         imageA4 = SetRoi(imageA4, image, middleMark, 0);
 
         return imageA4;
     }
 
-    public Image<Gray, byte> CreatePart(TunePart part, TuneType tuneType)
+    public Image<Gray, byte> CreatePart(TunePart part, TuneType tuneType, int partNumber)
     {
         int pageHeight = (int)((Height + 60) * (part.part.Count + 1));
         int pageWidth = (Width + 16) * (int)tuneType;
@@ -167,13 +168,17 @@ public class PageAssembler
             image = SetRoi(image, lineSplit, 0, (120 + (line.i * 160)) + 10);
         }
 
+        var foo2 = new NoteImage();
+
+        Image<Gray, byte> noteImage = foo2.GetType().GetField("part" + partNumber.ToString()).GetValue(foo2) as Image<Gray, byte>;
+
+        image = SetRoi(image, noteImage, 10, 20);
+
         return image;
     }
 
-    public Image<Gray, byte> CreateLine(TuneLine line, int lineCount = 1, int pageWidth = 935)
+    public Image<Gray, byte> CreateLine(TuneLine line, int lineCount, int pageWidth, bool ifLink = false)
     {
-        int pageHeight = 5 + (Height * lineCount);
-
         var image = new Image<Gray, byte>(pageWidth, Height + 40, White);
 
         var foo2 = new NoteImage();
@@ -184,7 +189,12 @@ public class PageAssembler
         {
             var imageNote = CreateBar(bar.value);
             var barwidth = ((Width + 16) * bar.value.bar.Count) + 55;
-            image = SetRoi(image, imageNote, bar.i * barwidth + 80);
+            image = SetRoi(image, imageNote, (bar.i * barwidth) + (ifLink? 40:80));
+
+            if (ifLink)
+            {
+                continue;
+            }
             image = SetRoi(image, space, (bar.i + 1) * barwidth + 25);
         }
 
@@ -243,6 +253,40 @@ public class PageAssembler
         return noteImage;
     }
 
+    public Image<Gray, byte> CreateTuneLink(TuneLine line, TuneType tuneType)
+    {
+        var foo2 = new NoteImage();
+
+        var numBars = line.MaxLength;
+        var barSize = line.line[0].MaxLength;
+
+        var middleNums = numBars * (barSize + 1);
+
+        var linkStart = foo2.linkStart;
+        var linkMiddle = foo2.linkMiddle;
+        var linkEnd = foo2.linkEnd;
+
+        var image = new Image<Gray, byte>( (linkStart.Width * middleNums), linkStart.Height);
+
+        image = SetRoi(image, linkStart, 0, 0);
+
+        foreach (int y in Enumerable.Range(1, middleNums - 2).Select(x => x * linkStart.Width))
+        {
+            image = SetRoi(image, linkMiddle, y, 0);
+        }
+        image = SetRoi(image, linkEnd, ((middleNums - 1) * linkStart.Width), 0);
+
+        var line2 = CreateLine(line, 0, image.Width, true);
+        line2 = ShiftOver(line2, 0, 20);
+
+        CvInvoke.BitwiseNot(image, image);
+        CvInvoke.BitwiseNot(line2, line2);
+        CvInvoke.BitwiseOr(image, line2, image);
+        CvInvoke.BitwiseNot(image, image);
+
+        return image;
+    }
+
     private static Image<Gray, byte> SetRoi(Image<Gray, byte> bigImage, Image<Gray, byte> smallImage, int shiftWidth = 0, int shiftHeight = 0)
     {
         int height = smallImage.Height;
@@ -257,6 +301,24 @@ public class PageAssembler
         }
 
         return bigImage;
+    }
+
+    private Image<Gray, byte> ShiftOver(Image<Gray, byte> image, int shiftWidth = 0, int shiftHeight = 0)
+    {
+        int height = image.Height;
+        int width = image.Width;
+
+        Image<Gray, byte> smallImage = new Image<Gray, byte>(width, height, White);
+
+        foreach (int y in Enumerable.Range(0, height - shiftHeight))
+        {
+            foreach (int x in Enumerable.Range(0, width - shiftWidth))
+            {
+                smallImage[y + shiftHeight, x + shiftWidth] = image[y, x];
+            }
+        }
+
+        return smallImage;
     }
 
     private static Image<Gray, byte> AddAboveNote(Image<Gray, byte> bigImage, Image<Gray, byte> symbolImage, int shiftSide = 0, int shiftDown = 0)

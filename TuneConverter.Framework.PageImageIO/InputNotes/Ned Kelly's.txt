@@ -1,0 +1,16 @@
+Ned Kelly's
+Polka 2
+D major
+__
+F_ ED FA A-B
+AF ED B_ BA
+F_ ED FA D'-C
+BA FE ED DE
+		|DB
+__
+A_ D'F' E'D' D'B
+AD' F'D' E'*F'E'* D'B
+A_ D'F' E'D' D'C
+BA FE ED DB
+		|DE
+__

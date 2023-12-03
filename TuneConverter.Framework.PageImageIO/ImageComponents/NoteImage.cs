@@ -39,5 +39,7 @@ public class NoteImage
     public readonly Image<Gray, byte> part9 = new(@"" + _imagePath + "pt_9.png"); 
     public readonly Image<Gray, byte> part10 = new(@"" + _imagePath + "pt_10.png");
     public readonly Image<Gray, byte> space = new(@"" + _imagePath + "space.png");
-
+    public readonly Image<Gray, byte> linkStart = new(@"" + _imagePath + "Link_start.png");
+    public readonly Image<Gray, byte> linkMiddle = new(@"" + _imagePath + "Link_mid.png");
+    public readonly Image<Gray, byte> linkEnd = new(@"" + _imagePath + "Link_end.png");
 }
