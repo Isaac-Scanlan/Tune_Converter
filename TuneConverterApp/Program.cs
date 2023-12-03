@@ -3,6 +3,8 @@ using Emgu.CV.Structure;
 using System.Drawing;
 using TuneConverter.Framework.PageImageIO.ImageBuilder;
 using TuneConverter.Framework.TuneComponents.TuneBuilders;
+using TuneConverter.Framework.TuneComponents.TuneComponents;
+using TuneConverter.Framework.TuneIO.TuneReader;
 
 namespace Main.TuneConverterApp;
 
@@ -10,71 +12,42 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        List<List<string>> tune =
-        [
-            new()
-            {
-                "Kesh Jig",
-                "Jig",
-                "G Major",
-            },
-            new()
-            {
-                "GF#G GAB ABA ABD'",
-                "E'D'D' G'D'D' E'D'B D'BA",
-                "GF#G GAB ABA ABD'",
-                "E'D'D' G'D'B AGF G_D",
-                "|GD'C"
-            },
-            new()
-            {
-                "BAB D'BD' E'G'E' D'BG",
-                "BAB D'BG ABA AGA",
-                "BAB D'BD' E'G'E' D'BD'",
-                "G'F#'G' A'G'A' B'G'F#' G'D'C",
-                "|G_D"
-            }
-        ];
+        var file = ReadTune("Kesh Jig.txt");
 
-        List<List<string>> tune2 =
-        [
-            new()
-            {
-                "Em Polka",
-                "Polka",
-                "E minor",
-            },
-            new()
-            {
-                "GE ED BLE EF",
-                "GE ED GA BA",
-                "GE ED BLE EA",
-                "BA GF E_ BA"
-            },
-            new()
-            {
-                "BE' E'F' E'B BA",
-                "BE' E'F' E'_ E'F'",
-                "G'_ F'_ E'B BA",
-                "BE GA B_ BA"
-            }
-        ];
+        var tuneFull = TuneAssembler.AssembleTune(file);
 
-        TuneAssembler.BarLength = 3;
+        var assembledPage = AssemblePage(tuneFull);
 
-        var tuneFull = TuneAssembler.AssembleTune(tune2);
+        DisplayImage(assembledPage);
 
+        WriteImage(assembledPage, tuneFull.Title);
+    }
+
+    public static List<List<string>> ReadTune(string fileName)
+    {
+        TuneReader reader = new();
+        return reader.readFile(fileName);
+    }
+
+    public static Image<Gray, byte> AssemblePage(TuneFull tuneFull)
+    {
         PageAssembler assemble = new PageAssembler();
-        var tune22 = assemble.CreateTune(tuneFull);
+        return assemble.CreateTune(tuneFull);
+    }
 
-        Image<Gray, byte> image23 = new Image<Gray, byte>(tune22.Width, tune22.Height);
-        Size size = new Size();
-        CvInvoke.Resize(tune22, image23, size, 0.75, 0.75);
+    public static void DisplayImage(Image<Gray, byte> assembledPage)
+    {
+        Image<Gray, byte> resizedPage = new(assembledPage.Width, assembledPage.Height);
 
-        CvInvoke.Imshow("s", image23); CvInvoke.WaitKey();
-        //CvInvoke.Imshow("s", tune22); CvInvoke.WaitKey();
+        CvInvoke.Resize(assembledPage, resizedPage, new Size(), 0.5, 0.5);
 
-        CvInvoke.Imwrite("C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/"+ tuneFull.Title+ ".png", tune22);
+        CvInvoke.Imshow("s", resizedPage); 
+        CvInvoke.WaitKey();
+    }
 
+    public static bool WriteImage(Image<Gray, byte> assembledPage, string fileName)
+    {
+        TuneWriter writer = new();
+        return writer.WriteImage(assembledPage, fileName);
     }
 }

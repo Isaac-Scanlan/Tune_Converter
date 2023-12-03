@@ -10,6 +10,10 @@ public enum KeyType
 {
     Major, 
     major = Major,
+    Maj = Major,
+    maj = Major,
     Minor,
-    minor = Minor
+    minor = Minor,
+    Min = Minor,
+    min = Minor
 }
