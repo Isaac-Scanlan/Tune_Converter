@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -159,7 +159,7 @@ public static partial class TuneAssembler
         {
             noteGroupOut = AssembleDuplet(notes);
         }
-        else// if (notes.Length == 3)
+        else
         {
             noteGroupOut = AssembleTriplet(notes);
         }
@@ -188,7 +188,6 @@ public static partial class TuneAssembler
 
     public static Note BuildNote(string bar)
     {
-        //List<string> chars = [.. ByCharacter().Split(bar)];
         List<string> chars = ByCharacter().Matches(bar)
             .Cast<Match>()
             .Select(m => m.Value)

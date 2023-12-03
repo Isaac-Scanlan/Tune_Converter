@@ -5,6 +5,7 @@ using TuneConverter.Framework.TuneComponents.TuneComponents;
 using System.Drawing;
 using Emgu.CV.Structure;
 using TuneConverter.Framework.TuneComponents.Types;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TuneConverter.Framework.PageImageIO.ImageBuilder;
 
@@ -188,7 +189,7 @@ public class PageAssembler
         foreach (var bar in line.line.Select((value, i) => (value, i)))
         {
             var imageNote = CreateBar(bar.value);
-            var barwidth = ((Width + 16) * bar.value.bar.Count) + 55;
+            var barwidth = ((Width + 16) * bar.value.CurrentLength) + 55;
             image = SetRoi(image, imageNote, (bar.i * barwidth) + (ifLink? 40:80));
 
             if (ifLink)
@@ -205,20 +206,33 @@ public class PageAssembler
     { 
         var notewidth = Width + 16;
 
-        var image = new Image<Gray, byte>(notewidth * bar.bar.Count, Height + 40, White);
+        var image = new Image<Gray, byte>(notewidth * bar.CurrentLength, Height + 40, White);
 
         foreach (var note in bar.bar.Select((value, i) => (value, i)))
         {
-            var imageNote = CreateNote(note.value);
+            Image<Gray, byte> imageNote;
 
-            image = SetRoi(image, imageNote, note.i * notewidth );
+            if (note.value.GetType().Equals(typeof(Duplet)))
+            {
+                imageNote = CreateDuplet((Duplet)note.value);
+            }
+            else if (note.value.GetType().Equals(typeof(Triplet)))
+            {
+                imageNote = CreateTriplet((Triplet)note.value);
+            }
+            else
+            {
+                imageNote = CreateNote((Singlet)note.value);
+            }
+
+            image = SetRoi(image, imageNote, note.i * notewidth);
 
         }
 
         return image;
     }
 
-    public Image<Gray, byte> CreateNote(NoteGroup bar)
+    public Image<Gray, byte> CreateNote(Singlet bar)
     {
         var foo2 = new NoteImage();
 
@@ -253,6 +267,112 @@ public class PageAssembler
         return noteImage;
     }
 
+    public Image<Gray, byte> CreateDuplet(Duplet bar)
+    {
+        List<Note> notes = [bar.FirstNote, bar.SecondNote];
+
+        var foo2 = new NoteImage();
+
+        var fullImage = new Image<Gray, byte>((Width) * 2, Height + 60, White);
+        var resize = new Image<Gray, byte>((int)Math.Round(((Width) * 2) * 0.633333), (int)Math.Round((Height + 60) * 0.633333), White);
+
+        foreach (var note in notes.Select((value, i) => (value, i)))
+        {
+            Image<Gray, byte> noteImage = foo2.GetType().GetField(note.value.NoteType.ToString()).GetValue(foo2) as Image<Gray, byte>;
+
+            var image = new Image<Gray, byte>(noteImage.Width, Height + 40, White);
+
+            noteImage = SetRoi(image, noteImage,0, 18);
+
+            if (bar.Note.OctaveType == OctaveType.Low)
+            {
+                noteImage = AddLow(noteImage);
+            }
+            else if (bar.Note.OctaveType == OctaveType.High)
+            {
+                if (bar.Note.AccidentalType == AccidentalType.Sharp)
+                {
+                    noteImage = AddHighAndSharp(noteImage);
+                }
+                else
+                {
+                    noteImage = AddHigh(noteImage);
+                }
+            }
+            if (bar.Note.AccidentalType == AccidentalType.Sharp && bar.Note.OctaveType != OctaveType.High)
+            {
+                noteImage = AddSharp(noteImage);
+            }
+
+            fullImage = SetRoi(fullImage, image, (note.i * (Width)), 0);
+
+        }
+        fullImage = ShiftBack(fullImage, 0, 0);
+        CvInvoke.Resize(fullImage, resize, new Size(), 0.633333, 0.633333);
+
+        var bigImage = new Image<Gray, byte>((Width + 16), Height + 40, White);
+        var dupImage = foo2.duplet;
+
+        bigImage = ShiftOver(
+            SetRoi(SetRoi(bigImage, dupImage), resize, 0, 25)
+            , 0, 10);
+        return bigImage;
+    }
+
+    public Image<Gray, byte> CreateTriplet(Triplet bar)
+    {
+        List<Note> notes = [bar.FirstNote, bar.SecondNote, bar.ThirdNote];
+
+        var foo2 = new NoteImage();
+
+        var fullImage = new Image<Gray, byte>((Width + 4) * 3, Height + 40, White);
+        var resize = new Image<Gray, byte>((int)(((Width + 4) * 3) * 0.79166667), (int)((Height + 40) * 0.79166667), White);
+
+        foreach (var note in notes.Select((value, i) => (value, i)))
+        {
+            Image<Gray, byte> noteImage = foo2.GetType().GetField(note.value.NoteType.ToString()).GetValue(foo2) as Image<Gray, byte>;
+
+            var image = new Image<Gray, byte>(Width + 4, Height + 40, White);
+
+            noteImage = SetRoi(image, noteImage, 4, 18);
+
+            if (bar.Note.OctaveType == OctaveType.Low)
+            {
+                noteImage = AddLow(noteImage);
+            }
+            else if (bar.Note.OctaveType == OctaveType.High)
+            {
+                if (bar.Note.AccidentalType == AccidentalType.Sharp)
+                {
+                    noteImage = AddHighAndSharp(noteImage);
+                }
+                else
+                {
+                    noteImage = AddHigh(noteImage);
+                }
+            }
+            if (bar.Note.AccidentalType == AccidentalType.Sharp && bar.Note.OctaveType != OctaveType.High)
+            {
+                noteImage = AddSharp(noteImage);
+            }
+            
+
+            fullImage = SetRoi(fullImage, image, (note.i * (Width + 4)), 0);
+            
+        }
+        fullImage = ShiftBack(fullImage, 0, 2);
+        
+        CvInvoke.Resize(fullImage, resize, new Size(), 0.79166667, 0.79166667);
+
+        var bigImage = new Image<Gray, byte>((Width + 16) * 2, Height + 40, White);
+        var tripImage = foo2.triplet;
+
+        bigImage = SetRoi(bigImage, tripImage);
+        bigImage = SetRoi(bigImage, resize, 0, 25);
+
+        return bigImage;
+    }
+
     public Image<Gray, byte> CreateTuneLink(TuneLine line, TuneType tuneType)
     {
         var foo2 = new NoteImage();
@@ -266,7 +386,7 @@ public class PageAssembler
         var linkMiddle = foo2.linkMiddle;
         var linkEnd = foo2.linkEnd;
 
-        var image = new Image<Gray, byte>( (linkStart.Width * middleNums), linkStart.Height);
+        var image = new Image<Gray, byte>( (linkStart.Width * middleNums), linkStart.Height, White);
 
         image = SetRoi(image, linkStart, 0, 0);
 
@@ -287,18 +407,25 @@ public class PageAssembler
         return image;
     }
 
-    private static Image<Gray, byte> SetRoi(Image<Gray, byte> bigImage, Image<Gray, byte> smallImage, int shiftWidth = 0, int shiftHeight = 0)
+    private Image<Gray, byte> SetRoi(Image<Gray, byte> bigImage, Image<Gray, byte> smallImage, int shiftWidth = 0, int shiftHeight = 0)
     {
         int height = smallImage.Height;
         int width = smallImage.Width;
+
+        Image<Gray, byte> bigImage2 = new(bigImage.Width, bigImage.Height, White);
 
         foreach (int y in Enumerable.Range(0, height))
         {
             foreach (int x in Enumerable.Range(0, width))
             {
-                bigImage[y + shiftHeight, x + shiftWidth] = smallImage[y, x];
+                bigImage2[y + shiftHeight, x + shiftWidth] = smallImage[y, x];
             }
         }
+
+        CvInvoke.BitwiseNot(bigImage, bigImage);
+        CvInvoke.BitwiseNot(bigImage2, bigImage2);
+        CvInvoke.BitwiseOr(bigImage, bigImage2, bigImage);
+        CvInvoke.BitwiseNot(bigImage, bigImage);
 
         return bigImage;
     }
@@ -308,7 +435,7 @@ public class PageAssembler
         int height = image.Height;
         int width = image.Width;
 
-        Image<Gray, byte> smallImage = new Image<Gray, byte>(width, height, White);
+        Image<Gray, byte> smallImage = new(width, height, White);
 
         foreach (int y in Enumerable.Range(0, height - shiftHeight))
         {
@@ -321,7 +448,25 @@ public class PageAssembler
         return smallImage;
     }
 
-    private static Image<Gray, byte> AddAboveNote(Image<Gray, byte> bigImage, Image<Gray, byte> symbolImage, int shiftSide = 0, int shiftDown = 0)
+    private Image<Gray, byte> ShiftBack(Image<Gray, byte> image, int shiftWidth = 0, int shiftHeight = 0)
+    {
+        int height = image.Height;
+        int width = image.Width;
+
+        Image<Gray, byte> smallImage = new(width, height, White);
+
+        foreach (int y in Enumerable.Range(shiftHeight, (height - shiftHeight)))
+        {
+            foreach (int x in Enumerable.Range(shiftWidth, (width - shiftWidth)))
+            {
+                smallImage[y - shiftHeight, x - shiftWidth] = image[y, x];
+            }
+        }
+
+        return smallImage;
+    }
+
+    private Image<Gray, byte> AddAboveNote(Image<Gray, byte> bigImage, Image<Gray, byte> symbolImage, int shiftSide = 0, int shiftDown = 0)
     {
         int width = bigImage.Width;
 
@@ -330,18 +475,25 @@ public class PageAssembler
 
         var shift = 2;
 
+        Image<Gray, byte> newImage = new Image<Gray, byte>(bigImage.Width, bigImage.Height, White);
+
         foreach (int y in Enumerable.Range(0, sharpHeight))
         {
             foreach (int x in Enumerable.Range(0, sharpWidth))
             {
-                bigImage[y + shiftDown, width - (x + shift) - shiftSide] = symbolImage[y, sharpWidth - x - 1];
+                newImage[y + shiftDown, width - (x + shift) - shiftSide] = symbolImage[y, sharpWidth - x - 1];
             }
         }
+
+        CvInvoke.BitwiseNot(bigImage, bigImage);
+        CvInvoke.BitwiseNot(newImage, newImage);
+        CvInvoke.BitwiseOr(bigImage, newImage, bigImage);
+        CvInvoke.BitwiseNot(bigImage, bigImage);
 
         return bigImage;
     }
 
-    private static Image<Gray, byte> AddSharp(Image<Gray, byte> bigImage)
+    private Image<Gray, byte> AddSharp(Image<Gray, byte> bigImage)
     {
         var noteImage = new NoteImage();
 
