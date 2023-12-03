@@ -11,6 +11,7 @@ public record TunePart
     public int MaxLength { get; set; }
     public int CurrentLength { get; set; }
     public List<TuneLine> part = [];
+    public TuneLine Link { get; set; } = new TuneLine();
 
     public bool AddLine(TuneLine line)
     { 

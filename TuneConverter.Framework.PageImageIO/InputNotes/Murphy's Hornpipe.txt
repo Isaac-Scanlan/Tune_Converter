@@ -1,0 +1,32 @@
+Murphy's Hornpipe
+Hornpipe 5
+D major
+__
+D'_AF# *D'E'D'*AF# D'C#D'F#' E'C#AE'
+F#'AD'F#' G'F#'E'D' C#AAG# AB*C#BA*
+D'_AF# *D'E'D'*AF# D'C#D'F#' E'C#AE'
+F#'A'A'F#' B'G'E'C# E'D'D'C# *D'E'D'**ABC#*
+						|*D'E'D'**E'F#'G'*
+__
+A'F#'D'G' F#'A'G#'A' B'G'E'D' *BC#E'*AE'
+F#'A'A'F#' B'G'E'D' C#AG#B AD'*E'F#'G'*
+A'F#'D'G' F#'A'G#'A' B'G'E'D' *BC#E'*AE'
+F#'A'A'F#' B'G'E'C# E'D'D'C# *D'E'D'**E'F#'G'*
+						|D'BAG
+__
+EF#DG' F#'D'E'C# D'C#D'F#' E'C#AG
+*F#GF#*DG' F#'D'E'D' *BC#D'**C#D'E'* D'BAG
+EF#DG' F#'D'E'C# D'AD'F#' E'C#AE'
+F#'A'A'F#' B'G'E'C# E'D'D'C# D'BAG
+						|*D'E'D'*A'G'
+__
+F#'__A' G'F'G'E' *F#'E'D'*A'F#' E'C#AE'
+F#'AD'F#' G'F#'E'D' *C#BA*AG# ABGE
+*F#ED*AD BDAD D'C#D'F#' E'C#AE'
+F#'A'A'F#' B'G'E'C# E'D'D'C# *D'E'D'*A'G'
++_
+F#'__A' G'F'G'E' *F#'E'D'*A'F#' E'C#AE'
+F#'AD'F#' G'F#'E'D' *C#BA*AG# *ABA**ABC#*
+D'AD'F#' E'rollG' F#'E'F#'A' G'__A'
+A'G#'B'A' G'F#'E'C# D'F#'E'C# *D'C#B**ABC#*
+__

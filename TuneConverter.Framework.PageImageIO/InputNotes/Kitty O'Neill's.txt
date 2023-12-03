@@ -1,0 +1,44 @@
+Kitty O'Neill's
+Barndance 7
+A major
+__
+C#_C#B C#_C#B C#BC#F#' E'C#AC#
+B_BA *BC#B*BA BA'G#'F#' *E'F#'E'**D'C#B*
+C#_C#B C#_C#B C#BC#F#' E'C#AC#
+B_BC# BA'G#'F#' *E'F#'E'**D'C#B* AG#AD'
+						   |AG#AB
+__
+C#E'A'G#' A'E'C#A D'_B'_ BrollC#
+D'E'F#'G#' A'G#'A'F#' *E'F#'E'**D'C#B* C#BAB
+C#E'A'G#' A'E'C#A D'_B'_ BrollC#
+D'E'F#'G#' A'G#'A'F#' *E'F#'E'**D'C#B* AG#AB
+__
+C#F#'F#'E' F#'E'D'E' C#F#'F#'E' F#'E'D'E'
+C#F#'F#'E' F#'_*E'F#'G#'* A'E'C#A *BC#B*AB
+C#F#'F#'E' F#'E'D'E' C#F#'F#'E' F#'E'D'E'
+C#F#'F#'E' F#'_*E'F#'G#'* A'E'C#A BAG#B
+__
+ALC#L_E A__D' C#BC#E' F#'G#'A'_
+ALC#L_E A__D' C#BAC# BBbBC#
+ALC#L_E A__D' C#BC#E' F#'G#'A'F#
+*G#'F#'E'**E'F#'D'* *E'D'C#**D'C#A* BAG#B AF#EC#L
+								   |AE'*E'F#'E*
+__
+E'_F'_ F#'_A'F#' F#'E'C#A EEroll
+E_F_ F#_DF# ED'C#B AG#AE'
+E'_F'_ F#'_A'F#' F#'E'C#A EEroll
+E_F_ F#_DF# ED'C#B AG#AE'
+				|*ABA*F#A
+__
+EC#C#B *C#E'C#*EC# EC#C#D' C#BAC#
+BG#'G#'F#' *G#'A'G#'*BG#' BG#'G#'A' *G#'F#'E'**D'C#B*
+EC#C#B *C#E'C#*EC# EC#C#D' C#BAC#
+BG#'roll B'__A' *G#'F#'E'**D'C#B* AG#AF#
+							 |AG#AF#'
+__
+*E'C#*_C#F#' *E'C#*_C#B *AC#E'**A'G#'F#'* *E'C#*_C#F#'
+F#'AD'F#' E'D'C#A *BC#B**AG#F#* E_EF#'
+*E'C#*_C#F#' *E'C#*_C#B *AC#E'**A'G#'F#'* *E'C#*_C#F#'
+F#'AD'F#' E'D'C#A BAG#B AA'A'F#'
+				   |AF#'E'D'
+__
