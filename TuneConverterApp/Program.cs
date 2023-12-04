@@ -1,4 +1,5 @@
 ﻿using Emgu.CV;
+using Emgu.CV.ML;
 using Emgu.CV.Structure;
 using System.Drawing;
 using TuneConverter.Framework.PageImageIO.ImageBuilder;
@@ -12,7 +13,8 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var file = ReadTune("Kesh Jig.txt");
+        //var file = ReadTune("Kesh Jig.txt");
+        var file = ReadTune("Step it out Joe.txt");
 
         var tuneFull = TuneAssembler.AssembleTune(file);
 
@@ -29,25 +31,37 @@ public class Program
         return reader.readFile(fileName);
     }
 
-    public static Image<Gray, byte> AssemblePage(TuneFull tuneFull)
+    public static List<Image<Gray, byte>> AssemblePage(TuneFull tuneFull)
     {
         PageAssembler assemble = new PageAssembler();
         return assemble.CreateTune(tuneFull);
     }
 
-    public static void DisplayImage(Image<Gray, byte> assembledPage)
+    public static void DisplayImage(List<Image<Gray, byte>> assembledPages)
     {
-        Image<Gray, byte> resizedPage = new(assembledPage.Width, assembledPage.Height);
+        foreach (var assembledPage in assembledPages)
+        {
+            Image<Gray, byte> resizedPage = new(assembledPage.Width, assembledPage.Height);
 
-        CvInvoke.Resize(assembledPage, resizedPage, new Size(), 0.5, 0.5);
+            CvInvoke.Resize(assembledPage, resizedPage, new Size(), 0.5, 0.5);
 
-        CvInvoke.Imshow("s", resizedPage); 
-        CvInvoke.WaitKey();
+            CvInvoke.Imshow("s", resizedPage);
+            CvInvoke.WaitKey();
+        }
     }
 
-    public static bool WriteImage(Image<Gray, byte> assembledPage, string fileName)
+    public static bool WriteImage(List<Image<Gray, byte>> assembledPages, string fileName)
     {
-        TuneWriter writer = new();
-        return writer.WriteImage(assembledPage, fileName);
+        bool outVal = true;
+        foreach (var assembledPage in assembledPages.Select((value, i) => (value, i)))
+        {
+            TuneWriter writer = new();
+            if (!writer.WriteImage(assembledPage.value, fileName + "_page_" + (assembledPage.i + 1), fileName) ) 
+            {
+                outVal = false;
+            }
+            
+        }
+        return outVal;
     }
 }

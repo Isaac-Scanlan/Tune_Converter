@@ -10,5 +10,7 @@ namespace TuneConverter.Framework.TuneComponents.TuneComponents;
 public record Note: NoteRoot
 {
     public OctaveType OctaveType { get; set; } = OctaveType.Middle;
+
+    public bool ShortLongNote { get; set; } = false;
 }
 

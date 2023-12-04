@@ -1,5 +1,5 @@
 Murphy's Hornpipe
-Hornpipe 5
+Hornpipe
 D major
 __
 D'_AF# *D'E'D'*AF# D'C#D'F#' E'C#AE'
@@ -24,7 +24,7 @@ F#'__A' G'F'G'E' *F#'E'D'*A'F#' E'C#AE'
 F#'AD'F#' G'F#'E'D' *C#BA*AG# ABGE
 *F#ED*AD BDAD D'C#D'F#' E'C#AE'
 F#'A'A'F#' B'G'E'C# E'D'D'C# *D'E'D'*A'G'
-+_
+__
 F#'__A' G'F'G'E' *F#'E'D'*A'F#' E'C#AE'
 F#'AD'F#' G'F#'E'D' *C#BA*AG# *ABA**ABC#*
 D'AD'F#' E'rollG' F#'E'F#'A' G'__A'

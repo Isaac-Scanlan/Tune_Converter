@@ -1,16 +1,16 @@
 Ms McCleod's
-Reel 2
+Reel
 G Maj
 __
-G_BG D'GBG BrollA BCBA
+G_BG D'GBG BrlA BCBA
 *GBG*BG D'GBG A_AG ACBA
-G_BG D'GBG BrollA BCD'G'
+G_BG D'GBG BrlA BCD'G'
 E'G'E'D *BCD'*E'F' G'E'D'B AGEF
-						  |ACBA
+						|ACBA
 __
 G_G'F' E'F'G'E' D'BBA BCBA
 GF'G'F' E'F'G'E' A'G'A'B' A'G'E'F'
 *G'B'G'*B'G' E'F'G'E' D'BBA BCD'G'
 E'G'E'D *BCD'*E'F' G'E'D'B ACBA
-						  |AGEF
+						|AGEF
 __

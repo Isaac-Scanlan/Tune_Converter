@@ -15,6 +15,8 @@ public enum NoteType
     E,
     F,
     G,
-    _
+    _,
+    r,
+    l
 }
 

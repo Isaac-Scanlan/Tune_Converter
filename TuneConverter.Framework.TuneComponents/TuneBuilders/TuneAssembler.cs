@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -16,6 +16,7 @@ public static partial class TuneAssembler
 {
     public static int LineLength { get; set; }
     public static int BarLength { get; set; }
+    public static TuneType TuneTypeGlobal { get; set; }
 
     public static TuneFull AssembleTune(List<List<string>> rawTune)
     {
@@ -23,8 +24,8 @@ public static partial class TuneAssembler
 
         AssembleTitle(tune, rawTune);
 
-        BarLength = barAndLineLengths[tune.TuneType][0];
-        LineLength = barAndLineLengths[tune.TuneType][1];
+        BarLength = BarAndLineLengths[tune.TuneType][0];
+        LineLength = BarAndLineLengths[tune.TuneType][1];
 
         tune.MaxLength = rawTune.Count;
         foreach (var part in rawTune)
@@ -40,6 +41,8 @@ public static partial class TuneAssembler
         tune.Title = titlePage[0];
         tune.TuneType = (TuneType)Enum.Parse(typeof(TuneType), titlePage[1]);
 
+        TuneTypeGlobal = tune.TuneType;
+
         var tuneKey = ByBar().Split(titlePage[2]);
         var notePieces = ByCharacter().Matches(tuneKey[0])
             .Cast<Match>()
@@ -49,7 +52,7 @@ public static partial class TuneAssembler
         tune.Key = new()
         {
             NoteType = (NoteType)Enum.Parse(typeof(NoteType), notePieces[0]),
-            AccidentalType = notePieces.Count <= 1 ? AccidentalType.Natural : notePieces[1].Equals("#") ? AccidentalType.Sharp : AccidentalType.Flat,
+            AccidentalType = notePieces.Count <= 1 ? Types.AccidentalType.Natural : notePieces[1].Equals("#") ? Types.AccidentalType.Sharp : Types.AccidentalType.Flat,
             Keytype = (KeyType)Enum.Parse(typeof(KeyType), tuneKey[1])
         };
 
@@ -89,8 +92,6 @@ public static partial class TuneAssembler
             tuneLine.AddNote(AssembleBar(bar));
         }
 
-        
-
         return tuneLine;
     }
 
@@ -108,10 +109,15 @@ public static partial class TuneAssembler
 
         foreach (var noteGroup in noteGroups)
         {
+            if (noteGroup.Equals("E'C#"))
+            {
+
+            }
             var test1 = false;
             foreach(var foo1 in dupTrip)
             {
-                if (foo1.Contains(noteGroup))
+                var notes = Regex.Replace(foo1, @"\*", "");
+                if (notes.Equals(noteGroup))
                 {
                     test1 = true;
                     break;
@@ -148,12 +154,15 @@ public static partial class TuneAssembler
 
     public static NoteGroup AssembleDupTrip(string noteGroup)
     {
+        
         var notes = ByNote().Matches(noteGroup)
             .Cast<Match>()
             .Select(m => m.Value)
             .ToArray();
 
         NoteGroup noteGroupOut;
+
+        var notesLeft = TuneTypeGlobal == TuneType.Polka ? 2 : TuneTypeGlobal == TuneType.Jig ? 3 : TuneTypeGlobal == TuneType.Reel ? 4 : 6;
 
         if (notes.Length == 2)
         {
@@ -195,7 +204,7 @@ public static partial class TuneAssembler
 
         var note = new Note()
         {
-            NoteType = noteType[chars[0]]
+            NoteType = NoteType[chars[0]]
         };
         chars.RemoveAt(0);
         
@@ -203,17 +212,21 @@ public static partial class TuneAssembler
         {
             if (c.Equals("\'") || c.Equals("L"))
             {
-                note.OctaveType = octaveType[c];
+                note.OctaveType = OctaveType[c];
             }
             else if (c.Equals("\b") || c.Equals("#") || c.Equals("#"))
             {
-                note.AccidentalType = accidentalType[c];
+                note.AccidentalType = AccidentalType[c];
+            }
+            if (c.Equals("-"))
+            {
+                note.ShortLongNote = true;
             }
         }
 
         return note;
     }
-    private static Dictionary<TuneType, List<int>> barAndLineLengths => new()
+    private static Dictionary<TuneType, List<int>> BarAndLineLengths => new()
     {
         { TuneType.Polka     , new(){ 2, 4 } },
         { TuneType.Slipjig   , new(){ 3, 3 } },
@@ -222,29 +235,31 @@ public static partial class TuneAssembler
         { TuneType.Waltz     , new(){ 6, 4 } },
 };
 
-private static Dictionary<string, NoteType> noteType => new()
+    private static Dictionary<string, NoteType> NoteType => new()
     {
-        { "A" , NoteType.A }
-        , { "B" , NoteType.B }
-        , { "C" , NoteType.C }
-        , { "D" , NoteType.D }
-        , { "E" , NoteType.E }
-        , { "F" , NoteType.F }
-        , { "G" , NoteType.G }
-        , { "_" , NoteType._ }
+        { "A" , Types.NoteType.A }
+        , { "B" , Types.NoteType.B }
+        , { "C" , Types.NoteType.C }
+        , { "D" , Types.NoteType.D }
+        , { "E" , Types.NoteType.E }
+        , { "F" , Types.NoteType.F }
+        , { "G" , Types.NoteType.G }
+        , { "_" , Types.NoteType._ }
+        , { "r" , Types.NoteType.r }
+        , { "l" , Types.NoteType.l }
     };
 
-    private static Dictionary<string, AccidentalType> accidentalType => new()
+    private static Dictionary<string, AccidentalType> AccidentalType => new()
     {
-        { "b", AccidentalType.Flat},
-        { "#", AccidentalType.Sharp},
-        { "n", AccidentalType.Natural}
+        { "b", Types.AccidentalType.Flat},
+        { "#", Types.AccidentalType.Sharp},
+        { "n", Types.AccidentalType.Natural}
     };
 
-    private static Dictionary<string, OctaveType> octaveType => new()
+    private static Dictionary<string, OctaveType> OctaveType => new()
     {
-        { "\'", OctaveType.High },
-        { "L", OctaveType.Low }
+        { "\'", Types.OctaveType.High },
+        { "L", Types.OctaveType.Low }
     };
 
 
@@ -256,11 +271,11 @@ private static Dictionary<string, NoteType> noteType => new()
     private static partial Regex ByNoteGroup();
 
 
-    [GeneratedRegex(@"\*[\w#]+\*")]
+    [GeneratedRegex(@"\*[\w#b']+\*")]
     private static partial Regex ByDupTrip();
 
 
-    [GeneratedRegex(@"[A-Ga-g_][^A-Ga-g_]*")]
+    [GeneratedRegex(@"[A-G_rl][^A-Ga-g_rl]*")]
     private static partial Regex ByNote();
 
 

@@ -1,18 +1,18 @@
 Tell Her I am
-Jig 3
+Jig
 G Maj
 __
 E'D'B GAB DED GAB
 DED CBA BGE EBD'
 E'D'B GAB DED GAB
 AGF GBA GFE DBD'
-		   |DD'C
+			|DD'C
 __
 BAB D'BG' BAB D'BG
 ABA AGA BGE E_C
 BAB D'E'G' A'G'E' D_B
 CBA GBA GFE DD'C
-		   |DG'F'
+			|DG'F'
 __
 E'F'G' E'F'G' D'BG GBD'
 E'_A' A'G'A' B'G'E' E'_D'

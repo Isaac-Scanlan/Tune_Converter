@@ -23,9 +23,10 @@ public class NoteImage
     public readonly Image<Gray, byte> flat = new(@"" + _imagePath + "flat.png"); 
     public readonly Image<Gray, byte> high = new(@"" + _imagePath + "high.png");  
     public readonly Image<Gray, byte> low = new(@"" + _imagePath + "low.png");  
-    public readonly Image<Gray, byte> ro = new(@"" + _imagePath + "ro.png");  
-    public readonly Image<Gray, byte> ll = new(@"" + _imagePath + "ll.png"); 
-    public readonly Image<Gray, byte> _ = new(@"" + _imagePath + "long.png");  
+    public readonly Image<Gray, byte> r = new(@"" + _imagePath + "ro.png");  
+    public readonly Image<Gray, byte> l = new(@"" + _imagePath + "ll.png"); 
+    public readonly Image<Gray, byte> _ = new(@"" + _imagePath + "long.png");
+    public readonly Image<Gray, byte> __ = new(@"" + _imagePath + "small_long.png");
     public readonly Image<Gray, byte> duplet = new(@"" + _imagePath + "duplet.png");  
     public readonly Image<Gray, byte> triplet = new(@"" + _imagePath + "triplet.png");  
     public readonly Image<Gray, byte> part1 = new(@"" + _imagePath + "pt_1.png"); 

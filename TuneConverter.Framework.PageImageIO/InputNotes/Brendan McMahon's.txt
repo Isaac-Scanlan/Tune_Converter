@@ -1,14 +1,14 @@
 Brendan McMahon's
-Reel 2
+Reel
 E minor
 __
-FEroll FEDE FEroll FABA
-FEroll FEDBL DALDE FABA
-FEroll FEDE FEroll FABA
-FEroll FEDBL DALDE FAAD'
+FErl FEDE FErl FABA
+FErl FEDBL DALDE FABA
+FErl FEDE FErl FABA
+FErl FEDBL DALDE FAAD'
 __
-BE'roll F'E'E'D' BE'E'F' D'BAD'
+BE'rl F'E'E'D' BE'E'F' D'BAD'
 BE'E'G' F'E'E'D' BABD' D'ABD'
-BE'roll F'E'E'D' E'G'F'E' D'__E'
-F'_E'C# D'C#BA BrollC# D'ABA 
+BE'rl F'E'E'D' E'G'F'E' D'__E'
+F'_E'C# D'C#BA BrlC# D'ABA 
 __

@@ -61,7 +61,7 @@ public class Program
             tune = new List<TunePart> { part, part }
         });
 
-        CvInvoke.Imshow("s", tune); CvInvoke.WaitKey();
+        CvInvoke.Imshow("s", tune[0]); CvInvoke.WaitKey();
 
     }
 }

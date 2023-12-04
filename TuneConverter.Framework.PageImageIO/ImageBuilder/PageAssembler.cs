@@ -6,6 +6,7 @@ using System.Drawing;
 using Emgu.CV.Structure;
 using TuneConverter.Framework.TuneComponents.Types;
 using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Generic;
 
 namespace TuneConverter.Framework.PageImageIO.ImageBuilder;
 
@@ -24,7 +25,7 @@ public class PageAssembler
 
     private readonly LineType lineType = LineType.AntiAlias;
 
-    public Image<Gray, byte> CreateTune(TuneFull tune)
+    public List<Image<Gray, byte>> CreateTune(TuneFull tune)
     {
         List<Image<Gray, byte>> pieces = [];
         var pageWidth = (Width + 16) * (int)tune.TuneType;
@@ -33,18 +34,54 @@ public class PageAssembler
         pieces.Add(CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString()));
 
         int pageHeight = pieces[0].Height;
+        int pageHeight2 = pieces[0].Height;
+        bool pageMarker = true;
+
         foreach (var part in tune.tune.Select((value, i) => (value, i)))
         {
             var newPart = CreatePart(part.value, tune.TuneType, part.i + 1);
             pieces.Add(newPart);
 
+            if ((part.i + 1) % 2 != 0 && (part.i + 1) != 1)
+            {
+                pageHeight = pageHeight2 > pageHeight? pageHeight2: pageHeight;
+                pageMarker = false;
+                pageHeight2 = pieces[0].Height;
+            }
+
             if (part.value.Link.line.Count > 0)
             {
                 pieces.Add(CreateTuneLink(part.value.Link, tune.TuneType));
                 pieces.Add(partSplit);
-                pageHeight += 120;
+                if(pageMarker)
+                {
+                    pageHeight += 141;
+                }
+                else
+                {
+                    pageHeight2 += 141;
+                }
             }
-            pageHeight += newPart.Height + partSplit.Height;
+            if (tune.TuneType == TuneType.Reel)
+            {
+                pieces.Add(partSplit);
+                if (pageMarker)
+                {
+                    pageHeight += 120;
+                }
+                else
+                {
+                    pageHeight2 += 120;
+                }
+            }
+            if (pageMarker)
+            {
+                pageHeight += newPart.Height + partSplit.Height;
+            }
+            else
+            {
+                pageHeight2 += newPart.Height + partSplit.Height;
+            }
         }
 
         var image = new Image<Gray, byte>(pageWidth, pageHeight, White);
@@ -73,8 +110,8 @@ public class PageAssembler
     private Image<Gray, byte> CreateTitle(Image<Gray, byte> titlePage, string title, int pageWidth, int pageHeight)
     {
         int baseline = 1;
-        double titleFontScale = 3;
-        int titleFontThickness = 3;
+        double titleFontScale = title.Length > 9 ? (title.Length > 18 ? 1 : 2) : 3;
+        int titleFontThickness = title.Length > 9 ? (title.Length > 18 ? 1 : 2) : 3;
 
         Size titleSize = CvInvoke.GetTextSize(title, font, titleFontScale, titleFontThickness, ref baseline);
 
@@ -125,32 +162,87 @@ public class PageAssembler
 
     #region Part Generation
 
-    public Image<Gray, byte> CreatePage(List<Image<Gray, byte>> pieces, Image<Gray, byte> image)
+    public List<Image<Gray, byte>> CreatePage(List<Image<Gray, byte>> pieces, Image<Gray, byte> image)
     {
-        int pageMarker = 0;
+        List<List<Image<Gray, byte>>> pages = new();
+        List<Image<Gray, byte>> innerList = [ pieces[0] ];
 
-        foreach (var piece in pieces)
+        int partNums = 0;
+
+        List<Image<Gray, byte>> outPages = new();
+        var dummyHeader = new Image<Gray, byte>(pieces[0].Width, pieces[0].Height, White);
+
+        foreach (var piece in pieces.Select((value, i) => (value, i)))
         {
-            if (piece.Height == 120)
+            if (piece.i == 0)
             {
-                var start = (image.Width) - piece.Width - 122;
-                image = SetRoi(image, piece, start, pageMarker - 70);
-                pageMarker += piece.Height;
                 continue;
             }
-            image = SetRoi(image, piece, 0, pageMarker);
-            pageMarker += piece.Height;
+            if (piece.value.Height > 200)
+            {
+                partNums += 1;
+            }
+            if (partNums == 3)
+            {
+                pages.Add(innerList);
+                innerList = [dummyHeader];
+                partNums = 1;
+            }
+            innerList.Add(piece.value);
+
+        }
+        pages.Add(innerList);
+
+        foreach (var page in pages)
+        {
+            int pageMarker = 0;
+            Image<Gray, byte> pageImage = new(image.Width, image.Height, White);
+            foreach (var piece in page.Select((value, i) => (value, i)))
+            {
+                if (piece.value.Height == 141)
+                {
+                    var start = (pageImage.Width) - piece.value.Width - 122;
+                    pageImage = SetRoi(pageImage, piece.value, start, pageMarker - 70);
+                    pageMarker += piece.value.Height;
+                
+                    continue;
+                }
+                
+
+                pageImage = SetRoi(pageImage, piece.value, 0, pageMarker);
+                pageMarker += piece.value.Height;
+            }
+
+            double widthRatio = A4Width / A4Height;
+            int a4Height;
+            int a4Width;
+            int middleMark;
+            if (pageImage.Height * widthRatio < pageImage.Width )
+            {
+                a4Height = (int)(pageImage.Width / widthRatio);
+                a4Width = pageImage.Width + 10;
+                middleMark = 0;
+                pageImage = ShiftOver(pageImage, 25, 0);
+            
+            }
+            else
+            {
+                a4Height = pageImage.Height;
+                a4Width = (int)(pageImage.Height * widthRatio);
+                middleMark = ((a4Width - pageImage.Width) / 2);
+                pageImage = ShiftOver(pageImage, 10, 0);
+            }
+
+            var imageA4 = new Image<Gray, byte>(a4Width, a4Height, White);
+        
+            imageA4 = SetRoi(imageA4, pageImage, middleMark == 10? 0: middleMark, 0);
+
+            outPages.Add(imageA4);
+
         }
 
-        double widthRatio = A4Width / A4Height;
-        int a4Width = (int)(image.Height * widthRatio);
-        var imageA4 = new Image<Gray, byte>(a4Width, image.Height, White);
-
-        var middleMark = ((imageA4.Width - image.Width) / 2) + 10;
-
-        imageA4 = SetRoi(imageA4, image, middleMark, 0);
-
-        return imageA4;
+        return outPages;
+        
     }
 
     public Image<Gray, byte> CreatePart(TunePart part, TuneType tuneType, int partNumber)
@@ -178,9 +270,9 @@ public class PageAssembler
         return image;
     }
 
-    public Image<Gray, byte> CreateLine(TuneLine line, int lineCount, int pageWidth, bool ifLink = false)
+    public Image<Gray, byte> CreateLine(TuneLine line, int lineCount, int pageWidth, int pageHeight = 0, bool ifLink = false)
     {
-        var image = new Image<Gray, byte>(pageWidth, Height + 40, White);
+        var image = new Image<Gray, byte>(pageWidth, Height + 40 + pageHeight, White);
 
         var foo2 = new NoteImage();
 
@@ -208,6 +300,9 @@ public class PageAssembler
 
         var image = new Image<Gray, byte>(notewidth * bar.CurrentLength, Height + 40, White);
 
+        var isTrip = false;
+        int tripCount = 0;
+
         foreach (var note in bar.bar.Select((value, i) => (value, i)))
         {
             Image<Gray, byte> imageNote;
@@ -219,14 +314,19 @@ public class PageAssembler
             else if (note.value.GetType().Equals(typeof(Triplet)))
             {
                 imageNote = CreateTriplet((Triplet)note.value);
+                isTrip = true;
             }
             else
             {
                 imageNote = CreateNote((Singlet)note.value);
             }
 
-            image = SetRoi(image, imageNote, note.i * notewidth);
-
+            image = SetRoi(image, imageNote, (note.i + tripCount) * notewidth);
+            if (isTrip)
+            {
+                tripCount += 1;
+                isTrip = false;
+            }
         }
 
         return image;
@@ -244,6 +344,11 @@ public class PageAssembler
 
         noteImage = SetRoi(image, noteImage, 4, 18);
 
+        if (bar.Note.NoteType == NoteType.r || bar.Note.NoteType == NoteType.l)
+        {
+            noteImage = ShiftBack(noteImage, 0, 10);
+        }
+
         if (bar.Note.OctaveType == OctaveType.Low)
         {
             noteImage = AddLow(noteImage);
@@ -256,12 +361,16 @@ public class PageAssembler
             }
             else
             {
-                noteImage = AddHigh(noteImage);
+                noteImage = AddHigh(noteImage, 10);
             }
         }
         if (bar.Note.AccidentalType == AccidentalType.Sharp && bar.Note.OctaveType != OctaveType.High)
         {
             noteImage = AddSharp(noteImage);
+        }
+        if (bar.Note.ShortLongNote)
+        {
+            noteImage = AddShortLong(noteImage);
         }
 
         return noteImage;
@@ -284,22 +393,22 @@ public class PageAssembler
 
             noteImage = SetRoi(image, noteImage,0, 18);
 
-            if (bar.Note.OctaveType == OctaveType.Low)
+            if (note.value.OctaveType == OctaveType.Low)
             {
                 noteImage = AddLow(noteImage);
             }
-            else if (bar.Note.OctaveType == OctaveType.High)
+            else if (note.value.OctaveType == OctaveType.High)
             {
-                if (bar.Note.AccidentalType == AccidentalType.Sharp)
+                if (note.value.AccidentalType == AccidentalType.Sharp)
                 {
                     noteImage = AddHighAndSharp(noteImage);
                 }
                 else
                 {
-                    noteImage = AddHigh(noteImage);
+                    noteImage = AddHigh(noteImage, 5);
                 }
             }
-            if (bar.Note.AccidentalType == AccidentalType.Sharp && bar.Note.OctaveType != OctaveType.High)
+            if (note.value.AccidentalType == AccidentalType.Sharp && note.value.OctaveType != OctaveType.High)
             {
                 noteImage = AddSharp(noteImage);
             }
@@ -336,22 +445,22 @@ public class PageAssembler
 
             noteImage = SetRoi(image, noteImage, 4, 18);
 
-            if (bar.Note.OctaveType == OctaveType.Low)
+            if (note.value.OctaveType == OctaveType.Low)
             {
                 noteImage = AddLow(noteImage);
             }
-            else if (bar.Note.OctaveType == OctaveType.High)
+            else if (note.value.OctaveType == OctaveType.High)
             {
-                if (bar.Note.AccidentalType == AccidentalType.Sharp)
+                if (note.value.AccidentalType == AccidentalType.Sharp)
                 {
                     noteImage = AddHighAndSharp(noteImage);
                 }
                 else
                 {
-                    noteImage = AddHigh(noteImage);
+                    noteImage = AddHigh(noteImage, 4, 2);
                 }
             }
-            if (bar.Note.AccidentalType == AccidentalType.Sharp && bar.Note.OctaveType != OctaveType.High)
+            if (note.value.AccidentalType == AccidentalType.Sharp && note.value.OctaveType != OctaveType.High)
             {
                 noteImage = AddSharp(noteImage);
             }
@@ -360,7 +469,7 @@ public class PageAssembler
             fullImage = SetRoi(fullImage, image, (note.i * (Width + 4)), 0);
             
         }
-        fullImage = ShiftBack(fullImage, 0, 2);
+        fullImage = ShiftBack(fullImage, 0, 0);
         
         CvInvoke.Resize(fullImage, resize, new Size(), 0.79166667, 0.79166667);
 
@@ -368,7 +477,7 @@ public class PageAssembler
         var tripImage = foo2.triplet;
 
         bigImage = SetRoi(bigImage, tripImage);
-        bigImage = SetRoi(bigImage, resize, 0, 25);
+        bigImage = SetRoi(bigImage, resize, 0, 20);
 
         return bigImage;
     }
@@ -396,7 +505,7 @@ public class PageAssembler
         }
         image = SetRoi(image, linkEnd, ((middleNums - 1) * linkStart.Width), 0);
 
-        var line2 = CreateLine(line, 0, image.Width, true);
+        var line2 = CreateLine(line, 0, image.Width, 21, true);
         line2 = ShiftOver(line2, 0, 20);
 
         CvInvoke.BitwiseNot(image, image);
@@ -504,13 +613,13 @@ public class PageAssembler
         return bigImage;
     }
 
-    private Image<Gray, byte> AddHigh(Image<Gray, byte> bigImage, int shift = 0)
+    private Image<Gray, byte> AddHigh(Image<Gray, byte> bigImage, int shiftSide = 0, int shiftDown = 0)
     {
         var noteImage = new NoteImage();
 
         Image<Gray, byte> highSymbol = noteImage.high;
 
-        bigImage = AddAboveNote(bigImage, highSymbol);
+        bigImage = AddAboveNote(bigImage, highSymbol, shiftSide, shiftDown);
 
         return bigImage;
     }
@@ -544,6 +653,26 @@ public class PageAssembler
             foreach (int x in Enumerable.Range(0, lowWidth))
             {
                 bigImage[y + Height + 18, (x + shift)] = lowSymbol[y, x];
+            }
+        }
+
+        return bigImage;
+    }
+
+    private Image<Gray, byte> AddShortLong(Image<Gray, byte> bigImage)
+    {
+        var noteImage = new NoteImage();
+
+        Image<Gray, byte> lowSymbol = noteImage.__;
+
+        int lowHeight = lowSymbol.Height;
+        int lowWidth = lowSymbol.Width;
+
+        foreach (int y in Enumerable.Range(0, lowHeight))
+        {
+            foreach (int x in Enumerable.Range(0, lowWidth))
+            {
+                bigImage[y + Height + 16, (Width + 15 - x)] = lowSymbol[y, x];
             }
         }
 
