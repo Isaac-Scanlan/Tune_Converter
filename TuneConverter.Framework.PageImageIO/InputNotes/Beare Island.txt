@@ -1,16 +1,16 @@
 Beare Island
-Reel 2
-E minor/major
+Reel
+E mixed
 __
 EBG#B AG#EE' *D'C#B*C#A BE'E'F'
 D'_F'D' AFDF *GFE*FD EDBLAL
 BLEEF G_GA BAG#A *BC#D'*E'F'
-*G'B'G'*F'G' E'G'F'E' D'BAF EALroll
-						   |EFGA
+*G'B'G'*F'G' E'G'F'E' D'BAF EALrl
+						|EFGA
 __
 BEE'F' G'E'F'D' BD'AG FADA
-BEE'F' G'E'F'D' *E'F'E'*D#F E'rollF'
+BEE'F' G'E'F'D' *E'F'E'*D#F E'rlF'
 E'D'BC# D'rollA BC#D'B AGFA
 *GBG*BG AGFA *GFE*ED EFGA
-				    |EALroll
+						|EALrl
 __

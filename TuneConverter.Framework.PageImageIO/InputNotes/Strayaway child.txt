@@ -1,5 +1,5 @@
 Strayaway child
-Jig 8
+Jig
 D minor
 __
 ADD FDD ADD F_G
@@ -16,7 +16,7 @@ AD'D' ACC CAF GFG
 AD'D' ACC CAF GGLG
 AD'D' ACC CAF GABb
 ABbA AGA FDCL *DEF*G
-+_
+__
 AD'D' ACC CAF *GG*FG
 AD'D' ACC CAF G*ABC*
 F'E'D' CBbA GFG AFD
@@ -26,7 +26,7 @@ DGF DCLD FEF AGF
 GFD CLACL Droll DEF
 DGF DCLD FEF AGF
 GFD CLACL Droll D_AL
-			 |D*ABC*
+				|D*ABC*
 __
 DF'D' CD'C BbAG AFD
 Froll CAG AFD CL_Bb
@@ -38,11 +38,11 @@ AD'D' D'_F E'CE' D'CD'
 AD'D' D'E'F' E'CE' D'_E'
 F'E'D' CBbA GFG AFD
 GFD CLACL Droll D_D'
-			   |D*ABC*
+				|D*ABC*
 __
 D'C'A D'C'A GFG AFD
 D'C'A D'C'A GFG Aroll
 D'C'A F'E'D' CBbA GFG
 *BbAG*F DGF Droll D*ABC*
-				 |DFG
+					|DFG
 __

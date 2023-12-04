@@ -1,16 +1,16 @@
 Nia's Barndance
-Barndance 2
+Barndance
 G major
 __
 E_E_ D_GA B_BA BD'D'B
 AGAB D'BAG E___ EAGF
 E_DBL D_GA B_BA BD'D'G'
 E'D'E'F' G'_B_ A_*ABD'* BAGF
-			  |ArollA AGE'F'
+				|ArlA AGBD'
 __
 G'B'A'G' F'_G'F' E'G'E'D' BAG_
-G'B'A'G' F'A'G'F' EE'E'D' *E'F'E'**D'E'F'*
+G'B'A'G' F'A'G'F' E'_E'D' *E'F'E'**D'E'F'*
 G'_A'G' F'_G'F' E'G'E'D' BAG_
-BABD' G'_B_ A-Aroll AGE'F'
-		   |A_*ABD'* BAGF
+BABD' G'_B_ A-Arl AGBD'
+			|A_*ABD'* BAGF
 __

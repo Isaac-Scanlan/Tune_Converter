@@ -1,10 +1,10 @@
 Mc Kenna's
-Jig 2
+Jig
 A Maj
 __
 E_C#L C#LBLC#L E_C#L C#LAF#
 E_C#L C#LBLC#L ALC#LE F#_A
-E_C#L C#LBLC#L Eroll EC#LBL
+E_C#L C#LBLC#L Erl EC#LBL
 AL*BLC#LD* EBLC# ALC#LE F#_A
 					|F#_G#
 __

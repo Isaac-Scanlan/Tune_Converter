@@ -16,8 +16,13 @@ namespace TuneConverter.Framework.TuneIO.TuneReader;
 
 public class TuneWriter
 {
-    public bool WriteImage(Image<Gray, byte> assembledPage, string fileName)
+    string filePath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/";
+    public bool WriteImage(Image<Gray, byte> assembledPage, string fileName, string directory = "")
     {
-        return CvInvoke.Imwrite("C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + fileName + ".png", assembledPage);
+        if (!Directory.Exists(filePath + directory))
+        {
+            Directory.CreateDirectory(filePath + directory);
+        }
+        return CvInvoke.Imwrite(filePath + directory + "/" + fileName + ".png", assembledPage);
     }
 }

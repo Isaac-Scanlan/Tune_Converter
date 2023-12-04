@@ -15,5 +15,9 @@ public enum KeyType
     Minor,
     minor = Minor,
     Min = Minor,
-    min = Minor
+    min = Minor,
+    Mixed,
+    mixed = Mixed,
+    Mix = Mixed,
+    mix = Mixed,
 }
