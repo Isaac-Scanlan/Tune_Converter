@@ -1,0 +1,19 @@
+Camino Polka
+Polka
+D Major
+__
+D'*E'D'* C#A BC# D'E'
+D'*E'D'* C#A B_ BC#
+D'*E'D'* C#A BC# D'E'
+D'F# GE DA BC#
+__
+D'*E'D'* C#A BC# D'E'
+F#'*G'F#'* E'D' E'_ E'F#'
+D'*E'D'* C#A BC# D'E'
+D'F# GE D_ AG
+__
+F#*EF#* ED EF# GB
+A*G#A* BC# D'_ D'A
+D'*E'D'* C#A BC# D'E'
+D'F# GE D_ DA
+__

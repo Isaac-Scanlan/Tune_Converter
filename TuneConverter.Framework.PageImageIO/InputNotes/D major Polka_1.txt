@@ -1,0 +1,16 @@
+Gan Ainm
+Polka
+D major
+__
+F#A GB AD' F#'D'
+C#D' E'A F#A D'A
+F#A GB AD' F#'D'
+C#D' E'C# E'D' D'A
+			|D'C#
+__
+D'C#' B*D'B* AF# F#*EF#*
+GE EG F#D F#A
+D'C#' B*D'B* AF# F#*EF#*
+GE' E'C# E'D' D'C#
+			|D'A
+__

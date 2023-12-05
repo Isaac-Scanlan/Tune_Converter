@@ -110,7 +110,7 @@ public class PageAssembler
     private Image<Gray, byte> CreateTitle(Image<Gray, byte> titlePage, string title, int pageWidth, int pageHeight)
     {
         int baseline = 1;
-        double titleFontScale = title.Length > 9 ? (title.Length > 18 ? 1 : 2) : 3;
+        double titleFontScale = title.Length > 9 ? (title.Length > 18 ? 1.5 : 2) : 3;
         int titleFontThickness = title.Length > 9 ? (title.Length > 18 ? 1 : 2) : 3;
 
         Size titleSize = CvInvoke.GetTextSize(title, font, titleFontScale, titleFontThickness, ref baseline);
@@ -120,12 +120,14 @@ public class PageAssembler
 
         int titleStartX = (int)Math.Round(textWidth, 0, MidpointRounding.ToZero);
         int titleStartY = (int)Math.Round(textHeight, 0, MidpointRounding.ToZero);
+        int addOn = (title.Length > 9 ? (title.Length > 18 ? 13 : 9) : 0);
+        titleStartY += addOn;
 
         Point point = new(titleStartX, titleStartY);
 
         CvInvoke.PutText(titlePage, title, point, font, titleFontScale, scale, titleFontThickness, lineType);
 
-        titlePage = CreateTitleLine(titlePage, titleStartX, titleStartY, titleSize.Width, scale);
+        titlePage = CreateTitleLine(titlePage, titleStartX, titleStartY -= addOn, titleSize.Width, scale);
         
         return titlePage;
     }
@@ -359,6 +361,10 @@ public class PageAssembler
             {
                 noteImage = AddHighAndSharp(noteImage);
             }
+            else if (bar.Note.AccidentalType == AccidentalType.Flat)
+            {
+                noteImage = AddHighAndFlat(noteImage);
+            }
             else
             {
                 noteImage = AddHigh(noteImage, 10);
@@ -368,6 +374,11 @@ public class PageAssembler
         {
             noteImage = AddSharp(noteImage);
         }
+        if (bar.Note.AccidentalType == AccidentalType.Flat && bar.Note.OctaveType != OctaveType.High)
+        {
+            noteImage = AddFlat(noteImage);
+        }
+
         if (bar.Note.ShortLongNote)
         {
             noteImage = AddShortLong(noteImage);
@@ -403,6 +414,10 @@ public class PageAssembler
                 {
                     noteImage = AddHighAndSharp(noteImage);
                 }
+                else if (note.value.AccidentalType == AccidentalType.Flat)
+                {
+                    noteImage = AddHighAndFlat(noteImage);
+                }
                 else
                 {
                     noteImage = AddHigh(noteImage, 5);
@@ -411,6 +426,10 @@ public class PageAssembler
             if (note.value.AccidentalType == AccidentalType.Sharp && note.value.OctaveType != OctaveType.High)
             {
                 noteImage = AddSharp(noteImage);
+            }
+            if (note.value.AccidentalType == AccidentalType.Flat && note.value.OctaveType != OctaveType.High)
+            {
+                noteImage = AddFlat(noteImage);
             }
 
             fullImage = SetRoi(fullImage, image, (note.i * (Width)), 0);
@@ -455,6 +474,10 @@ public class PageAssembler
                 {
                     noteImage = AddHighAndSharp(noteImage);
                 }
+                else if (note.value.AccidentalType == AccidentalType.Flat)
+                {
+                    noteImage = AddHighAndFlat(noteImage);
+                }
                 else
                 {
                     noteImage = AddHigh(noteImage, 4, 2);
@@ -464,7 +487,11 @@ public class PageAssembler
             {
                 noteImage = AddSharp(noteImage);
             }
-            
+            if (note.value.AccidentalType == AccidentalType.Flat && note.value.OctaveType != OctaveType.High)
+            {
+                noteImage = AddFlat(noteImage);
+            }
+
 
             fullImage = SetRoi(fullImage, image, (note.i * (Width + 4)), 0);
             
@@ -613,6 +640,17 @@ public class PageAssembler
         return bigImage;
     }
 
+    private Image<Gray, byte> AddFlat(Image<Gray, byte> bigImage)
+    {
+        var noteImage = new NoteImage();
+
+        Image<Gray, byte> sharpSymbol = noteImage.flat;
+
+        bigImage = AddAboveNote(bigImage, sharpSymbol, 10);
+
+        return bigImage;
+    }
+
     private Image<Gray, byte> AddHigh(Image<Gray, byte> bigImage, int shiftSide = 0, int shiftDown = 0)
     {
         var noteImage = new NoteImage();
@@ -632,6 +670,19 @@ public class PageAssembler
         bigImage = AddAboveNote(bigImage, highSymbol);
 
         Image<Gray, byte> sharpSymbol = noteImage.sharp;
+        bigImage = AddAboveNote(bigImage, sharpSymbol, highSymbol.Width, 1);
+
+        return bigImage;
+    }
+
+    private Image<Gray, byte> AddHighAndFlat(Image<Gray, byte> bigImage)
+    {
+        var noteImage = new NoteImage();
+
+        Image<Gray, byte> highSymbol = noteImage.high;
+        bigImage = AddAboveNote(bigImage, highSymbol);
+
+        Image<Gray, byte> sharpSymbol = noteImage.flat;
         bigImage = AddAboveNote(bigImage, sharpSymbol, highSymbol.Width, 1);
 
         return bigImage;

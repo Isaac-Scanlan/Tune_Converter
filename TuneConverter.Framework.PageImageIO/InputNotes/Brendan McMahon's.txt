@@ -2,13 +2,13 @@ Brendan McMahon's
 Reel
 E minor
 __
-FErl FEDE FErl FABA
-FErl FEDBL DALDE FABA
-FErl FEDE FErl FABA
-FErl FEDBL DALDE FAAD'
+F#Erl F#EDE F#Erl F#ABA
+F#Erl F#EDBL DALDE F#ABA
+F#Erl F#EDE F#Erl F#ABA
+F#Erl F#EDBL DALDE F#AAD'
 __
-BE'rl F'E'E'D' BE'E'F' D'BAD'
-BE'E'G' F'E'E'D' BABD' D'ABD'
-BE'rl F'E'E'D' E'G'F'E' D'__E'
-F'_E'C# D'C#BA BrlC# D'ABA 
+BE'rl F#'E'E'D' BE'E'F#' D'BAD'
+BE'E'G' F#'E'E'D' BABD' D'ABD'
+BE'rl F#'E'E'D' E'G'F#'E' D'__E'
+F#'_E'C# D'C#BA BrlC# D'ABA 
 __

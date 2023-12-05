@@ -3,6 +3,7 @@ using Emgu.CV.ML;
 using Emgu.CV.Structure;
 using System.Drawing;
 using TuneConverter.Framework.PageImageIO.ImageBuilder;
+using TuneConverter.Framework.PageImageIO.ImageComponents;
 using TuneConverter.Framework.TuneComponents.TuneBuilders;
 using TuneConverter.Framework.TuneComponents.TuneComponents;
 using TuneConverter.Framework.TuneIO.TuneReader;
@@ -13,8 +14,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        //var file = ReadTune("Kesh Jig.txt");
-        var file = ReadTune("Step it out Joe.txt");
+        var file = ReadTune("The Britches Sull of Stitches.txt");
 
         var tuneFull = TuneAssembler.AssembleTune(file);
 
@@ -22,7 +22,7 @@ public class Program
 
         DisplayImage(assembledPage);
 
-        WriteImage(assembledPage, tuneFull.Title);
+        WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
     }
 
     public static List<List<string>> ReadTune(string fileName)
@@ -50,13 +50,16 @@ public class Program
         }
     }
 
-    public static bool WriteImage(List<Image<Gray, byte>> assembledPages, string fileName)
+    public static bool WriteImage(List<Image<Gray, byte>> assembledPages, string fileName, TuneType tuneType)
     {
         bool outVal = true;
         foreach (var assembledPage in assembledPages.Select((value, i) => (value, i)))
         {
-            TuneWriter writer = new();
-            if (!writer.WriteImage(assembledPage.value, fileName + "_page_" + (assembledPage.i + 1), fileName) ) 
+            var fileDirec = assembledPages.Count > 1 ? fileName : "";
+            var pageNum = assembledPages.Count > 1 ? "_page_" + (assembledPage.i + 1) : "";
+
+            TuneWriter writer = new(tuneType);
+            if (!writer.WriteImage(assembledPage.value, fileName + pageNum, fileDirec) ) 
             {
                 outVal = false;
             }

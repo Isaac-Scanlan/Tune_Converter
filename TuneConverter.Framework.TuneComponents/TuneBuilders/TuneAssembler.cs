@@ -109,10 +109,6 @@ public static partial class TuneAssembler
 
         foreach (var noteGroup in noteGroups)
         {
-            if (noteGroup.Equals("E'C#"))
-            {
-
-            }
             var test1 = false;
             foreach(var foo1 in dupTrip)
             {
@@ -214,7 +210,7 @@ public static partial class TuneAssembler
             {
                 note.OctaveType = OctaveType[c];
             }
-            else if (c.Equals("\b") || c.Equals("#") || c.Equals("#"))
+            else if (c.Equals("b") || c.Equals("#") || c.Equals("#"))
             {
                 note.AccidentalType = AccidentalType[c];
             }
@@ -275,7 +271,7 @@ public static partial class TuneAssembler
     private static partial Regex ByDupTrip();
 
 
-    [GeneratedRegex(@"[A-G_rl][^A-Ga-g_rl]*")]
+    [GeneratedRegex(@"[A-G_rl][^A-G_rl]*")]
     private static partial Regex ByNote();
 
 
