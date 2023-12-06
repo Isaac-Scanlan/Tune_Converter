@@ -2,9 +2,9 @@ Allistrum's
 Polka
 D major
 __
-F#E E*DE* F#D D-E
+F#E E*D'E'* F#D D-E
 F#A D'E' D'B BA
-F#E E*DE* F#D D-E
+F#E E*D#Eb* F#D D-E
 F#A D'A B_ BA
 __
 F#A D'-E' F#'E' E'F#'

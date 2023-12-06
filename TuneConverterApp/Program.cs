@@ -11,18 +11,27 @@ using TuneConverter.Framework.TuneIO.TuneReader;
 namespace Main.TuneConverterApp;
 
 public class Program
-{
+{ 
     public static void Main(string[] args)
     {
-        var file = ReadTune("The Britches Sull of Stitches.txt");
+        var file = ReadTune("Strayaway child.txt");
 
+        var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
 
+        var middle = DateTime.Now;
         var assembledPage = AssemblePage(tuneFull);
 
+        var end = DateTime.Now;
+
+        var assembleTuneTime = (middle - start);
+        var assemblePageTime = (end - middle);
+
+        Console.WriteLine("AssembleTune: " + assembleTuneTime.ToString());
+        Console.WriteLine("AssemblePage: " + assemblePageTime.ToString());
         DisplayImage(assembledPage);
 
-        WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
+        //WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
     }
 
     public static List<List<string>> ReadTune(string fileName)
@@ -34,7 +43,7 @@ public class Program
     public static List<Image<Gray, byte>> AssemblePage(TuneFull tuneFull)
     {
         PageAssembler assemble = new PageAssembler();
-        return assemble.CreateTune(tuneFull);
+        return assemble.CreateTune(tuneFull).Result;
     }
 
     public static void DisplayImage(List<Image<Gray, byte>> assembledPages)

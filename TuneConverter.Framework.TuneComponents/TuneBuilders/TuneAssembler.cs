@@ -28,10 +28,18 @@ public static partial class TuneAssembler
         LineLength = BarAndLineLengths[tune.TuneType][1];
 
         tune.MaxLength = rawTune.Count;
-        foreach (var part in rawTune)
+        for (int i = 0; i < rawTune.Count; i++)
         {
-            tune.AddPart(AssemblePart(part));
+            var assembledPart = AssemblePart(rawTune[i]);
+            assembledPart.PartNumber = i + 1;
+            tune.AddPart(assembledPart);
         }
+        //foreach (var part in rawTune)
+        //{
+        //    var assembledPart = AssemblePart(part);
+        //    assembledPart.PartNumber = 1;
+        //    tune.AddPart(assembledPart);
+        //}
         return tune;
     }
 
