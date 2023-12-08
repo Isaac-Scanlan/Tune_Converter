@@ -10,6 +10,7 @@ using System.Text;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Linq;
+using TuneConverter.Framework.PageComponents;
 
 namespace TuneConverter.Framework.PageImageIO.ImageBuilder;
 
@@ -28,7 +29,14 @@ public class PageAssembler
 
     private readonly LineType lineType = LineType.AntiAlias;
 
-    private static ConcurrentDictionary<int, List<Image<Gray, byte>>> PartsDict = new();
+    private static ConcurrentDictionary<int, List<Image<Gray, byte>>> _partsDict = new();
+
+    private static ListComparer<NoteGroup> comparer = new();
+    private static ConcurrentDictionary<List<NoteGroup>, Image<Gray, byte>> _barCache = new(comparer);
+
+    private static ConcurrentDictionary<int, List<Image<Gray, byte>>> _pagesDict = new();
+
+    private static List<List<NoteGroup>> bigList = new();
 
     public async Task<List<Image<Gray, byte>>> CreateTune(TuneFull tune)
     {
@@ -42,7 +50,7 @@ public class PageAssembler
         for (int i = 0; i < tune.tune.Count; i++)
         {
             listOfPieces[i] = await Task.Factory.StartNew(() => {
-                return AssemblePages(tune.tune[i], tune.TuneType);
+                return AssemblePageSegments(tune.tune[i], tune.TuneType);
             });
         }
 
@@ -51,7 +59,7 @@ public class PageAssembler
 
         while (listOfPieces.Any(t => t.Equals(new List<Image<Gray, byte>>()) | t.Equals(null))) { }
 
-        foreach (var doo in PartsDict.Select((value, i) => (value, i)))
+        foreach (var doo in _partsDict.Select((value, i) => (value, i)))
         {
             Console.WriteLine(doo.i);
             foreach (var dooo in doo.value.Value)
@@ -68,7 +76,7 @@ public class PageAssembler
         return CreatePage(pieces, image);
     }
 
-    public static List<Image<Gray, byte>> AssemblePages(TunePart part, TuneType tuneType)
+    public static List<Image<Gray, byte>> AssemblePageSegments(TunePart part, TuneType tuneType)
     {
         List<Image<Gray, byte>> pieces = [];
         var newPart = CreatePart(part, tuneType, part.PartNumber);
@@ -93,7 +101,7 @@ public class PageAssembler
             pageHeight += partSplit.Height;
         }
 
-        PartsDict.AddOrUpdate(part.PartNumber, pieces, (x,y) => new List<Image<Gray, byte>>());
+        _partsDict.AddOrUpdate(part.PartNumber, pieces, (x,y) => new List<Image<Gray, byte>>());
 
         return pieces;
     }
@@ -288,18 +296,14 @@ public class PageAssembler
 
         for (int i = 0; i < line.line.Count; i++)
         {
-            
-            var imageNote = CreateBar(line.line[i]);
+            Image<Gray, byte> imageNote;// = CreateBar(line.line[i]);
+            bigList.Add(line.line[i].bar);
+            _barCache.TryGetValue( line.line[i].bar , out imageNote);
 
-            
+            imageNote ??= CreateBar(line.line[i]);
+
+            _barCache.TryAdd(line.line[i].bar, imageNote);
             var barwidth = ((Width + 16) * line.line[i].CurrentLength) + 55;
-
-            if (line.line[i].bar[0].Note.NoteType == NoteType.C &&
-                line.line[i].bar[1].Note.NoteType == NoteType.A &&
-                line.line[i].bar[2].Note.NoteType == NoteType.C)
-            {
-
-            }
 
             image = SetRoi(image, imageNote, (i * barwidth) + (ifLink ? 40 : 80));
 
