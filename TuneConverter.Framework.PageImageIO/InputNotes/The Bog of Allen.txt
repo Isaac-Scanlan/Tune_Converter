@@ -1,0 +1,16 @@
+The Bog of Allen
+Reel
+G major
+__
+BG*AGF#* GFnDE Fn_AG F#DCLBL
+DG*AGF#* GABC D'G'F#'A' G'F#'D'C
+BG*AGF#* GFnDE Fn_AG F#DCLBL
+DG*AGF#* GABC D'G'F#'D' C_D'C
+					|C_BC
+__
+D'G'*G'F#'G'* B'G'A'G' D'G'G'F#' D'CBC
+D'G'*G'F#'G'* A'G'*G'F#'G'* D'E'F#'D' C_BC
+D'G'*G'F#'G'* B'G'A'G' D'G'G'F#' D'CBC
+GABC D'E'F#'A' G'E'F#'D' C_BC
+						|C_D'C
+__

@@ -3,6 +3,7 @@ using Emgu.CV.ML;
 using Emgu.CV.Structure;
 using System.Drawing;
 using TuneConverter.Framework.PageImageIO.ImageBuilder;
+using TuneConverter.Framework.PageImageIO.ImageComponents;
 using TuneConverter.Framework.TuneComponents.TuneBuilders;
 using TuneConverter.Framework.TuneComponents.TuneComponents;
 using TuneConverter.Framework.TuneIO.TuneReader;
@@ -10,19 +11,27 @@ using TuneConverter.Framework.TuneIO.TuneReader;
 namespace Main.TuneConverterApp;
 
 public class Program
-{
+{ 
     public static void Main(string[] args)
     {
-        //var file = ReadTune("Kesh Jig.txt");
-        var file = ReadTune("Step it out Joe.txt");
+        var file = ReadTune("Johnny McGoohan's.txt");
 
+        var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
 
+        var middle = DateTime.Now;
         var assembledPage = AssemblePage(tuneFull);
 
+        var end = DateTime.Now;
+
+        var assembleTuneTime = (middle - start);
+        var assemblePageTime = (end - middle);
+
+        Console.WriteLine("AssembleTune: " + assembleTuneTime.ToString());
+        Console.WriteLine("AssemblePage: " + assemblePageTime.ToString());
         DisplayImage(assembledPage);
 
-        WriteImage(assembledPage, tuneFull.Title);
+        WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
     }
 
     public static List<List<string>> ReadTune(string fileName)
@@ -34,7 +43,7 @@ public class Program
     public static List<Image<Gray, byte>> AssemblePage(TuneFull tuneFull)
     {
         PageAssembler assemble = new PageAssembler();
-        return assemble.CreateTune(tuneFull);
+        return assemble.CreateTune(tuneFull).Result;
     }
 
     public static void DisplayImage(List<Image<Gray, byte>> assembledPages)
@@ -50,13 +59,16 @@ public class Program
         }
     }
 
-    public static bool WriteImage(List<Image<Gray, byte>> assembledPages, string fileName)
+    public static bool WriteImage(List<Image<Gray, byte>> assembledPages, string fileName, TuneType tuneType)
     {
         bool outVal = true;
         foreach (var assembledPage in assembledPages.Select((value, i) => (value, i)))
         {
-            TuneWriter writer = new();
-            if (!writer.WriteImage(assembledPage.value, fileName + "_page_" + (assembledPage.i + 1), fileName) ) 
+            var fileDirec = assembledPages.Count > 1 ? fileName : "";
+            var pageNum = assembledPages.Count > 1 ? "_page_" + (assembledPage.i + 1) : "";
+
+            TuneWriter writer = new(tuneType);
+            if (!writer.WriteImage(assembledPage.value, fileName + pageNum, fileDirec) ) 
             {
                 outVal = false;
             }

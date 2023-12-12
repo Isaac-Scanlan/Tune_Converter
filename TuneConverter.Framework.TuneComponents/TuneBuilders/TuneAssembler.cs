@@ -28,10 +28,18 @@ public static partial class TuneAssembler
         LineLength = BarAndLineLengths[tune.TuneType][1];
 
         tune.MaxLength = rawTune.Count;
-        foreach (var part in rawTune)
+        for (int i = 0; i < rawTune.Count; i++)
         {
-            tune.AddPart(AssemblePart(part));
+            var assembledPart = AssemblePart(rawTune[i]);
+            assembledPart.PartNumber = i + 1;
+            tune.AddPart(assembledPart);
         }
+        //foreach (var part in rawTune)
+        //{
+        //    var assembledPart = AssemblePart(part);
+        //    assembledPart.PartNumber = 1;
+        //    tune.AddPart(assembledPart);
+        //}
         return tune;
     }
 
@@ -109,10 +117,6 @@ public static partial class TuneAssembler
 
         foreach (var noteGroup in noteGroups)
         {
-            if (noteGroup.Equals("E'C#"))
-            {
-
-            }
             var test1 = false;
             foreach(var foo1 in dupTrip)
             {
@@ -214,7 +218,7 @@ public static partial class TuneAssembler
             {
                 note.OctaveType = OctaveType[c];
             }
-            else if (c.Equals("\b") || c.Equals("#") || c.Equals("#"))
+            else if (c.Equals("b") || c.Equals("#") || c.Equals("#") || c.Equals("n"))
             {
                 note.AccidentalType = AccidentalType[c];
             }
@@ -275,7 +279,7 @@ public static partial class TuneAssembler
     private static partial Regex ByDupTrip();
 
 
-    [GeneratedRegex(@"[A-G_rl][^A-Ga-g_rl]*")]
+    [GeneratedRegex(@"[A-G_rl][^A-G_rl]*")]
     private static partial Regex ByNote();
 
 

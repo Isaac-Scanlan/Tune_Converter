@@ -8,6 +8,7 @@ namespace TuneConverter.Framework.TuneComponents.TuneComponents;
 
 public record TunePart
 {
+    public int PartNumber { get; set; }
     public int MaxLength { get; set; }
     public int CurrentLength { get; set; }
     public List<TuneLine> part = [];
