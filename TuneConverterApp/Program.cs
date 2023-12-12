@@ -14,7 +14,7 @@ public class Program
 { 
     public static void Main(string[] args)
     {
-        var file = ReadTune("Strayaway child.txt");
+        var file = ReadTune("Johnny McGoohan's.txt");
 
         var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
@@ -31,7 +31,7 @@ public class Program
         Console.WriteLine("AssemblePage: " + assemblePageTime.ToString());
         DisplayImage(assembledPage);
 
-        //WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
+        WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
     }
 
     public static List<List<string>> ReadTune(string fileName)

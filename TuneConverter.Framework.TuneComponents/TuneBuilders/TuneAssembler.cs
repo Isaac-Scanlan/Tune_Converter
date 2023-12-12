@@ -218,7 +218,7 @@ public static partial class TuneAssembler
             {
                 note.OctaveType = OctaveType[c];
             }
-            else if (c.Equals("b") || c.Equals("#") || c.Equals("#"))
+            else if (c.Equals("b") || c.Equals("#") || c.Equals("#") || c.Equals("n"))
             {
                 note.AccidentalType = AccidentalType[c];
             }

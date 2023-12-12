@@ -18,34 +18,26 @@ public class PageAssembler
 {
     private const int Height = 80;
     private const int Width = 55 + 5;
-
     private const double A4Width = 210;
     private const double A4Height = 297;
 
     private const FontFace font = FontFace.HersheyTriplex;
     private MCvScalar scale = new(255);
-
     private static readonly Gray White = new(255);
-
     private readonly LineType lineType = LineType.AntiAlias;
 
     private static ConcurrentDictionary<int, List<Image<Gray, byte>>> _partsDict = new();
-
     private static ListComparer<NoteGroup> comparer = new();
     private static ConcurrentDictionary<List<NoteGroup>, Image<Gray, byte>> _barCache = new(comparer);
-
-    private static ConcurrentDictionary<int, List<Image<Gray, byte>>> _pagesDict = new();
-
-    private static List<List<NoteGroup>> bigList = new();
+    private static ConcurrentDictionary<int, Image<Gray, byte>> _pagesDict = new();
 
     public async Task<List<Image<Gray, byte>>> CreateTune(TuneFull tune)
     {
-        List<Image<Gray, byte>> pieces = [];
         List<Image<Gray, byte>>[] listOfPieces = new List<Image<Gray, byte>>[tune.tune.Count];
 
         int[] heights = new int[tune.tune.Count];
 
-        pieces.Add(CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString()));
+        var title = CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString());
 
         for (int i = 0; i < tune.tune.Count; i++)
         {
@@ -54,33 +46,47 @@ public class PageAssembler
             });
         }
 
-        int[] fullPageHeights = new int[10];
-        Array.Fill(fullPageHeights, pieces[0].Height);
+        int[] fullPageHeights = new int[(int)Math.Round((tune.tune.Count / 2.0), 0, MidpointRounding.AwayFromZero)];
+        Array.Fill(fullPageHeights, title.Height);
 
         while (listOfPieces.Any(t => t.Equals(new List<Image<Gray, byte>>()) | t.Equals(null))) { }
 
+
+        List<List<Image<Gray, byte>>> pages = new();
+        List<Image<Gray, byte>> innerList = [title];
+        var dummyHeader = new Image<Gray, byte>(title.Width, title.Height, White);
+
         foreach (var doo in _partsDict.Select((value, i) => (value, i)))
         {
-            Console.WriteLine(doo.i);
             foreach (var dooo in doo.value.Value)
             { 
-                pieces.Add(dooo);
+                innerList.Add(dooo);
                 fullPageHeights[(int)(doo.i / 2)] += dooo.Height;
             }
             fullPageHeights[(int)(doo.i / 2)] += heights[doo.i];
-        }
 
+            if ((doo.i + 1) % 2 == 0)
+            {
+                pages.Add(innerList);
+                innerList = [dummyHeader];
+            }
+        }
+        if(innerList.Count > 1)
+        {
+            pages.Add(innerList);
+        }
+        
         var pageWidth = (Width + 16) * (int)tune.TuneType;
         var image = new Image<Gray, byte>(pageWidth, fullPageHeights.Max(), White);
 
-        return CreatePage(pieces, image);
+        return CreatePage(image, pages).Result;
     }
 
     public static List<Image<Gray, byte>> AssemblePageSegments(TunePart part, TuneType tuneType)
     {
         List<Image<Gray, byte>> pieces = [];
         var newPart = CreatePart(part, tuneType, part.PartNumber);
-            
+
         pieces.Add(newPart);
 
         int pageHeight = newPart.Height;
@@ -101,9 +107,72 @@ public class PageAssembler
             pageHeight += partSplit.Height;
         }
 
-        _partsDict.AddOrUpdate(part.PartNumber, pieces, (x,y) => new List<Image<Gray, byte>>());
+        _partsDict.AddOrUpdate(part.PartNumber, pieces, (x, y) => new List<Image<Gray, byte>>());
 
         return pieces;
+    }
+
+    public async Task<List<Image<Gray, byte>>> CreatePage(Image<Gray, byte> image, List<List<Image<Gray, byte>>> pages)
+    {
+        List<Image<Gray, byte>> outPages = new();
+
+        foreach (var page in pages.Select((value, j) => (value, j)))
+        {
+            await Task.Factory.StartNew(() => AssemblePage(page.value, image, page.j));
+        }
+
+        while (_pagesDict.Count != pages.Count) { }
+
+        return _pagesDict.Values.ToList();
+
+    }
+
+    public void AssemblePage(List<Image<Gray, byte>> page, Image<Gray, byte> image, int pageNumber)
+    {
+
+        int pageMarker = 0;
+        Image<Gray, byte> pageImage = new(image.Width, image.Height, White);
+        foreach (var piece in page.Select((value, i) => (value, i)))
+        {
+            if (piece.value.Height == 141)
+            {
+                var start = (pageImage.Width) - piece.value.Width - 122;
+                pageImage = SetRoi(pageImage, piece.value, start, pageMarker - 70);
+                pageMarker += piece.value.Height;
+
+                continue;
+            }
+
+            pageImage = SetRoi(pageImage, piece.value, 0, pageMarker);
+            pageMarker += piece.value.Height;
+        }
+
+        double widthRatio = A4Width / A4Height;
+        int a4Height;
+        int a4Width;
+        int middleMark;
+
+        if (pageImage.Height * widthRatio < pageImage.Width)
+        {
+            a4Height = (int)(pageImage.Width / widthRatio);
+            a4Width = pageImage.Width + 10;
+            middleMark = 0;
+            pageImage = ShiftOver(pageImage, 25, 0);
+
+        }
+        else
+        {
+            a4Height = pageImage.Height;
+            a4Width = (int)(pageImage.Height * widthRatio);
+            middleMark = ((a4Width - pageImage.Width) / 2);
+            pageImage = ShiftOver(pageImage, 10, 0);
+        }
+
+        var imageA4 = new Image<Gray, byte>(a4Width, a4Height, White);
+
+        imageA4 = SetRoi(imageA4, pageImage, middleMark == 10 ? 0 : middleMark, 0);
+
+        _pagesDict.AddOrUpdate(pageNumber, imageA4, (x, y) => image);
     }
 
     #region Title Generation
@@ -181,88 +250,6 @@ public class PageAssembler
 
     #region Part Generation
 
-    public List<Image<Gray, byte>> CreatePage(List<Image<Gray, byte>> pieces, Image<Gray, byte> image)
-    {
-        List<List<Image<Gray, byte>>> pages = new();
-        List<Image<Gray, byte>> innerList = [ pieces[0] ];
-
-        int partNums = 0;
-
-        List<Image<Gray, byte>> outPages = new();
-        var dummyHeader = new Image<Gray, byte>(pieces[0].Width, pieces[0].Height, White);
-
-        foreach (var piece in pieces.Select((value, i) => (value, i)))
-        {
-            if (piece.i == 0)
-            {
-                continue;
-            }
-            if (piece.value.Height > 200)
-            {
-                partNums += 1;
-            }
-            if (partNums == 3)
-            {
-                pages.Add(innerList);
-                innerList = [dummyHeader];
-                partNums = 1;
-            }
-            innerList.Add(piece.value);
-
-        }
-        pages.Add(innerList);
-
-        foreach (var page in pages)
-        {
-            int pageMarker = 0;
-            Image<Gray, byte> pageImage = new(image.Width, image.Height, White);
-            foreach (var piece in page.Select((value, i) => (value, i)))
-            {
-                if (piece.value.Height == 141)
-                {
-                    var start = (pageImage.Width) - piece.value.Width - 122;
-                    pageImage = SetRoi(pageImage, piece.value, start, pageMarker - 70);
-                    pageMarker += piece.value.Height;
-                
-                    continue;
-                }
-
-                pageImage = SetRoi(pageImage, piece.value, 0, pageMarker);
-                pageMarker += piece.value.Height;
-            }
-
-            double widthRatio = A4Width / A4Height;
-            int a4Height;
-            int a4Width;
-            int middleMark;
-
-            if (pageImage.Height * widthRatio < pageImage.Width )
-            {
-                a4Height = (int)(pageImage.Width / widthRatio);
-                a4Width = pageImage.Width + 10;
-                middleMark = 0;
-                pageImage = ShiftOver(pageImage, 25, 0);
-            
-            }
-            else
-            {
-                a4Height = pageImage.Height;
-                a4Width = (int)(pageImage.Height * widthRatio);
-                middleMark = ((a4Width - pageImage.Width) / 2);
-                pageImage = ShiftOver(pageImage, 10, 0);
-            }
-
-            var imageA4 = new Image<Gray, byte>(a4Width, a4Height, White);
-        
-            imageA4 = SetRoi(imageA4, pageImage, middleMark == 10? 0: middleMark, 0);
-
-            outPages.Add(imageA4);
-        }
-
-        return outPages;
-        
-    }
-
     public static Image<Gray, byte> CreatePart(TunePart part, TuneType tuneType, int partNumber)
     {
         int pageHeight = (int)((Height + 60) * (part.part.Count + 1));
@@ -296,8 +283,7 @@ public class PageAssembler
 
         for (int i = 0; i < line.line.Count; i++)
         {
-            Image<Gray, byte> imageNote;// = CreateBar(line.line[i]);
-            bigList.Add(line.line[i].bar);
+            Image<Gray, byte> imageNote;
             _barCache.TryGetValue( line.line[i].bar , out imageNote);
 
             imageNote ??= CreateBar(line.line[i]);
@@ -396,6 +382,10 @@ public class PageAssembler
         if (bar.AccidentalType == AccidentalType.Flat)
         {
             noteImage = AddFlat(noteImage, highShiftSide);
+        }
+        if (bar.AccidentalType == AccidentalType.Natural)
+        {
+            noteImage = AddNatural(noteImage, highShiftSide);
         }
         
         return noteImage;
@@ -559,6 +549,7 @@ public class PageAssembler
 
     private static Image<Gray, byte> AddSharp(Image<Gray, byte> bigImage) => AddAboveNote(bigImage, NoteImage.sharp);
     private static Image<Gray, byte> AddFlat(Image<Gray, byte> bigImage, int small = 0) => AddAboveNote(bigImage, NoteImage.flat, 10 - small);
+    private static Image<Gray, byte> AddNatural(Image<Gray, byte> bigImage, int small = 0) => AddAboveNote(bigImage, NoteImage.natural, 10 - small);
     private static Image<Gray, byte> AddHigh(Image<Gray, byte> bigImage, int shiftSide = 0, int shiftDown = 0) => AddAboveNote(bigImage, NoteImage.high, shiftSide, shiftDown);
     private static Image<Gray, byte> AddHighAndSharp(Image<Gray, byte> bigImage) => 
         AddAboveNote(AddAboveNote(bigImage, NoteImage.high), NoteImage.sharp, NoteImage.high.Width, 1);

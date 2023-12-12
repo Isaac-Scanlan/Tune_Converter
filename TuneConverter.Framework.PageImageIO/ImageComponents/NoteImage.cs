@@ -20,7 +20,8 @@ public class NoteImage
     public static readonly Image<Gray, byte> F = new(@"" + _imagePath + "F.png");  
     public static readonly Image<Gray, byte> G = new(@"" + _imagePath + "G.png");  
     public static readonly Image<Gray, byte> sharp = new(@"" + _imagePath + "sharp.png"); 
-    public static readonly Image<Gray, byte> flat = new(@"" + _imagePath + "flat.png"); 
+    public static readonly Image<Gray, byte> flat = new(@"" + _imagePath + "flat.png");
+    public static readonly Image<Gray, byte> natural = new(@"" + _imagePath + "natural.png");
     public static readonly Image<Gray, byte> high = new(@"" + _imagePath + "high.png");  
     public static readonly Image<Gray, byte> low = new(@"" + _imagePath + "low.png");  
     public static readonly Image<Gray, byte> r = new(@"" + _imagePath + "ro.png");  
