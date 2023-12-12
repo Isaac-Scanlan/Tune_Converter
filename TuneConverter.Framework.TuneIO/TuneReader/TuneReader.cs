@@ -16,6 +16,13 @@ public partial class TuneReader
     {
         var lines = ByNewLine().Split(File.ReadAllText(_imagePath + tune)).ToList();
 
+        var output = arrangeTuneList(lines);
+
+        return output;
+    }
+
+    public List<List<string>> arrangeTuneList(List<string> lines)
+    {
         List<List<string>> output = new();
         List<string> partlist = new();
         foreach (var line in lines)

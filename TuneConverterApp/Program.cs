@@ -14,7 +14,9 @@ public class Program
 { 
     public static void Main(string[] args)
     {
-        var file = ReadTune("Johnny McGoohan's.txt");
+        //var file = ReadTune("Johnny McGoohan's.txt");
+
+        var file = ArrangeTuneList(args);
 
         var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
@@ -29,7 +31,7 @@ public class Program
 
         Console.WriteLine("AssembleTune: " + assembleTuneTime.ToString());
         Console.WriteLine("AssemblePage: " + assemblePageTime.ToString());
-        DisplayImage(assembledPage);
+        //DisplayImage(assembledPage);
 
         WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
     }
@@ -38,6 +40,12 @@ public class Program
     {
         TuneReader reader = new();
         return reader.readFile(fileName);
+    }
+
+    public static List<List<string>> ArrangeTuneList(string[] lines)
+    {
+        TuneReader reader = new();
+        return reader.arrangeTuneList(lines.ToList());
     }
 
     public static List<Image<Gray, byte>> AssemblePage(TuneFull tuneFull)

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TuneConverter.Framework.PageComponents\TuneConverter.Framework.PageComponents.csproj" />
+    <ProjectReference Include="..\TuneConverter.Framework.PageImageIO\TuneConverter.Framework.PageImageIO.csproj" />
+    <ProjectReference Include="..\TuneConverter.Framework.TuneComponents\TuneConverter.Framework.TuneComponents.csproj" />
+    <ProjectReference Include="..\TuneConverter.Framework.TuneIO\TuneConverter.Framework.TuneIO.csproj" />
+    <ProjectReference Include="..\TuneConverterApp\Main.TuneConverterApp.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.8.1.5350" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+</Project>

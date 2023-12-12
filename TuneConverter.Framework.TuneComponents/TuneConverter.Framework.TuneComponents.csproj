@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.8.1.5350" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TuneConverter.Framework.PageComponents\TuneConverter.Framework.PageComponents.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.PageComponents\TuneConverter.Framework.PageComponents.csproj" />
   </ItemGroup>
