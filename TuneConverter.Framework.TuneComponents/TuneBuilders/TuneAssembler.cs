@@ -70,12 +70,13 @@ public static partial class TuneAssembler
     public static TunePart AssemblePart(List<string> rawTune)
     {
         TunePart part = new();
-        part.MaxLength = LineLength;
+        part.MaxLength = rawTune.Count;
         foreach (var line in rawTune)
         {
             if (line.StartsWith("|"))
             {
                 part.Link = AssembleLine(line, true);
+                part.MaxLength--;
             }
             else
             {

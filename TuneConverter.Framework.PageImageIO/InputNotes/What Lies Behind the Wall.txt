@@ -1,0 +1,20 @@
+What Lies Behind the Wall
+Slipjig
+A major
+__
+F#__ F#EF# ABC#
+C#BA BAG# ABC#
+F#__ F#EF# ABC#
+BAG# A*BAE* ABC#
+		|AC#E'
+__
+A'rl G#'F#'E' F#'A'E'
+F#'D'B BAG# AC#E'
+A'rl B'A'G#' F#'G#'E'
+C#E'G#' F#'_G#' A'rl
+C#'B'A' G#'F#'E' F#'A'E'
+F#'D'B BAG# ABC#
+F#__ F#EF# ABC#
+BAG# A*BAE* AC#E'
+		|ABC#
+__

@@ -9,12 +9,20 @@ namespace TuneConverter.Framework.TuneIO.TuneReader;
 
 public partial class TuneReader
 {
-
-    private static readonly string _imagePath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/InputNotes/";
+    private static readonly string _notesPath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/InputNotes/";
 
     public List<List<string>> readFile(String tune)
     {
-        var lines = ByNewLine().Split(File.ReadAllText(_imagePath + tune)).ToList();
+        var lines = ByNewLine().Split(File.ReadAllText(_notesPath + tune)).ToList();
+
+        var output = arrangeTuneList(lines);
+
+        return output;
+    }
+
+    public List<List<string>> readFileForView(String tune)
+    {
+        var lines = ByNewLine().Split(File.ReadAllText(tune)).ToList();
 
         var output = arrangeTuneList(lines);
 

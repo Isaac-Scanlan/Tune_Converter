@@ -14,9 +14,9 @@ public class Program
 { 
     public static void Main(string[] args)
     {
-        //var file = ReadTune("Johnny McGoohan's.txt");
+        var file = ReadTune("Strayaway child.txt");
 
-        var file = ArrangeTuneList(args);
+        //var file = ArrangeTuneList(args);
 
         var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
@@ -75,7 +75,7 @@ public class Program
             var fileDirec = assembledPages.Count > 1 ? fileName : "";
             var pageNum = assembledPages.Count > 1 ? "_page_" + (assembledPage.i + 1) : "";
 
-            TuneWriter writer = new(tuneType);
+            TuneImageWriter writer = new(tuneType);
             if (!writer.WriteImage(assembledPage.value, fileName + pageNum, fileDirec) ) 
             {
                 outVal = false;

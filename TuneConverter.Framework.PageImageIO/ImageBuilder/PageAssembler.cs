@@ -252,7 +252,8 @@ public class PageAssembler
 
     public static Image<Gray, byte> CreatePart(TunePart part, TuneType tuneType, int partNumber)
     {
-        int pageHeight = (int)((Height + 60) * (part.part.Count + 1));
+        int extra = part.part.Count > 5 ? 60 : 0;
+        int pageHeight = (int)((Height + 60) * (part.part.Count + 1) + extra);
         int pageWidth = (Width + 16) * (int)tuneType;
 
         var image = new Image<Gray, byte>(pageWidth, pageHeight, White);
@@ -261,6 +262,10 @@ public class PageAssembler
 
         for (int i = 0; i < part.part.Count; i++)
         {
+            if (i == 7)
+            {
+
+            }
             var imageLine = CreateLine(part.part[i], i, pageWidth);
             image = SetRoi(image, imageLine, 0, (i * 160) + 10);
             image = SetRoi(image, lineSplit, 0, (120 + (i * 160)) + 10);
