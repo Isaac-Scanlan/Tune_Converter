@@ -1,0 +1,70 @@
+﻿<Window x:Class="WPFTuneConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFTuneConverter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="617" Width="994" Background="#FFE8E8E8">
+    <TabControl>
+        <TabItem Header="Create Tune">
+            <Grid Margin="0,0,0,-6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="37*"/>
+                    <ColumnDefinition Width="86*"/>
+                    <ColumnDefinition Width="190*"/>
+                    <ColumnDefinition Width="59*"/>
+                    <ColumnDefinition Width="466*"/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Grid.Column="4" HorizontalAlignment="Left" Height="475" Margin="175,36,0,0" Stroke="Black" VerticalAlignment="Top" Width="337" Fill="#FFE6E6E6"/>
+
+                <Image x:Name="tuneImage" HorizontalAlignment="Left" Height="471" Margin="179,38,0,0" VerticalAlignment="Top" Width="330" Source="/default_image.png" Grid.Column="4"/>
+                <Button x:Name="nextPageButton" Content=" &gt; " HorizontalAlignment="Left" Margin="403,516,0,0" VerticalAlignment="Top" Click="NextPageButton" RenderTransformOrigin="2.289,0.954" Height="20" Grid.Column="4" FontWeight="Bold"/>
+                <Button x:Name="previousPageButton" Content=" &lt; " HorizontalAlignment="Left" Margin="266,516,0,0" VerticalAlignment="Top" Height="20" Click="PreviousPageButton" Grid.Column="4" FontWeight="Bold"/>
+                <Label  x:Name="pageCountLabel" Content="0 out of 0" HorizontalAlignment="Left" Margin="313,513,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.477,0.838" Grid.Column="4"/>
+                <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Margin="26,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="3"/>
+                <Label x:Name="titleLabel" Content="Title" HorizontalAlignment="Left" Margin="26,10,0,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="2"/>
+                <ComboBox x:Name="typeComboBox" HorizontalAlignment="Left" Margin="26,86,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ComboBox_SelectionChanged" Grid.ColumnSpan="3"/>
+                <Label x:Name="typeLabel" Content="Type" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Height="27" Grid.ColumnSpan="2"/>
+                <ComboBox x:Name="keyComboBox" HorizontalAlignment="Left" Margin="26,139,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="ComboBox_SelectionChanged_1" Grid.ColumnSpan="3"/>
+                <Label x:Name="keyLabel" Content="Key" HorizontalAlignment="Left" Margin="26,113,0,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="2"/>
+                <Button x:Name="convertButton" Content=" Convert " HorizontalAlignment="Left" Margin="26,513,0,0" VerticalAlignment="Top" Click="ConvertButton" Height="28" Width="72" Grid.ColumnSpan="2"/>
+                <Button x:Name="browseButton" Content=" Browse " HorizontalAlignment="Left" Margin="145,513,0,0" VerticalAlignment="Top" Click="BrowseButton_Click" Height="28" Width="72" Grid.Column="2">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+                <TextBox x:Name="tuneTextBlock" HorizontalAlignment="Left" Margin="26,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" Height="317" TextChanged="TextBox_TextChanged" Background="White" AcceptsReturn="True" FontSize="16" Grid.ColumnSpan="4"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Convert from ABC">
+            <Grid Margin="0,0,0,-6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="37*"/>
+                    <ColumnDefinition Width="86*"/>
+                    <ColumnDefinition Width="190*"/>
+                    <ColumnDefinition Width="59*"/>
+                    <ColumnDefinition Width="466*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.Column="4" HorizontalAlignment="Left" Height="475" Margin="175,36,0,0" Stroke="Black" VerticalAlignment="Top" Width="337" Fill="#FFE6E6E6"/>
+
+                <Image x:Name="tuneImage1" HorizontalAlignment="Left" Height="471" Margin="179,38,0,0" VerticalAlignment="Top" Width="330" Source="/default_image.png" Grid.Column="4"/>
+                <Button x:Name="nextPageButton1" Content=" &gt; " HorizontalAlignment="Left" Margin="403,516,0,0" VerticalAlignment="Top" Click="NextPageButton" RenderTransformOrigin="2.289,0.954" Height="20" Grid.Column="4" FontWeight="Bold"/>
+                <Button x:Name="previousPageButton1" Content=" &lt; " HorizontalAlignment="Left" Margin="266,516,0,0" VerticalAlignment="Top" Height="20" Click="PreviousPageButton" Grid.Column="4" FontWeight="Bold"/>
+                <Label  x:Name="pageCountLabel1" Content="0 out of 0" HorizontalAlignment="Left" Margin="313,513,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.477,0.838" Grid.Column="4"/>
+                <Button x:Name="convertButton1" Content=" Convert " HorizontalAlignment="Left" Margin="26,513,0,0" VerticalAlignment="Top" Click="ConvertButton" Height="28" Width="72" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="tuneTextBlock1" HorizontalAlignment="Left" Margin="26,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Height="419" TextChanged="TextBox_TextChanged" Background="White" AcceptsReturn="True" FontSize="16" Grid.ColumnSpan="3"/>
+                <TextBox x:Name="tuneTextBlock2" HorizontalAlignment="Left" Margin="167,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" Height="417" TextChanged="TextBox_TextChanged" Background="White" AcceptsReturn="True" FontSize="16" Grid.ColumnSpan="3" Grid.Column="2"/>
+                <Label Content="Standard Format" HorizontalAlignment="Left" Margin="26,47,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" FontSize="22" Width="211"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+
+</Window>

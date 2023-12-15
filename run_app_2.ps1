@@ -1,0 +1,1 @@
+﻿dotnet C:\Users\Isaac\source\repos\TuneConverter\WPFTuneConverter\bin\Debug\net8.0-windows\WPFTuneConverter.dll

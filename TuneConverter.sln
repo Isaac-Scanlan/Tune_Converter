@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
@@ -24,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Main.TuneConverterApp", "Tu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.TuneComponents", "TuneConverter.Framework.TuneComponents\TuneConverter.Framework.TuneComponents.csproj", "{06EE3D9E-8E19-4878-96B5-64349797B62F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuneConverterAppInterface", "TuneConverterAppInterface\TuneConverterAppInterface.csproj", "{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverterAppInterface", "TuneConverterAppInterface\TuneConverterAppInterface.csproj", "{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTuneConverter", "WPFTuneConverter\WPFTuneConverter.csproj", "{0AFD198D-5066-4312-BB72-2903F8408E91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +57,10 @@ Global
 		{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AFD198D-5066-4312-BB72-2903F8408E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AFD198D-5066-4312-BB72-2903F8408E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AFD198D-5066-4312-BB72-2903F8408E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AFD198D-5066-4312-BB72-2903F8408E91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +72,7 @@ Global
 		{D33C3A27-805E-4E8E-B17A-5EC1CF698E07} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
 		{06EE3D9E-8E19-4878-96B5-64349797B62F} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
 		{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
+		{0AFD198D-5066-4312-BB72-2903F8408E91} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {656D544E-CE0E-4867-A0A0-5A63E7C6E850}

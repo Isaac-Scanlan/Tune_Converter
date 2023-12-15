@@ -6,11 +6,11 @@ EA AB CD' E'_
 G-F# GA GE ED
 EA AB CD' E'F#'
 G'E' D'B A_ AG
-			|AG'
+|AG'
 __
 A'-G' A'B' A'G' E'F#'
 G'-F#' G'A' G'E' E'D'
 E'A' A'B' A'G' E'F#'
 G'E' D'B A_ AG'
-			|AG
+|AG
 __

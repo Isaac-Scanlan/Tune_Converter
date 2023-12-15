@@ -1,6 +1,6 @@
 Camino Polka
 Polka
-D Major
+D major
 __
 D'*E'D'* C#A BC# D'E'
 D'*E'D'* C#A B_ BC#

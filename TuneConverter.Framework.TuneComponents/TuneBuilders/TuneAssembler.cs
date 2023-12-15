@@ -18,6 +18,8 @@ public static partial class TuneAssembler
     public static int BarLength { get; set; }
     public static TuneType TuneTypeGlobal { get; set; }
 
+    public static (NoteType, AccidentalType) TuneKey { get; set; }
+
     public static TuneFull AssembleTune(List<List<string>> rawTune)
     {
         TuneFull tune = new();
@@ -64,18 +66,21 @@ public static partial class TuneAssembler
             Keytype = (KeyType)Enum.Parse(typeof(KeyType), tuneKey[1])
         };
 
+        TuneKey = (tune.Key.NoteType, tune.Key.AccidentalType);
+
         rawTune.RemoveAt(0);
     }
 
     public static TunePart AssemblePart(List<string> rawTune)
     {
         TunePart part = new();
-        part.MaxLength = LineLength;
+        part.MaxLength = rawTune.Count;
         foreach (var line in rawTune)
         {
             if (line.StartsWith("|"))
             {
                 part.Link = AssembleLine(line, true);
+                part.MaxLength--;
             }
             else
             {
@@ -264,6 +269,24 @@ public static partial class TuneAssembler
     {
         { "\'", Types.OctaveType.High },
         { "L", Types.OctaveType.Low }
+    };
+
+    private static Dictionary<(NoteType, AccidentalType), List<AccidentalType>> ScaleType => new()
+    {
+        { (Types.NoteType.A, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
+        , { (Types.NoteType.A, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.Flat} }
+        , { (Types.NoteType.B, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
+        , { (Types.NoteType.B, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None} }
+        , { (Types.NoteType.C, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None} }
+        , { (Types.NoteType.C, Types.AccidentalType.Sharp), new() { Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
+        , { (Types.NoteType.D, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp} }
+        , { (Types.NoteType.D, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None} }
+        , { (Types.NoteType.E, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
+        , { (Types.NoteType.E, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None} }
+        , { (Types.NoteType.F, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None} }
+        , { (Types.NoteType.F, Types.AccidentalType.Sharp), new() { Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
+        , { (Types.NoteType.G, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp} }
+        , { (Types.NoteType.G, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None} }
     };
 
 

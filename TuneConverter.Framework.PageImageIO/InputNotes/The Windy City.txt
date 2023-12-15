@@ -6,7 +6,7 @@ BEED EF#GA BErl ABAG
 F#ABA D'rlE' F#'A'E'D' BAF#A
 BEED EF#GA BErl ABAG
 F#ABA D'AF#A BF#AF# EF#GA
-				|E__D'
+|E__D'
 __
 E'BE'G' B'E'rl BE'B'E' G'E'C#E'
 D'AD'E' F#'rlA' B'F#'A'F#' D'F#'A'F#'
@@ -17,4 +17,5 @@ E'BGB E'F#'G'A' B'E'rl BE'C#E'
 D'AD'E' E'F#F#'A' B'F#'A'F#' D'F#'A'F#'
 E'BE'G' B'E'rl BE'B'E' G'E'C#E'
 D'AD'E' E'F#'A'F#' G'_G'F#' E'F#'E'D'
+
 __

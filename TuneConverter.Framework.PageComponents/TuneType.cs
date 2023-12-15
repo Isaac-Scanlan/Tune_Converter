@@ -9,13 +9,13 @@ namespace TuneConverter.Framework.PageImageIO.ImageComponents;
 public enum TuneType
 {
     Polka = 13,
-    Slipjig = 10,
+    Slipjig = 14,
     Jig = 17,
-    Slide = Jig,
+    Slide = 17,
     Reel = 21,
-    Hornpipe = Reel,
-    Barndance = Reel,
-    Fling = Reel,
+    Hornpipe = 21,
+    Barndance = 21,
+    Fling = 21,
     Waltz = 29,
-    Mazurka = Waltz
+    Mazurka = 29
 }
