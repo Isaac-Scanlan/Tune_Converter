@@ -14,9 +14,9 @@ public class Program
 { 
     public static void Main(string[] args)
     {
-        var file = ReadTune("Strayaway child.txt");
+        //var file = ReadTune("Strayaway child.txt");
 
-        //var file = ArrangeTuneList(args);
+        var file = ArrangeTuneList(args);
 
         var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);

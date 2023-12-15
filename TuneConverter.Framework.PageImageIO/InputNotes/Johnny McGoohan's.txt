@@ -6,11 +6,11 @@ D_F#A D'AF#D ALDF#D GEC#LE
 D_F#A D'AF#A G_ED C#LDEC#L
 DEF#A D'F#'C#E' D'BAF# E_F#G
 *AGF#*GE F#DED C#LEAG F#DDC#L
-					|F#DDE
+|F#DDE
 __
 F#ADE F#ABC# D'F#'C#E' D'C#BA
 F#ADE F#ABF# AF#ED BLC#LDE
 F#_DE F#ABC# D'C#BG# A_BC#
 D'F#'E'D' *C#D'E'*D'C# BGEC# DC#LDE
-						|D__AL
+|D__AL
 __

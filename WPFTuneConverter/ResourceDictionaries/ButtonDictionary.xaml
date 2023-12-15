@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="Grid">
+        <Setter Property="Background" Value="#FFEEFFFF"/>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="#FF21DADA"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="BorderBrush" Value="#FF5A8A8A"/>
+        <Setter Property="Foreground" Value="#FFE6FFFF"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="#FFA0EDED"/>
+        <Setter Property="BorderBrush" Value="#FF5A8A8A"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="3" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Background" Value="#FFA0EDED"/>
+        <Setter Property="BorderBrush" Value="#FF5A8A8A"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+
+                <Setter Property="CornerRadius" Value="3" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style TargetType="Image">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="BorderBrush" Value="#FFC5C5C5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+</ResourceDictionary>

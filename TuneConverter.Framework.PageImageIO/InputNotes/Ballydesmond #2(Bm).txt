@@ -6,11 +6,11 @@ D'_ C#_ B_ A-B
 C#E' F#'G#' A'_ F#'E'
 F#'B' A'F#' E'C# A*BC#*
 D'F#' E'C# B_ BC#
-			|BE'
+|BE'
 __
 F#'B' B'F#' E'A' A'E'
 F#'B' B'C#' A'_ F#'E'
 F#'B' A'F#' E'C# A*BC#*
 D'F#' E'C# B_ BE'
-			|BC#
+|BC#
 __
