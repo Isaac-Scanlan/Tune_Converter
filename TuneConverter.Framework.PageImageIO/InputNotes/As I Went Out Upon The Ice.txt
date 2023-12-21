@@ -12,4 +12,3 @@ E'A' A'B' A'G' E'D'
 E'A' A'B' A'G' E'D'
 *BC#*D' G'B A_ A*BD'*
 __
-

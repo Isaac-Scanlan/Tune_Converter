@@ -22,6 +22,7 @@ using System.Diagnostics;
 using Microsoft.Win32;
 using System;
 using TuneConverter.Framework.ABCConverter;
+using TuneConverter.Framework.PageComponents;
 
 
 namespace WPFTuneConverter
@@ -87,6 +88,10 @@ namespace WPFTuneConverter
                 keyComboBox.Items.Add(item.NoteType.ToString() + symbol + " " + item.Keytype.ToString().ToLower());
             }
 
+            repeatsComboBox.Items.Add("Single");
+            repeatsComboBox.Items.Add("Double");
+            repeatsComboBox.Items.Add("Triple");
+
             Image bm;
             using (var bmpTemp = new Bitmap("C:/Users/Isaac/source/repos/TuneConverter/TuneConverterAppInterface/default_image.png"))
             {
@@ -103,6 +108,7 @@ namespace WPFTuneConverter
             tune = tuneLine.Split('\r').ToList();
 
             tune.Insert(0, "__");
+            tune.Insert(0, repeatsComboBox.Text);
             tune.Insert(0, keyComboBox.Text);
             tune.Insert(0, typeComboBox.Text);
             tune.Insert(0, titleTextBox.Text);
@@ -285,6 +291,11 @@ namespace WPFTuneConverter
 
                 var s = file[0][2].Split(' ');
 
+                if (file[0].Count > 3)
+                {
+                    repeatsComboBox.Text = file[0][3];
+                }
+
                 keyComboBox.Text = s[0] + " " + s[1].ToLower();
 
                 file.RemoveAt(0);
@@ -307,6 +318,38 @@ namespace WPFTuneConverter
 
                 tuneTextBlock.Text = disp;
             }
+
+
+
+            string tuneDirec = maxPageNumber > 1 ? "/" + tune[0] : "";
+            string page_num = maxPageNumber > 1 ? "_page_1" : "";
+
+            pageNumber = 1;
+
+            Image bm;
+            file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + typeComboBox.Text + tuneDirec + "/" + titleTextBox.Text;
+            var file1 = file_ext + page_num + ".png";
+
+            //using (var bmpTemp = new Bitmap(file))
+            //{
+            //    bm = new Bitmap(bmpTemp, new Size(bmpTemp.Width / resizeFactor, bmpTemp.Height / resizeFactor));
+            //}
+
+            //tuneImage.Source = new BitmapImage(new Uri(file));
+
+
+            var bmpTemp = new BitmapImage();
+            bmpTemp.BeginInit();
+            bmpTemp.CacheOption = BitmapCacheOption.OnLoad;
+            bmpTemp.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            bmpTemp.UriSource = new Uri(file1);
+            bmpTemp.EndInit();
+            tuneImage.Source = bmpTemp;
+
+
+            pageCountLabel.Content = pageNumber + " out of " + maxPageNumber;
+
+
         }
 
         private void convert3_Click(object sender, RoutedEventArgs e)

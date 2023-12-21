@@ -7,6 +7,9 @@ using TuneConverter.Framework.PageImageIO.ImageComponents;
 using TuneConverter.Framework.TuneComponents.TuneBuilders;
 using TuneConverter.Framework.TuneComponents.TuneComponents;
 using TuneConverter.Framework.TuneIO.TuneReader;
+using Newtonsoft.Json;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Main.TuneConverterApp;
 
@@ -14,12 +17,21 @@ public class Program
 { 
     public static void Main(string[] args)
     {
-        //var file = ReadTune("Strayaway child.txt");
+        //var file = ReadTune("Allistrum's.txt");
 
         var file = ArrangeTuneList(args);
 
         var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
+
+        var jsonString = JsonConvert.SerializeObject(tuneFull);
+        var hash = GetHashString(jsonString);
+
+
+        var obj = JsonConvert.DeserializeObject<TuneFull>(jsonString);
+
+        var foo = tuneFull == obj;
+        var foo2 = tuneFull == tuneFull with { };
 
         var middle = DateTime.Now;
         var assembledPage = AssemblePage(tuneFull);
@@ -84,4 +96,20 @@ public class Program
         }
         return outVal;
     }
+
+    public static byte[] GetHash(string inputString)
+    {
+        using (HashAlgorithm algorithm = SHA256.Create())
+            return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+    }
+
+    public static string GetHashString(string inputString)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (byte b in GetHash(inputString))
+            sb.Append(b.ToString("X2"));
+
+        return sb.ToString();
+    }
+
 }

@@ -1,7 +1,6 @@
-Allistrum's
+Allistrum's 2
 Polka
 D major
-Single
 __
 F#E E*DE* F#D D-E
 F#A D'E' D'B BA

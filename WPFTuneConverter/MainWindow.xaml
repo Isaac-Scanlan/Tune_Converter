@@ -41,6 +41,8 @@
                     </Button.RenderTransform>
                 </Button>
                 <TextBox x:Name="tuneTextBlock" HorizontalAlignment="Left" Margin="26,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" Height="317" TextChanged="TextBox_TextChanged" Background="White" AcceptsReturn="True" FontSize="16" Grid.ColumnSpan="4"/>
+                <ComboBox x:Name="repeatsComboBox" Grid.Column="2" HorizontalAlignment="Left" Margin="19,86,0,0" VerticalAlignment="Top" Width="120"/>
+                <Label Grid.Column="2" Content="Part Repeats" HorizontalAlignment="Left" Margin="19,60,0,0" VerticalAlignment="Top"/>
             </Grid>
         </TabItem>
         <TabItem Header="Convert from ABC">
