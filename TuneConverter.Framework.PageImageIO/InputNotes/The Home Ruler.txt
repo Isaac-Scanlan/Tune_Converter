@@ -1,0 +1,16 @@
+The Home Ruler
+Hornpipe
+D major
+__
+D_FA DAFA D'F'E'D' B_D'B
+A_AB AFDE *FED*ED BLDALBL
+D_FA DAFA D'F'E'D' B_D'B
+A_AB AFEF F_D_ D_*EFG*
+|D_*EFG*
+__
+AD'D'C D'_*E'F'G'* A'F'B'F' A'F'E'D'
+E'F'E'D' BAFA F'D'E'D' BAFB
+AD'D'C D'_*E'F'G'* A'F'B'F' A'F'E'D'
+E'F'E'D' B_D'B AFED D_*EFG*
+|D_*EFG*
+__

@@ -1,0 +1,16 @@
+Boys of Bluehill
+Hornpipe
+D major
+__
+BAFA D_FA BA*BCD'* E'_D'E'
+F'A'A'F' E'G'F'E' D'F'E'D' B_D'B
+BAFA DAFA BA*BCD'* E'AD'E'
+F'A'A'F' E'G'F'E' D'_D'C D'_FA
+|D'_F'G'
+__
+A'F'D'F' A'_G'F' G'F'G'A' B'_A'G'
+F'A'A'F' E'G'F'E' D'F'E'D' B_D'B
+BAFA DAFA BA*BCD'* E'AD'E'
+F'A'A'F' E'G'F'E' D'_D'C D'_F'G'
+|D'_FA
+__

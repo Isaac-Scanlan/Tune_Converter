@@ -1,0 +1,16 @@
+The Lilting Banshee
+Jig
+D major
+__
+EAA EAA BAB G_A
+BE'E' E'D'B D'BA GED
+EAA EAA BAB G_A
+BE'E' E'D'B D'BA A_G
+|A*BCD'*
+__
+E'A'A' A'G'E' D'BA G_A
+BE'E' E'D'B D'E'F' G'F'G'
+E'A'A' A'G'E' D'BA G_A
+BE'E' E'D'B D'BA A*BCD'*
+|A_G
+__

@@ -1,0 +1,16 @@
+G Maj Polka
+Polka
+G major
+__
+GD GA B_ BA
+GD GA B_ BD'
+E'D' BG A_ A*BD'*
+E'D' BA GC BA
+|GA BD'
+__
+G'_ G'E' F'_ F'D'
+E'_ E'G' D'_ BD'
+E'D' BG A_ A*BD'*
+E'D' BA GA BD'
+|GC BA
+__

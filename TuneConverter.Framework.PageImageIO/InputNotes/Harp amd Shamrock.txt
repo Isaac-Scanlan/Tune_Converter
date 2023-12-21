@@ -1,0 +1,16 @@
+Harp amd Shamrock
+Hornpipe
+G major
+__
+E'D'BC D'BGB AGEF GFGA
+BE'E'D' E'F'G'E' D'BAG A_BA
+GEED *EGE*DE GABG ABCD'
+E'A'G'E' D'B*GAB* AGEF G_G'F'
+|GABD'
+__
+E'_E'D' E'F'G'F' E'D'D'B D'_BA
+GABG CD'E'G' D'BAG A_BA
+GEED *EGE*DE GABG ABCD'
+E'A'G'E' D'B*GAB* AGEF GABD'
+|G_G'F'
+__

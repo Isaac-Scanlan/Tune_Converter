@@ -1,0 +1,21 @@
+The Wandering Minstrel
+Jig
+D major
+__
+ADD BAF AD'E' F'D'B
+ADD BAG FAF G*EFG*
+ADD BAF AD'E' F'D'B
+AD'B AFE FDCL DD'B
+|DD'E'
+__
+F'rl E'D'E' F'D'B AFA
+BD'B AFA AGF E_E'
+F'A'F' E'D'E' F'D'B AFA
+*BCD'*B AFE FDCL DD'E'
+__
+F'E'F' A'F'E' G'B'E' G'B'E'
+F'E'F' A'F'E' CE'A CE'A
+F'E'F' A'F'E' G'B'E' G'B'E'
+F'A'F' E'D'E' F'D'C D'A'G'
+|D'CB
+__

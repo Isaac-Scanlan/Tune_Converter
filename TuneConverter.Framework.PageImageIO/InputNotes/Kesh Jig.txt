@@ -1,16 +1,16 @@
 Kesh Jig
 Jig
-G Maj
+G maj
 __
 GF#G GAB ABA ABD'
 E'D'D' G'D'D' E'D'B D'BA
 GFG GAB ABA ABD'
 E'D'D' G'D'B AGF# G_D
-				|G*ABC*
+|G*ABC*
 __
 BAB D'BD' E'G'E' D'BG
 BAB D'BG ABA AGA
 BAB D'BD' E'G'E' D'BD'
 G'F#'G' A'G'A' B'G'F#' G*ABC*
-					|G_D
+|G_D
 __

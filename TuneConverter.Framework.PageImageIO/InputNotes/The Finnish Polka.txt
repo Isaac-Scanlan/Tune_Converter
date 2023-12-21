@@ -1,0 +1,16 @@
+The Finnish Polka
+Polka
+D major
+__
+B_ BC D'B BD'
+CA AC *D'C*B CA
+B_ BC D'B BD'
+E'*F'E'* D'C BA BF
+|BC D'E'
+__
+F'_ D'-F' E'C CD'
+E'*F'E'* D'C BC D'E'
+F'A' D'-F' E'C CD'
+E'*F'E'* D'C BA BE'
+|BA BF
+__
