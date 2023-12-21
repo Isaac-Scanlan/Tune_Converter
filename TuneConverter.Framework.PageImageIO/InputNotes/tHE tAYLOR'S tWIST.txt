@@ -1,0 +1,16 @@
+The Taylor's Twist
+Hornpipe
+D major
+__
+DALFD AFD'A BG'E'D' CB'A'G'
+F'E'D'C BG'E'D' *CD'E'**D'CB* *ABA**GFE*
+DALFD AFD'A BG'E'D' CB'A'G'
+F'E'D'C BG'E'C *D'E'D'*CE' D'A*GFE*
+|D'E'F'G'
+__
+A'G#'A'F' D'F'A'F' B'A'G'F' E'ACE'
+G'F'G'E CD'E'F' *G'A'G'*F'G' E'_F'E'
+*D'CD'*E'C D'AFA BG'E'D' CB'A'G'
+F'E'D'C BG'E'C *D'E'D'*CE' D'E'F'G'
+|D'A*GFE*
+__

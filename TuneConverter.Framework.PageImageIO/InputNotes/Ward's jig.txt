@@ -1,0 +1,16 @@
+Ward's jig
+Jig
+G major
+__
+G__ GAB AGE GED
+GFG AGE GED DEF
+G__ GAB AGE GAB
+C_A BGE DED DEF
+|DD'B
+__
+C_A BAG ABA AGE
+C_A BGE DED DD'B
+C_A BAG ABA ABC
+D'CA AGE GED DD'B
+|DEF
+__

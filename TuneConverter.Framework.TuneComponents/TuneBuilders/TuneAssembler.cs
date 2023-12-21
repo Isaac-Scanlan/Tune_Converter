@@ -13,12 +13,13 @@ using TuneConverter.Framework.TuneComponents.Types;
 namespace TuneConverter.Framework.TuneComponents.TuneBuilders;
 
 public static partial class TuneAssembler
-{
+{ 
     public static int LineLength { get; set; }
     public static int BarLength { get; set; }
     public static TuneType TuneTypeGlobal { get; set; }
 
     public static (NoteType, AccidentalType) TuneKey { get; set; }
+    public static KeyType Mode { get; set; }
 
     public static TuneFull AssembleTune(List<List<string>> rawTune)
     {
@@ -62,10 +63,11 @@ public static partial class TuneAssembler
         tune.Key = new()
         {
             NoteType = (NoteType)Enum.Parse(typeof(NoteType), notePieces[0]),
-            AccidentalType = notePieces.Count <= 1 ? Types.AccidentalType.Natural : notePieces[1].Equals("#") ? Types.AccidentalType.Sharp : Types.AccidentalType.Flat,
+            AccidentalType = notePieces.Count <= 1 ? Types.AccidentalType.None : notePieces[1].Equals("#") ? Types.AccidentalType.Sharp : Types.AccidentalType.Flat,
             Keytype = (KeyType)Enum.Parse(typeof(KeyType), tuneKey[1])
         };
 
+        Mode = tune.Key.Keytype;
         TuneKey = (tune.Key.NoteType, tune.Key.AccidentalType);
 
         rawTune.RemoveAt(0);
@@ -211,10 +213,33 @@ public static partial class TuneAssembler
             .Select(m => m.Value)
             .ToList();
 
+        
+
+        
         var note = new Note()
         {
-            NoteType = NoteType[chars[0]]
+            NoteType = NoteType[chars[0]],
+            
         };
+
+        if (chars[0] == "F")
+        {
+
+        }
+
+        if (!chars[0].Equals("_") && !chars[0].Equals("r") && !chars[0].Equals("l"))
+        {
+            if(Mode == KeyType.minor)
+            {
+                note.AccidentalType = MinorScaleType[TuneKey][NoteType[chars[0]]];
+            }
+            else
+            {
+                note.AccidentalType = ScaleType[TuneKey][NoteType[chars[0]]];
+            }
+            
+        }
+
         chars.RemoveAt(0);
         
         foreach (var c in chars)
@@ -240,8 +265,13 @@ public static partial class TuneAssembler
         { TuneType.Polka     , new(){ 2, 4 } },
         { TuneType.Slipjig   , new(){ 3, 3 } },
         { TuneType.Jig       , new(){ 3, 4 } },
+        { TuneType.Slide     , new(){ 3, 4 } },
         { TuneType.Reel      , new(){ 4, 4 } },
+        { TuneType.Hornpipe  , new(){ 4, 4 } },
+        { TuneType.Barndance , new(){ 4, 4 } },
+        { TuneType.Fling     , new(){ 4, 4 } },
         { TuneType.Waltz     , new(){ 6, 4 } },
+        { TuneType.Mazurka   , new(){ 6, 4 } },
 };
 
     private static Dictionary<string, NoteType> NoteType => new()
@@ -271,22 +301,42 @@ public static partial class TuneAssembler
         { "L", Types.OctaveType.Low }
     };
 
-    private static Dictionary<(NoteType, AccidentalType), List<AccidentalType>> ScaleType => new()
+    private static Dictionary<(NoteType, AccidentalType), Dictionary<NoteType, AccidentalType>> ScaleType => new()
     {
-        { (Types.NoteType.A, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
-        , { (Types.NoteType.A, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.Flat} }
-        , { (Types.NoteType.B, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
-        , { (Types.NoteType.B, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None} }
-        , { (Types.NoteType.C, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None} }
-        , { (Types.NoteType.C, Types.AccidentalType.Sharp), new() { Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
-        , { (Types.NoteType.D, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp} }
-        , { (Types.NoteType.D, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None} }
-        , { (Types.NoteType.E, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
-        , { (Types.NoteType.E, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None} }
-        , { (Types.NoteType.F, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Flat, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None} }
-        , { (Types.NoteType.F, Types.AccidentalType.Sharp), new() { Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.None, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp, Types.AccidentalType.Sharp} }
-        , { (Types.NoteType.G, Types.AccidentalType.None), new() { Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.None, Types.AccidentalType.Sharp} }
-        , { (Types.NoteType.G, Types.AccidentalType.Flat), new() { Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.Flat, Types.AccidentalType.None} }
+           { (Types.NoteType.A, Types.AccidentalType.None ), new() { {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}} }
+           , { (Types.NoteType.A, Types.AccidentalType.Flat ), new() { {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.Flat} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.Flat} } }
+           , { (Types.NoteType.B, Types.AccidentalType.None ), new() { {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}, {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.Sharp}} }
+           , { (Types.NoteType.B, Types.AccidentalType.Flat ), new() { {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} } }
+           , { (Types.NoteType.C, Types.AccidentalType.None ), new() { {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} } }
+           , { (Types.NoteType.C, Types.AccidentalType.Sharp), new() { {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}, {Types.NoteType.E,Types.AccidentalType.Sharp}, {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.Sharp}, {Types.NoteType.B,Types.AccidentalType.Sharp}} }
+           , { (Types.NoteType.D, Types.AccidentalType.None ), new() { {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}} }
+           , { (Types.NoteType.D, Types.AccidentalType.Flat ), new() { {Types.NoteType.D,Types.AccidentalType.Flat} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.Flat} , {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} } }
+           , { (Types.NoteType.E, Types.AccidentalType.None ), new() { {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}} }
+           , { (Types.NoteType.E, Types.AccidentalType.Flat ), new() { {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} } }
+           , { (Types.NoteType.F, Types.AccidentalType.None ), new() { {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} } }
+           , { (Types.NoteType.F, Types.AccidentalType.Sharp), new() { {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.Sharp}, {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}, {Types.NoteType.E,Types.AccidentalType.Sharp}} }
+           , { (Types.NoteType.G, Types.AccidentalType.None ), new() { {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}} }
+           , { (Types.NoteType.G, Types.AccidentalType.Flat ), new() { {Types.NoteType.G,Types.AccidentalType.Flat} , {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.Flat} , {Types.NoteType.D,Types.AccidentalType.Flat} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} } }
+
+    };
+
+    private static Dictionary<(NoteType, AccidentalType), Dictionary<NoteType, AccidentalType>> MinorScaleType => new()
+    {
+        { (Types.NoteType.A, Types.AccidentalType.None ), new() { {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} } }
+        , { (Types.NoteType.A, Types.AccidentalType.Sharp), new() { {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}, {Types.NoteType.E,Types.AccidentalType.Sharp}, {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.Sharp}, {Types.NoteType.B,Types.AccidentalType.Sharp}} }
+        , { (Types.NoteType.B, Types.AccidentalType.Flat ), new() { {Types.NoteType.D,Types.AccidentalType.Flat} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.Flat} , {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} } }
+        , { (Types.NoteType.B, Types.AccidentalType.None ), new() { {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}} }
+        , { (Types.NoteType.C, Types.AccidentalType.None ), new() { {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} } }
+        , { (Types.NoteType.C, Types.AccidentalType.Sharp), new() { {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}} }
+        , { (Types.NoteType.D, Types.AccidentalType.None ), new() { {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} } }
+        , { (Types.NoteType.D, Types.AccidentalType.Sharp), new() { {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.Sharp}, {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}, {Types.NoteType.E,Types.AccidentalType.Sharp}} }
+        , { (Types.NoteType.E, Types.AccidentalType.Flat ), new() { {Types.NoteType.G,Types.AccidentalType.Flat} , {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.Flat} , {Types.NoteType.D,Types.AccidentalType.Flat} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} } }
+        , { (Types.NoteType.E, Types.AccidentalType.None ), new() { {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}} }
+        , { (Types.NoteType.F, Types.AccidentalType.None ), new() { {Types.NoteType.A,Types.AccidentalType.Flat} , {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.Flat} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.Flat} } }
+        , { (Types.NoteType.F, Types.AccidentalType.Sharp), new() { {Types.NoteType.A,Types.AccidentalType.None} , {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}} }
+        , { (Types.NoteType.G, Types.AccidentalType.None ), new() { {Types.NoteType.B,Types.AccidentalType.Flat} , {Types.NoteType.C,Types.AccidentalType.None} , {Types.NoteType.D,Types.AccidentalType.None} , {Types.NoteType.E,Types.AccidentalType.Flat} , {Types.NoteType.F,Types.AccidentalType.None} , {Types.NoteType.G,Types.AccidentalType.None} , {Types.NoteType.A,Types.AccidentalType.None} } }
+        , { (Types.NoteType.G, Types.AccidentalType.Sharp), new() { {Types.NoteType.B,Types.AccidentalType.None} , {Types.NoteType.C,Types.AccidentalType.Sharp}, {Types.NoteType.D,Types.AccidentalType.Sharp}, {Types.NoteType.E,Types.AccidentalType.None} , {Types.NoteType.F,Types.AccidentalType.Sharp}, {Types.NoteType.G,Types.AccidentalType.Sharp}, {Types.NoteType.A,Types.AccidentalType.Sharp}} }
+
     };
 
 

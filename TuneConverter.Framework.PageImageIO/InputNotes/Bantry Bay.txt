@@ -1,0 +1,16 @@
+Bantry Bay
+Hornpipe
+G major
+__
+BGAG EGDE G_GF GBAG
+EAAB CBAG *ABA*GB A_AB
+C_E'C B_D'B ABAG EGDG
+BGAG EGDE G_GF G_GA
+|GABC
+__
+D'BE'B D'BAB E'F'D'F' E'_E'F'
+G'F'E'D' BGBD' E'G'F'A' G'_E'F'
+G'A'B'G' E'G'D'C BGAG EGDG
+BGAG EGDE G_GF GABC
+|G_GA
+__

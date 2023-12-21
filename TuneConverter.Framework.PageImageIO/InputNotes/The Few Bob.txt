@@ -1,0 +1,16 @@
+The Few Bob
+Hornpipe
+G major
+__
+BABG EFGA B_B_ G_D'G'
+E'_G'E' D'BAG E_A_ A_GA
+BABG EFGA *BAG*BD' E'F'G'E'
+D'CBA GABA G_E_ E_GA
+|E'_E'F'
+__
+G'A'*G'F'E'* D'_*E'F'G'* A'_D'_ D'_E'F'
+G'A'G'F' E'F'G'A' B'_A'_ A'_G'A'
+B'A'G'B' A'_G'F' E'D'E'F' G'_*G'F'E'*
+D'CBA GABA G_E_ E_E'F'
+|E'_GA
+__

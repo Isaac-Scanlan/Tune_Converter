@@ -1,0 +1,19 @@
+The Butterfly
+Slipjig
+E minor
+__
+B_E G_E F__ 
+B_E G_E FED 
+B_E G_E F__ 
+B_D' D'_B AFD
+__
+B_D' E'_F' G'__
+B_D' G'_E' D'BA
+B_D' E'_F' G'_A'
+B'_A' G'_E' D'BA
+__
+B__ B_A G_A 
+B__ BAB D'BA 
+B__ B_A G_A 
+B_D' G'_E' D'BA
+__

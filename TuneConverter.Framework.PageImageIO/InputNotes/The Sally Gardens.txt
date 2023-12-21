@@ -1,0 +1,16 @@
+The Sally Gardens
+Reel
+G major
+__
+G_DG BAGB D'BE'B D'BAB
+D'_BD' E'F'G'E' D'BAB GEDE
+G_DG BAGB D'BE'B D'BAB
+D'_BD' E'F'G'E' D'BAB GDEF
+|GABC
+__
+D'G'G'F' G'E'D'E' G'_B'G' A'G'F'G'
+E'A'A'B A'G'E'G' A'G'B'G' A'G'E'G'
+D'G'G'F' G'E'D'E' G'_B'G' A'G'F'G'
+D'_BD' E'F'G'E' D'BAB GABC
+|GDEF
+__
