@@ -36,8 +36,9 @@ public partial class TuneReader
         foreach (var line in lines)
         {
             var newLine = ByTab().Replace(line, "");
-            if (newLine.Equals("__"))
+            if (newLine.StartsWith("__"))
             {
+                //if
                 output.Add(partlist);
                 partlist = new();
                 continue;

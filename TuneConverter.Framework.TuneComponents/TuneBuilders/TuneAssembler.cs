@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Emgu.CV.Structure;
+using Emgu.CV;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -6,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TuneConverter.Framework.PageComponents;
 using TuneConverter.Framework.PageImageIO.ImageComponents;
 using TuneConverter.Framework.TuneComponents.TuneComponents;
 using TuneConverter.Framework.TuneComponents.Types;
@@ -20,6 +23,12 @@ public static partial class TuneAssembler
 
     public static (NoteType, AccidentalType) TuneKey { get; set; }
     public static KeyType Mode { get; set; }
+
+    private static readonly Dictionary<string, RepeatType> _repeatsDict = new() {
+        { "Single", RepeatType.Single},
+        { "Double", RepeatType.Double},
+    };
+
 
     public static TuneFull AssembleTune(List<List<string>> rawTune)
     {
@@ -70,6 +79,13 @@ public static partial class TuneAssembler
         Mode = tune.Key.Keytype;
         TuneKey = (tune.Key.NoteType, tune.Key.AccidentalType);
 
+        if (titlePage.Count < 4 || !_repeatsDict.ContainsKey(titlePage[3])) {
+            tune.RepeatType = RepeatType.Double;
+            rawTune.RemoveAt(0);
+            return;
+        }
+
+        tune.RepeatType = _repeatsDict[titlePage[3]];
         rawTune.RemoveAt(0);
     }
 

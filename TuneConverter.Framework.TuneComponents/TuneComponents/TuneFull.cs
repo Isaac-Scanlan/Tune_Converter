@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TuneConverter.Framework.PageComponents;
 using TuneConverter.Framework.PageImageIO.ImageComponents;
 
 namespace TuneConverter.Framework.TuneComponents.TuneComponents;
@@ -12,6 +13,7 @@ public record TuneFull
     public string Title { get; set; }
     public KeyNote Key { get; set; }
     public TuneType TuneType { get; set; }
+    public RepeatType RepeatType { get; set; }
     public int MaxLength { get; set; }
     public int CurrentLength { get; set; } = 0;
     public List<TunePart> tune = [];

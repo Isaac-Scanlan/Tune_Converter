@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverterAppInterface",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFTuneConverter", "WPFTuneConverter\WPFTuneConverter.csproj", "{0AFD198D-5066-4312-BB72-2903F8408E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuneConverter.Framework.ABCConverter", "TuneConverter.Framework.ABCConverter\TuneConverter.Framework.ABCConverter.csproj", "{396CC281-905B-4FA0-A836-9705BB1C048E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.ABCConverter", "TuneConverter.Framework.ABCConverter\TuneConverter.Framework.ABCConverter.csproj", "{396CC281-905B-4FA0-A836-9705BB1C048E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TuneConverterDatabase", "TuneDatabase\TuneConverterDatabase.sqlproj", "{BDDF1063-5AA1-4D30-AC76-867409751A3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,12 @@ Global
 		{396CC281-905B-4FA0-A836-9705BB1C048E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{396CC281-905B-4FA0-A836-9705BB1C048E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{396CC281-905B-4FA0-A836-9705BB1C048E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +88,7 @@ Global
 		{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
 		{0AFD198D-5066-4312-BB72-2903F8408E91} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
 		{396CC281-905B-4FA0-A836-9705BB1C048E} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
+		{BDDF1063-5AA1-4D30-AC76-867409751A3A} = {26EB1105-5CEA-42A6-895F-EA5017339F46}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {656D544E-CE0E-4867-A0A0-5A63E7C6E850}

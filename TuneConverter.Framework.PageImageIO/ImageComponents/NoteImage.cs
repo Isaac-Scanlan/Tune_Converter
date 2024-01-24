@@ -40,7 +40,11 @@ public class NoteImage
     public static readonly Image<Gray, byte> part8 = new(@"" + _imagePath + "pt_8.png"); 
     public static readonly Image<Gray, byte> part9 = new(@"" + _imagePath + "pt_9.png"); 
     public static readonly Image<Gray, byte> part10 = new(@"" + _imagePath + "pt_10.png");
+    public static readonly Image<Gray, byte> rep_1 = new(@"" + _imagePath + "rep_1.png");
+    public static readonly Image<Gray, byte> rep_2 = new(@"" + _imagePath + "rep_2.png");
+    public static readonly Image<Gray, byte> rep_3 = new(@"" + _imagePath + "rep_3.png");
     public static readonly Image<Gray, byte> space = new(@"" + _imagePath + "space.png");
+    public static readonly Image<Gray, byte> x = new(@"" + _imagePath + "x.png");
     public static readonly Image<Gray, byte> linkStart = new(@"" + _imagePath + "Link_start.png");
     public static readonly Image<Gray, byte> linkMiddle = new(@"" + _imagePath + "Link_mid.png");
     public static readonly Image<Gray, byte> linkEnd = new(@"" + _imagePath + "Link_end.png");

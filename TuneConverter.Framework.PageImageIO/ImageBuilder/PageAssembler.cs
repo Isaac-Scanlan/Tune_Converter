@@ -25,15 +25,36 @@ public class PageAssembler
     private MCvScalar scale = new(255);
     private static readonly Gray White = new(255);
     private readonly LineType lineType = LineType.AntiAlias;
+    private static RepeatType repType = RepeatType.Double;
 
     private static ConcurrentDictionary<int, List<Image<Gray, byte>>> _partsDict = new();
     private static ListComparer<NoteGroup> comparer = new();
     private static ConcurrentDictionary<List<NoteGroup>, Image<Gray, byte>> _barCache = new(comparer);
     private static ConcurrentDictionary<int, Image<Gray, byte>> _pagesDict = new();
+    private static Dictionary<RepeatType, Image<Gray, byte>> _repeatsDict = new() {
+        { RepeatType.Single, NoteImage.rep_1 },
+        { RepeatType.Double, NoteImage.rep_2 },
+        { RepeatType.Triple, NoteImage.rep_3 }
+    };
+
+    private static List<TuneType> tuneTypeList = Enum.GetValues(typeof(TuneType)).Cast<TuneType>().ToList();
 
     public async Task<List<Image<Gray, byte>>> CreateTune(TuneFull tune)
     {
+        tuneTypeList.Order();
+        var foo1 = ((GetWidthOfPageInNotes(TuneType.Polka)));
+        var foo2 = ((GetWidthOfPageInNotes(TuneType.Slipjig)));
+        var foo3 = ((GetWidthOfPageInNotes(TuneType.Jig)));
+        var foo4 = ((GetWidthOfPageInNotes(TuneType.Slide)));
+        var foo5 = ((GetWidthOfPageInNotes(TuneType.Reel)));
+        var foo6 = ((GetWidthOfPageInNotes(TuneType.Hornpipe)));
+        var foo7 = ((GetWidthOfPageInNotes(TuneType.Barndance)));
+
+        foreach (var i in tuneTypeList.Order()) { Console.WriteLine(i + " :" + (int)i); }
+
         List<Image<Gray, byte>>[] listOfPieces = new List<Image<Gray, byte>>[tune.tune.Count];
+
+        repType = tune.RepeatType;
 
         int[] heights = new int[tune.tune.Count];
 
@@ -75,8 +96,12 @@ public class PageAssembler
         {
             pages.Add(innerList);
         }
-        
-        var pageWidth = (Width + 16) * (int)tune.TuneType;
+
+        var noteNum = (GetWidthOfPageInNotes(tune.TuneType));
+
+        var pageWidth = (Width + 16) * noteNum;
+
+        //(GetWidthOfPageInNotes(tune.TuneType)
         var image = new Image<Gray, byte>(pageWidth, fullPageHeights.Max(), White);
 
         return CreatePage(image, pages).Result;
@@ -91,7 +116,7 @@ public class PageAssembler
 
         int pageHeight = newPart.Height;
 
-        var pageWidth = (Width + 16) * (int)tuneType;
+        var pageWidth = (Width + 16) * (GetWidthOfPageInNotes(tuneType));
         var partSplit = new Image<Gray, byte>(pageWidth, 50, White);
 
         if (part.Link.line.Count > 0)
@@ -177,9 +202,9 @@ public class PageAssembler
 
     #region Title Generation
     public Image<Gray, byte> CreateTitlePage(string title, TuneType tuneType, string key)
-    {
+     {
         int pageHeight = (int)(Height * 2) + 120;
-        int pageWidth = (Width + 16) * (int)tuneType;
+        int pageWidth = (Width + 16) * (GetWidthOfPageInNotes(tuneType));
 
         var image = new Image<Gray, byte>(pageWidth, pageHeight);
         
@@ -254,7 +279,7 @@ public class PageAssembler
     {
         int extra = part.part.Count > 5 ? 60 : 0;
         int pageHeight = (int)((Height + 60) * (part.part.Count + 1) + extra);
-        int pageWidth = (Width + 16) * (int)tuneType;
+        int pageWidth = (Width + 16) * (GetWidthOfPageInNotes(tuneType));
 
         var image = new Image<Gray, byte>(pageWidth, pageHeight, White);
 
@@ -274,8 +299,19 @@ public class PageAssembler
         var foo2 = new NoteImage();
 
         Image<Gray, byte> noteImage = foo2.GetType().GetField("part" + partNumber.ToString()).GetValue(foo2) as Image<Gray, byte>;
+        Image<Gray, byte> partRepeatX = NoteImage.x;
+        Image<Gray, byte> partRepeat = _repeatsDict[repType];
 
-        image = SetRoi(image, noteImage, 10, 20);
+        //Image<Gray, byte> resizedPage = new(partRepeat.Width, partRepeat.Height);
+        //CvInvoke.Resize(partRepeat, resizedPage, new Size(), 0.65, 0.65);
+
+        image = SetRoi(image, noteImage, 10, 5);
+        image = SetRoi(image, partRepeat, 37, 80);
+        image = SetRoi(image, partRepeatX, 19, 87);
+
+        //image = SetRoi(image, noteImage, 40, 5);
+        //image = SetRoi(image, partRepeat, 20, 15);
+        //image = SetRoi(image, partRepeatX, 2, 22);
 
         return image;
     }
@@ -333,7 +369,8 @@ public class PageAssembler
                     break;
 
                 default:
-                    imageNote = CreateNote((Singlet)bar.bar[i]);
+                    var singlet = new Singlet(bar.bar[i].Note);
+                    imageNote = CreateNote(singlet);
                     break;
             }
 
@@ -552,6 +589,10 @@ public class PageAssembler
         return smallImage;
     }
 
+    private static int GetWidthOfPageInNotes(TuneType tuneType)
+    {
+        return ((int)tuneType / ((tuneTypeList.IndexOf(tuneType) + 1) * 10));
+    }
     private static Image<Gray, byte> AddSharp(Image<Gray, byte> bigImage) => AddAboveNote(bigImage, NoteImage.sharp);
     private static Image<Gray, byte> AddFlat(Image<Gray, byte> bigImage, int small = 0) => AddAboveNote(bigImage, NoteImage.flat, 10 - small);
     private static Image<Gray, byte> AddNatural(Image<Gray, byte> bigImage, int small = 0) => AddAboveNote(bigImage, NoteImage.natural, 10 - small);
