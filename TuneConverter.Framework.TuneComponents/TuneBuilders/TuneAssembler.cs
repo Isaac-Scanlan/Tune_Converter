@@ -86,6 +86,11 @@ public static partial class TuneAssembler
         }
 
         tune.RepeatType = _repeatsDict[titlePage[3]];
+
+        if (titlePage.Count >= 5)
+        {
+            tune.Composer = titlePage[4];
+        }
         rawTune.RemoveAt(0);
     }
 

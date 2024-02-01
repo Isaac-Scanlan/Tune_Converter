@@ -14,6 +14,7 @@ public record TuneFull
     public KeyNote Key { get; set; }
     public TuneType TuneType { get; set; }
     public RepeatType RepeatType { get; set; }
+    public string Composer { get; set; } = "";
     public int MaxLength { get; set; }
     public int CurrentLength { get; set; } = 0;
     public List<TunePart> tune = [];

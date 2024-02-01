@@ -108,6 +108,7 @@ namespace WPFTuneConverter
             tune = tuneLine.Split('\r').ToList();
 
             tune.Insert(0, "__");
+            tune.Insert(0, writtenByBox.Text);
             tune.Insert(0, repeatsComboBox.Text);
             tune.Insert(0, keyComboBox.Text);
             tune.Insert(0, typeComboBox.Text);
@@ -295,6 +296,14 @@ namespace WPFTuneConverter
                 {
                     repeatsComboBox.Text = file[0][3];
                 }
+                if (file[0].Count > 4)
+                {
+                    writtenByBox.Text = file[0][4];
+                }
+                else
+                {
+                    writtenByBox.Text = "";
+                }
 
                 keyComboBox.Text = s[0] + " " + s[1].ToLower();
 
@@ -337,14 +346,20 @@ namespace WPFTuneConverter
 
             //tuneImage.Source = new BitmapImage(new Uri(file));
 
+            try
+            {
+                var bmpTemp = new BitmapImage();
+                bmpTemp.BeginInit();
+                bmpTemp.CacheOption = BitmapCacheOption.OnLoad;
+                bmpTemp.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bmpTemp.UriSource = new Uri(file1);
+                bmpTemp.EndInit();
+                tuneImage.Source = bmpTemp;
+            }
+            catch (Exception es)
+            {
 
-            var bmpTemp = new BitmapImage();
-            bmpTemp.BeginInit();
-            bmpTemp.CacheOption = BitmapCacheOption.OnLoad;
-            bmpTemp.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-            bmpTemp.UriSource = new Uri(file1);
-            bmpTemp.EndInit();
-            tuneImage.Source = bmpTemp;
+            }
 
 
             pageCountLabel.Content = pageNumber + " out of " + maxPageNumber;

@@ -37,28 +37,17 @@ public class PageAssembler
         { RepeatType.Triple, NoteImage.rep_3 }
     };
 
-    private static List<TuneType> tuneTypeList = Enum.GetValues(typeof(TuneType)).Cast<TuneType>().ToList();
+    private static List<TuneType> tuneTypeList = [.. Enum.GetValues(typeof(TuneType)).Cast<TuneType>().Order()];
 
     public async Task<List<Image<Gray, byte>>> CreateTune(TuneFull tune)
     {
-        tuneTypeList.Order();
-        var foo1 = ((GetWidthOfPageInNotes(TuneType.Polka)));
-        var foo2 = ((GetWidthOfPageInNotes(TuneType.Slipjig)));
-        var foo3 = ((GetWidthOfPageInNotes(TuneType.Jig)));
-        var foo4 = ((GetWidthOfPageInNotes(TuneType.Slide)));
-        var foo5 = ((GetWidthOfPageInNotes(TuneType.Reel)));
-        var foo6 = ((GetWidthOfPageInNotes(TuneType.Hornpipe)));
-        var foo7 = ((GetWidthOfPageInNotes(TuneType.Barndance)));
-
-        foreach (var i in tuneTypeList.Order()) { Console.WriteLine(i + " :" + (int)i); }
+        repType = tune.RepeatType;
 
         List<Image<Gray, byte>>[] listOfPieces = new List<Image<Gray, byte>>[tune.tune.Count];
 
-        repType = tune.RepeatType;
-
         int[] heights = new int[tune.tune.Count];
 
-        var title = CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString());
+        var title = CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString(), tune.Composer);
 
         for (int i = 0; i < tune.tune.Count; i++)
         {
@@ -101,7 +90,6 @@ public class PageAssembler
 
         var pageWidth = (Width + 16) * noteNum;
 
-        //(GetWidthOfPageInNotes(tune.TuneType)
         var image = new Image<Gray, byte>(pageWidth, fullPageHeights.Max(), White);
 
         return CreatePage(image, pages).Result;
@@ -201,7 +189,7 @@ public class PageAssembler
     }
 
     #region Title Generation
-    public Image<Gray, byte> CreateTitlePage(string title, TuneType tuneType, string key)
+    public Image<Gray, byte> CreateTitlePage(string title, TuneType tuneType, string key, string composer)
      {
         int pageHeight = (int)(Height * 2) + 120;
         int pageWidth = (Width + 16) * (GetWidthOfPageInNotes(tuneType));
@@ -212,6 +200,7 @@ public class PageAssembler
 
         titlePage = CreateTitleSideText(titlePage, tuneType.ToString(), 150);
         titlePage = CreateTitleSideText(titlePage, key, 175);
+        titlePage = CreateTitleRightSideText(titlePage, composer, 150);
 
         CvInvoke.BitwiseNot(titlePage, titlePage);
 
@@ -267,6 +256,22 @@ public class PageAssembler
         Point tuneTypePoint = new(16, height + 30);
 
         CvInvoke.PutText(titlePage, text, tuneTypePoint, font, titleFontScale, scale, titleFontThickness, lineType);
+
+        return titlePage;
+    }
+
+    private Image<Gray, byte> CreateTitleRightSideText(Image<Gray, byte> titlePage, string text, int height)
+    {
+        double titleFontScale = 0.65;
+        int titleFontThickness = 1;
+
+        Point tuneTypePoint = new(titlePage.Cols - 200 - (text.Length * 7), height + 30);
+        Point tuneTypePoint2 = new(titlePage.Cols - 200 - (text.Length * 7), height + 55);
+
+        string composer = text.Length > 0 ? "Composer" : "";
+
+        CvInvoke.PutText(titlePage, composer, tuneTypePoint, font, titleFontScale, scale, titleFontThickness, lineType);
+        CvInvoke.PutText(titlePage, text, tuneTypePoint2, font, titleFontScale, scale, titleFontThickness, lineType);
 
         return titlePage;
     }

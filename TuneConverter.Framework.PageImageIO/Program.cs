@@ -13,7 +13,7 @@ public class Program
     {
         PageAssembler assemble = new PageAssembler();
 
-        var page = assemble.CreateTitlePage("Title", TuneType.Jig, "E minor");
+        var page = assemble.CreateTitlePage("Title", TuneType.Jig, "E minor", "");
 
         Console.WriteLine(page.Width);
 
