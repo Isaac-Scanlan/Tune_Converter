@@ -1,0 +1,18 @@
+The Star Above the Garter
+Slide
+G major
+Double
+
+__
+D'_B BAG A__ ABA
+G_E C_B BAG ABC
+D'_B BAG A__ ABA
+G_E CGE DED DG'E'
+|D_B
+__
+D'_E' F'_A' G'_E' D'_B
+GAB C_B BAG ABC
+D'_E' F'_A' G'_E' D'_B
+GAB CGE DED D_B
+|DG'E'
+__

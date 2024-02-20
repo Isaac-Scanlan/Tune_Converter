@@ -420,7 +420,7 @@ public class PageAssembler
         
         if (bar.OctaveType == OctaveType.Low)
         {
-            noteImage = AddLow(noteImage);
+            noteImage = AddLow(noteImage, highShiftSide);
         }
         if (bar.AccidentalType == AccidentalType.Sharp)
         {
@@ -461,6 +461,11 @@ public class PageAssembler
     {
         List<Note> notes = [bar.FirstNote, bar.SecondNote];
 
+        if (bar.FirstNote.OctaveType == OctaveType.Low && bar.SecondNote.OctaveType == OctaveType.Low)
+        {
+
+        }
+
         var foo2 = new NoteImage();
 
         var fullImage = new Image<Gray, byte>((Width) * 2, Height + 60, White);
@@ -473,7 +478,8 @@ public class PageAssembler
             var image = new Image<Gray, byte>(noteImage.Width, Height + 40, White);
 
             noteImage = SetRoi(image, noteImage, 0, 18);
-            noteImage = ArrangeNote(image, noteImage, note.value, 5, 0);
+            int space = note.value.OctaveType == OctaveType.Low ? 0 : 5;
+            noteImage = ArrangeNote(image, noteImage, note.value, space, 0);
             fullImage = SetRoi(fullImage, image, (note.i * (Width)), 0);
         }
 
@@ -626,7 +632,7 @@ public class PageAssembler
         return bigImage;
     }
 
-    private static Image<Gray, byte> AddLow(Image<Gray, byte> bigImage) => AddBelowNote(bigImage, NoteImage.low, 6, Height + 18);
+    private static Image<Gray, byte> AddLow(Image<Gray, byte> bigImage, int sideShift) => AddBelowNote(bigImage, NoteImage.low, sideShift, Height + 18);
     private static Image<Gray, byte> AddShortLong(Image<Gray, byte> bigImage) => AddBelowNote(bigImage, NoteImage.__, (Width + 15 - (NoteImage.__.Width + 1)), Height + 16);
     private static Image<Gray, byte> AddBelowNote(Image<Gray, byte> bigImage, Image<Gray, byte> symbolImage, int shiftSide = 0, int shiftDown = 0)
     {

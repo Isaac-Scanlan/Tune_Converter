@@ -1,0 +1,138 @@
+﻿<Page x:Class="WPFTuneConverter.View.Pages.ConvertTunePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFTuneConverter.View.Pages"
+      xmlns:customControls="clr-namespace:WPFTuneConverter.View.CustomControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="710" d:DesignWidth="1280"
+      Title="ConvertTunePage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ConvertTunePageDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="#577bff">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TopBar" Height="40"/>
+            <RowDefinition x:Name="MainPage"/>
+            <RowDefinition x:Name="BottomBar" Height="40"/>
+        </Grid.RowDefinitions>
+        <!--00176b-->
+        <Rectangle Fill="Transparent"  Grid.Row="0"/>
+
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/Logo.png" Grid.Row="1"/>
+
+        <Grid Background="Transparent" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="titleLabel" Content="Title" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="0"/>
+            <customControls:ClearableTextBox x:Name="titleTextBox" PlaceHolder="Tune Title" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="2"/>
+
+            <Label x:Name="writtenByLabel" Content="Composer" Grid.Column="10" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="0"/>
+            <customControls:ClearableTextBox x:Name="writtenByBox" PlaceHolder="Composer Name" Grid.Column="10" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="2"/>
+
+            <Label x:Name="typeLabel" Content="Type" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="5"/>
+            <customControls:PrettyComboBox x:Name="typeComboBox" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="7"/>
+
+            <Label x:Name="repeatsByLabel" Content="Part Repeats" Grid.Column="10" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="5"/>
+            <customControls:PrettyComboBox x:Name="repeatsComboBox" Grid.Column="10" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="7"/>
+
+            <Label x:Name="keyLabel" Content="Key" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="10"/>
+            <customControls:PrettyComboBox x:Name="keyComboBox" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="12"/>
+
+            <customControls:TuneTextBox x:Name="tuneTextBlock" Grid.Column="2" Grid.ColumnSpan="14" Grid.RowSpan="16" Grid.Row="16" />
+
+            <Button x:Name="convertButton" Content="Convert" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="33" Margin="3,3,3,3" Click="ConvertButton" MaxHeight="46" MaxWidth="117"/>
+            <Button x:Name="browseButton" Content="Browse" Grid.Column="7" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="33" Margin="16,3,16,3" Click="BrowseButton_Click" MaxHeight="46" MaxWidth="117"/>
+            <Button x:Name="clearButton" Content="Clear" Grid.Column="13" Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Row="33" Margin="3,3,3,3" Click="Clear_Click" MaxHeight="46" MaxWidth="117"/>
+
+            <Image x:Name="tuneImage" Source="/default_image.png" Grid.Column="18" Grid.ColumnSpan="12"  Grid.RowSpan="30" Grid.Row="2"/>
+
+            <Button x:Name="previousPageButton" Content="←" Grid.Column="20" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="20,0,0,0" Click="PreviousPageButton"/>
+            <Label  x:Name="pageCountLabel" Grid.Column="22"  Grid.ColumnSpan="4" Grid.RowSpan="2" Grid.Row="33" Content="0 out of 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Button x:Name="nextPageButton" Content="→" Grid.Column="26" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="0,0,20,0" Click="NextPageButton"/>
+
+
+        </Grid>
+
+        <Rectangle Fill="Transparent" Grid.Row="2"/>
+    </Grid>
+</Page>

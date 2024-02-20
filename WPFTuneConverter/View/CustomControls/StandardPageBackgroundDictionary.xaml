@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="BackgroundColour">#00176b</SolidColorBrush>
+
+    <SolidColorBrush x:Key="PrimaryColor_D">#1044FF</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor">#577bff</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor_M">#9FB3FF</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor_L">#E5EBFF</SolidColorBrush>
+
+    <Style TargetType="Rectangle">
+        <Setter Property="Fill" Value="{StaticResource BackgroundColour}"/>
+    </Style>
+
+
+</ResourceDictionary>

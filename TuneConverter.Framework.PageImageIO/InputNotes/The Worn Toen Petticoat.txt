@@ -1,0 +1,22 @@
+The Worn Toen Petticoat
+Slide
+A minor
+Double
+
+__
+CBA B_G A_G E_D
+EFG A_B C_D' E'_D'
+CBA B_G A_G E_D
+EFG A_B A__ GAB
+|A_B
+__
+C_D' E'_F' G'_E' D'_G'
+E'_A' A'_F' G'_E' D'_B
+C_D' E'_F' G'_E' D'_G'
+E'F'G' A'_B A'__ BAG
+__
+C_D' E'_F' G'_E' D'_G'
+E'_A' A'_F' G'_E' D'_B
+CBA B_G A_G E_D
+EFG A_B A__ GAB
+__

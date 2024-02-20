@@ -1,6 +1,8 @@
 House of Hammill
 Reel
 E minor
+Double
+
 __
 EBBA BFAF EBBC# D'AFA
 EBBA *BC#D'*E'F' G'F'E'C D'AFA

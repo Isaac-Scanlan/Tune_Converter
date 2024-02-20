@@ -1,0 +1,21 @@
+Cregg’s Pipes
+Reel
+G major
+Single
+
+__
+B_BA BAGA BDGB ABEG
+DBBC BAGB ACBG AGEG
+B_BC BAGA BDGB ABEG
+BE'E'D' BE'D'B ACBG AGEG
+__
+DGGF G_BG rlBG AGEG
+DGGF GABC D'BAD' BGGE
+DGGF G_BG rlBG AGEG
+DGGF GABC D'BAD' BG*ABC*
+__
+D'_BD' E'F'G'E' D'_BD' AGEG
+D'_BD' E'F'G'E' A'G'A'B' A'G'E'G'
+D'_BD' E'F'G'E' D'GBD' AGEG
+D'_BD' E'F'G'E' A'G'A'B' A'G'E'G'
+__

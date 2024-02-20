@@ -1,0 +1,18 @@
+Denis O'Keeffe's
+Slide
+A minor
+Double
+
+__
+E_A ABA E_A ABA
+E'_A ABA G_E F_D
+E_A ABA E_A ABA
+E'F'E' D'CB A__ A_G
+|BCD'
+__
+E'__ E'F'E' D'__ C_D'
+E'_A ABA G_E F_D
+E_A ABA E_A ABA
+E'F'E' D'CB A__ BCD'
+|A_G
+__

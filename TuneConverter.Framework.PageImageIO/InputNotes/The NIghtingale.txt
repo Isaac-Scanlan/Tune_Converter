@@ -1,0 +1,22 @@
+The Nightingale
+Jig
+A minor
+Single
+
+__
+EAA A_B CAB CAG
+EDE Grl GL*BLCLD* GAG
+EAA A_B CAB CD'E'
+G'rl E'G'E' D'BG A_G
+|A'G'E' D'BG A_A'
+__
+A'E'A' A'E'G' G'D'G' G'D'G'
+A'E'A' A'G'F' G'F'E' D'*E'F'G'*
+A'E'A' A'E'G' G'D'G' G'D'E'
+G'rl E'G'E' D'BG A_A'
+__
+A'E'A' A'E'G' G'D'G' G'D'G'
+A'E'A' A'G'F' G'F'E' D'E'F'G'
+G'rl E'G'E' D'BA G*BCD'*
+G'rl A'G'E' D'BG A_G
+__

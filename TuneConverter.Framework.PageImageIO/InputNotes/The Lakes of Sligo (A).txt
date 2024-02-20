@@ -1,0 +1,18 @@
+The Lakes of Sligo (A)
+Polka
+A major
+Double
+
+__
+CLE E*FG* A-B AG
+FE *FG*A B-A BC
+CLE E*FG* AB C-B
+AF EC B*CB* AE
+|AB
+__
+CE' A-B CE' E'C
+DF' B-C DF' F'*E'D*
+CE' BC AB C-B
+AF EC B*CB* AE
+|AB
+__

@@ -1,0 +1,17 @@
+O'Meally's Hornpipe
+Hornpipe
+G major
+Double
+
+__
+G_GA BG*BCD'* G'BG'A' B'G'D'B
+CBAG FAD'C BGAF GFED
+G_GA BG*BCD'* G'BG'A' B'G'D'B
+CBAG FAD'C *BD'B*G_ G_*DEF*
+|G_*BCD'*
+__
+G'D'BD' G'D'BD' G'D'BD' *G'B'G'*A'G'
+F'D'AD' F'D'AD' F'D'AD' *F'A'F'**D'E'F'*
+G'D'BD' G'D'BD' G'D'BD' G'B'A'G'
+F'E'D'B CAFG *ABA*G_ G_*BCD'*
+__

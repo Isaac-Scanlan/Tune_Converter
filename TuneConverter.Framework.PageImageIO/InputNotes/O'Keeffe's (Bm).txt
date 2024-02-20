@@ -1,0 +1,18 @@
+O'Keeffe's (Bm)
+Slide
+B minor
+Double
+
+__
+B_F' F'_E' CBC E'_C
+B_F' F'_E' C_A ABC
+B_F' F'_E' CBC E'_C
+CBC E'_F' C_B B_A
+|B_E'
+__
+F'_B' B'_C' B'_A' F'_E'
+F'G'A' B'_C' B'_A' F'_G'
+A'__ A'G'F' E'CB A_B
+CBC E'_F' C_B B_E'
+|B_A
+__

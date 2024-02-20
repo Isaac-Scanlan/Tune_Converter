@@ -1,0 +1,17 @@
+Deálaí's No.2
+Slide
+D major
+Double
+
+__
+A_F A_B A_F E_F
+D_F F_D F_D E_B
+A_F A_B A_F E_D'
+C_E EFE D__ D'CB
+|ABC
+__
+D'__ CD'C B_A F_E
+D_F F_D F_D E__
+D'__ D'_A B_E' E'_D'
+C_D' C_B A__ ABC
+__

@@ -1,0 +1,24 @@
+The Rubber Band Slide
+Slide
+D major
+Double
+
+__
+FGF E_D F__ F_A
+BD'B A_B D'__ D'_A
+D'E'F' D'_B A_D F_A
+BAF A_F E__ E_G
+__
+FGF E_D F__ F_A
+BD'B A_B D'__ D'_A
+D'E'F' D'_B A_D F_D
+EFG F_E D__ D'_B
+__
+A_F A_B AFE D_F
+A_F B__ BAF E_A
+A_F A_B AFE D_D'
+D'CB AFE F_D D_F
+|D_E
+__
+
+__

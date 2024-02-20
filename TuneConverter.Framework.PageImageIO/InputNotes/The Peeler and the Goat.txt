@@ -1,0 +1,18 @@
+The Peeler and the Goat
+Slide
+E minor
+Double
+
+__
+G_E F_D E_F G_A
+B_D' A_G F_D DEF
+G_E F_D E_F G_A
+BCD' CBA B_E E_F
+|ABC
+__
+D'__ D'_A B_E' E'_C
+D'_B A_G F_D DEF
+G_E F_D E_F G_A
+BCD' CBA B_E ABC
+|E_F
+__

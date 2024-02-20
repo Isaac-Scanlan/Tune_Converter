@@ -1,0 +1,19 @@
+C Reel (Beoga)
+Reel
+C major
+Double
+
+__
+A__E G_CB A_GE DCLED
+CL_CLD ECLEG CAGE D_*EFG*
+A_CE' D'CAG CAGE AGEG
+GACD EGAG ECrl CL_CB
+|CL_CA
+__
+B_GA BCD'E' F'_GA BCD'F'
+E'Crl C_E'C rlCD' E'CD'C
+B_GA BCD'E' F'_GA BCD'F'
+E'CE'G' A'F'D'B BCCB C_D'C
+__
+
+__

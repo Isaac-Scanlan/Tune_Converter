@@ -1,0 +1,18 @@
+Micko Russell's
+Slide
+D major
+Double
+
+__
+A__ A_F ABA F_E
+DFA B_A B_A F_A
+D'CD' A'_G' F'_D' B_A
+BCA BAB D'__ D'CB
+|D'_A
+__
+D'CD' A'_G' F'_D' B_A
+BCA BCA B_A F_A
+D'CD' A'_G' F'_D' B_A
+BCA BAB D'__ D'_A
+|D'CB
+__

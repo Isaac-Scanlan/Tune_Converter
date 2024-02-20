@@ -1,0 +1,16 @@
+Yoghal Quay
+Reel
+G major
+Double
+
+__
+BCD'B G_DG GDBA GBD'G
+F'D'CA GFDE FGAB CArl
+*BCD'*CA G_DG GDBA GABC
+DB*CBA* BGAF DEFG ABCA
+__
+BCD'E' D'CBC DBG'B' A'B'G'D'
+BCD'E' D'CBC A_A'F' G'F'E'D'
+BCD'E' D'CBC DBG'B' A'B'G'E'
+E'F'F'E' D'E'F'G' A'B'A'G' F'E'D'C
+__

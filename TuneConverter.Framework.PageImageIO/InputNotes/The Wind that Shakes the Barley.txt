@@ -1,0 +1,16 @@
+The Wind that Shakes the Barley
+Reel
+D major
+Single
+
+__
+A_AB AFEF DBBA BCD'A
+FAAF ABD'E' F'D'E'D' BCD'B
+A_AB AFEF DBBA BCD'A
+FAAF ABD'E' F'D'E'D' BCD'E'
+__
+F'_F'D' G'_G'E' E'F'E'D' BCD'E'
+F'_D'F' G'_F'G' A'F'E'D' BCD'E'
+F'_F'D' G'_G'E' E'F'E'D' BCD'A
+D'E'F'G' A'__B' A'F'E'D' BCDB
+__

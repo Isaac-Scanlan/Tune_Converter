@@ -1,0 +1,16 @@
+Jessica's Polka
+Polka
+A major
+Double
+
+__
+E'*F'E'* CE' F'E' CB
+AB *CB*A E'C' B_
+E'*F'E'*  CE' F'E' CB
+AB *CB*A FA E_
+__
+F*GF* EF CB A_
+E'*F'E'*  CE' A'G' F'_
+E'*F'E'*  CE' F'E' CB
+AB *CB*A FA E_
+__
