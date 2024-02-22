@@ -1,16 +1,18 @@
 Ballymanus Fair
 Hornpipe
 D major
+Double
+
 __
 D'AFA GBAG FE*FGA* D'FGE
 FAD'C D'CBA BGEF GABC
 D'AFA GBAG FE*FGA* D'FGE
 FAD'A BG'E'C *D'E'D'**CD'E'* D'_ABC
-|D'__E'
+|D'__G'
 __
 F'D'D'C D'F'A'F' E'D'CD' E'F'*G'F'E'*
-F'D'D'A D'F'A'F' *E'F'E'**D'CB* ADFA
+F'D'D'A D'F'A'F' *G'F'E'**D'CB* ADFA
 BGrl BGD'B AF*ABC* D'E'F'D'
-*ABA*F'A BG'E'C *D'E'D'**CD'E'* D'__E'
+*ABA*F'A BG'E'C *D'E'D'**CD'E'* D'__G'
 |D'_ABC
 __

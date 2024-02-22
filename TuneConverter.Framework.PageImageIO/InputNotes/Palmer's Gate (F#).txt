@@ -1,0 +1,16 @@
+Palmer's Gate (F#)
+Reel
+F# minor
+Double
+
+__
+CFrl ABCA BE'CB AFEF
+ArlB CBAB CF'E'C BCAB
+CFrl ABCA B'ECB AFEF
+AB*CD'E'* F'E'CB AFFE FGAB
+__
+CF'F'E' F'_F'G' A'_GA' F'E'CB
+A_CA E'ACB ABCE' F'E'CB
+CF'F'E' F'_F'G' A'_GA' F'E'CB
+AB*CD'E'* F'E'CB AFFE FGAB
+__

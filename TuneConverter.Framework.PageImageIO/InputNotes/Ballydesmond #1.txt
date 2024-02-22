@@ -1,6 +1,8 @@
 Ballydesmond #1
 Polka
 A minor
+Single
+
 __
 EA AB CD' E'_
 G-F# GA GE ED

@@ -17,7 +17,7 @@ public class Program
 { 
     public static void Main(string[] args)
     {
-        //var file = ReadTune("Allistrum's.txt");
+        //var file = ReadTune("Cooley's.txt");
 
         var file = ArrangeTuneList(args);
 
@@ -41,8 +41,8 @@ public class Program
         var assembleTuneTime = (middle - start);
         var assemblePageTime = (end - middle);
 
-        Console.WriteLine("AssembleTune: " + assembleTuneTime.ToString());
-        Console.WriteLine("AssemblePage: " + assemblePageTime.ToString());
+        //Console.WriteLine("AssembleTune: " + assembleTuneTime.ToString());
+        //Console.WriteLine("AssemblePage: " + assemblePageTime.ToString());
         //DisplayImage(assembledPage);
 
         WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);

@@ -37,28 +37,17 @@ public class PageAssembler
         { RepeatType.Triple, NoteImage.rep_3 }
     };
 
-    private static List<TuneType> tuneTypeList = Enum.GetValues(typeof(TuneType)).Cast<TuneType>().ToList();
+    private static List<TuneType> tuneTypeList = [.. Enum.GetValues(typeof(TuneType)).Cast<TuneType>().Order()];
 
     public async Task<List<Image<Gray, byte>>> CreateTune(TuneFull tune)
     {
-        tuneTypeList.Order();
-        var foo1 = ((GetWidthOfPageInNotes(TuneType.Polka)));
-        var foo2 = ((GetWidthOfPageInNotes(TuneType.Slipjig)));
-        var foo3 = ((GetWidthOfPageInNotes(TuneType.Jig)));
-        var foo4 = ((GetWidthOfPageInNotes(TuneType.Slide)));
-        var foo5 = ((GetWidthOfPageInNotes(TuneType.Reel)));
-        var foo6 = ((GetWidthOfPageInNotes(TuneType.Hornpipe)));
-        var foo7 = ((GetWidthOfPageInNotes(TuneType.Barndance)));
-
-        foreach (var i in tuneTypeList.Order()) { Console.WriteLine(i + " :" + (int)i); }
+        repType = tune.RepeatType;
 
         List<Image<Gray, byte>>[] listOfPieces = new List<Image<Gray, byte>>[tune.tune.Count];
 
-        repType = tune.RepeatType;
-
         int[] heights = new int[tune.tune.Count];
 
-        var title = CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString());
+        var title = CreateTitlePage(tune.Title, tune.TuneType, tune.Key.NoteType.ToString() + " " + tune.Key.Keytype.ToString(), tune.Composer);
 
         for (int i = 0; i < tune.tune.Count; i++)
         {
@@ -101,7 +90,6 @@ public class PageAssembler
 
         var pageWidth = (Width + 16) * noteNum;
 
-        //(GetWidthOfPageInNotes(tune.TuneType)
         var image = new Image<Gray, byte>(pageWidth, fullPageHeights.Max(), White);
 
         return CreatePage(image, pages).Result;
@@ -201,7 +189,7 @@ public class PageAssembler
     }
 
     #region Title Generation
-    public Image<Gray, byte> CreateTitlePage(string title, TuneType tuneType, string key)
+    public Image<Gray, byte> CreateTitlePage(string title, TuneType tuneType, string key, string composer)
      {
         int pageHeight = (int)(Height * 2) + 120;
         int pageWidth = (Width + 16) * (GetWidthOfPageInNotes(tuneType));
@@ -212,6 +200,7 @@ public class PageAssembler
 
         titlePage = CreateTitleSideText(titlePage, tuneType.ToString(), 150);
         titlePage = CreateTitleSideText(titlePage, key, 175);
+        titlePage = CreateTitleRightSideText(titlePage, composer, 150);
 
         CvInvoke.BitwiseNot(titlePage, titlePage);
 
@@ -267,6 +256,22 @@ public class PageAssembler
         Point tuneTypePoint = new(16, height + 30);
 
         CvInvoke.PutText(titlePage, text, tuneTypePoint, font, titleFontScale, scale, titleFontThickness, lineType);
+
+        return titlePage;
+    }
+
+    private Image<Gray, byte> CreateTitleRightSideText(Image<Gray, byte> titlePage, string text, int height)
+    {
+        double titleFontScale = 0.65;
+        int titleFontThickness = 1;
+
+        Point tuneTypePoint = new(titlePage.Cols - 200 - (text.Length * 7), height + 30);
+        Point tuneTypePoint2 = new(titlePage.Cols - 200 - (text.Length * 7), height + 55);
+
+        string composer = text.Length > 0 ? "Composer" : "";
+
+        CvInvoke.PutText(titlePage, composer, tuneTypePoint, font, titleFontScale, scale, titleFontThickness, lineType);
+        CvInvoke.PutText(titlePage, text, tuneTypePoint2, font, titleFontScale, scale, titleFontThickness, lineType);
 
         return titlePage;
     }
@@ -415,7 +420,7 @@ public class PageAssembler
         
         if (bar.OctaveType == OctaveType.Low)
         {
-            noteImage = AddLow(noteImage);
+            noteImage = AddLow(noteImage, highShiftSide);
         }
         if (bar.AccidentalType == AccidentalType.Sharp)
         {
@@ -456,6 +461,11 @@ public class PageAssembler
     {
         List<Note> notes = [bar.FirstNote, bar.SecondNote];
 
+        if (bar.FirstNote.OctaveType == OctaveType.Low && bar.SecondNote.OctaveType == OctaveType.Low)
+        {
+
+        }
+
         var foo2 = new NoteImage();
 
         var fullImage = new Image<Gray, byte>((Width) * 2, Height + 60, White);
@@ -468,7 +478,8 @@ public class PageAssembler
             var image = new Image<Gray, byte>(noteImage.Width, Height + 40, White);
 
             noteImage = SetRoi(image, noteImage, 0, 18);
-            noteImage = ArrangeNote(image, noteImage, note.value, 5, 0);
+            int space = note.value.OctaveType == OctaveType.Low ? 0 : 5;
+            noteImage = ArrangeNote(image, noteImage, note.value, space, 0);
             fullImage = SetRoi(fullImage, image, (note.i * (Width)), 0);
         }
 
@@ -621,7 +632,7 @@ public class PageAssembler
         return bigImage;
     }
 
-    private static Image<Gray, byte> AddLow(Image<Gray, byte> bigImage) => AddBelowNote(bigImage, NoteImage.low, 6, Height + 18);
+    private static Image<Gray, byte> AddLow(Image<Gray, byte> bigImage, int sideShift) => AddBelowNote(bigImage, NoteImage.low, sideShift, Height + 18);
     private static Image<Gray, byte> AddShortLong(Image<Gray, byte> bigImage) => AddBelowNote(bigImage, NoteImage.__, (Width + 15 - (NoteImage.__.Width + 1)), Height + 16);
     private static Image<Gray, byte> AddBelowNote(Image<Gray, byte> bigImage, Image<Gray, byte> symbolImage, int shiftSide = 0, int shiftDown = 0)
     {

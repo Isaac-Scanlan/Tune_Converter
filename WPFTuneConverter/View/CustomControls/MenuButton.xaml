@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="WPFTuneConverter.View.CustomControls.MenuButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFTuneConverter.View.CustomControls"
+             xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MenuButtonDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Button Name="menuButtn" Margin="0,0,0,0"  
+               Click="OnButtonClick">
+
+            <!--<Image Name="ButtonImage"  Height="40" Width="40" Source="{svgc:SvgImage svgPath}" />-->
+            <Path Name="ButtonSVG"  Height="30" Width="30"
+                  Fill="White" Stretch="Fill" Data="{Binding IconName}" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+
+        </Button>
+
+
+
+
+
+    </Grid>
+</UserControl>

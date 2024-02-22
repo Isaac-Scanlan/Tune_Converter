@@ -1,0 +1,18 @@
+Keefe's
+Slide
+D major
+Double
+
+__
+A_F A_D' F'__ F'_E'
+F'E'D' F'E'D' B__ B_A
+BCD' B_A BCD' B_A
+BCD' E'F'E' D'__ D'CB
+|AD'F'
+__
+A'__ A'_F' E'_D' B_F'
+E'_D' BAB E'_D' B_A
+A'__ A'_F' E'_D' B_A
+BCD' E'F'E' D'__ AD'F'
+|D'CB
+__

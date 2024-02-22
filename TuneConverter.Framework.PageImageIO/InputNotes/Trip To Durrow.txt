@@ -1,0 +1,23 @@
+Trip To Durrow
+Reel
+D major
+Double
+
+__
+D_DF ADFA D'E'F'D' BABC
+D'BBA D'BBA FADE FEEF
+D_DF ADFA D'E'F'D' BABC
+D'BBA FAD'B AFEG FDDCL
+|FD*ABC*
+__
+D'__E' F'E'F'G' A'F'D'F' G'F'E'D'
+CD'E'F' G'E'B'E' G'B'A'F'G'F'E'F'
+D'AD'E' F'E'F'G' A'F'D'F' G'F'E'D'
+CD'E'F' G'B'A'G' F'D'E'C D'_D'E'
+__
+F'D'E'C D'_D'E' F'D'E'D' B_BC
+D'BBA D'BBA FADE FEEF
+D_DF ADFA D'E'F'D' BABC
+D'BBA FAD'B AFEG FD*ABC*
+|FDDCL
+__

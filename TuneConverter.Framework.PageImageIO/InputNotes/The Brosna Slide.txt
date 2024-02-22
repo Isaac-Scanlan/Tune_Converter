@@ -1,0 +1,18 @@
+The Brosna Slide
+Slide
+G major
+Double
+
+__
+D_G G_A BAB D'_B
+A_D FED D_A FED
+D_G G_A BAB D'_B
+A_D FED G__ G_E
+|B_D'
+__
+G'_F' E'F'G' F'_E' D'_B
+C_B A_B C_D' E'_F'
+G'_F' E'F'G' F'_E' D'_B
+C_A F_A G__ B_D'
+|G_E
+__

@@ -1,0 +1,28 @@
+Byrne's Mill
+Slipjig
+D major
+Double
+
+__
+D'C'A G_A FDD
+GFG *ABA*G ABC
+D'C'A G_A FAD
+D'*BCD'* E'D'C D'F'E'
+|D'CB
+__
+A_D' D'CD' F'G'A'
+G'rl A'F'D' CAG
+A_D' D'AD' F'G'A'
+G'_F' E'D'C D'CB
+|D'_E'
+__
+F'_G' E'_F' D'CA
+D'CA CAG FGA
+*F'G'F'*D' E'D'C ABC
+D'*BCD'* E'D'C D'_E'
+__
+F'_G' E'_F' D'CA
+D'CA G_A FAD
+*F'G'F'*D' E'D'C D'CA
+D'CA GEA D_E'
+__

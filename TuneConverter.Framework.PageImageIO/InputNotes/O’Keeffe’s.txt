@@ -1,0 +1,18 @@
+O’Keeffe’s
+Slide
+A minor
+Double
+
+__
+A_E' E'_D' BAB D'_B
+A_E' E'_D' B_G GAB
+A_E' E'_D' BAB D'_B
+BAB D'_E' B_A A_G
+|A_D'
+__
+E'_A' A'_B' A'_G' E'_D'
+E'F'G' A'_B' A'_G' E'_F'
+G'__ G'F'E' D'BA G_A
+BAB D'_E' B_A A_D'
+|A_G
+__

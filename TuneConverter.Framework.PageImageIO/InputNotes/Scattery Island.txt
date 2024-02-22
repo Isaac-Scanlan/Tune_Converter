@@ -1,0 +1,18 @@
+Scattery Island
+Jig
+A minor
+Single
+
+__
+D'_B BAB D'_B BG'E'
+D'_B BAB G_E EG'E'
+D'_B BAB D'_B B_D'
+E'F'G' F'E'D' E'rl E'G'E'
+|G'D'E'
+__
+G'rl G'A'B' A'_G' F'E'D'
+E'rl E'G'D' E'*F'E'D* ABD'
+G'rl G'A'B' A'_G' F'E'D'
+E'F'G' F'E'D' E'rl G'D'E'
+|E'G'E'
+__

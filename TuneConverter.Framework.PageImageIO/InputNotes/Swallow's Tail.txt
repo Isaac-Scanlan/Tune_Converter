@@ -1,0 +1,16 @@
+Swallow's Tail
+Reel
+A minor
+Double
+
+__
+E'ABA E'ABA *BCD'*E'F' G'E'D'B
+G_BG D'GBG *BCD'*E'F' G'B'A'G'
+E'ABA E'ABA *BCD'*E'F' G'D'*E'F'G'*
+A'F'G'E' D'BGA BGD'B A_BD'
+__
+E'A'A'B A'G'E'D' *BCD'*E'F' G'E'D'B
+G_BG D'GBG *BCD'*E'F' G'B'A'G'
+E'A'A'B A'G'E'D' *BCD'*E'F' G'D'*E'F'G'*
+A'F'G'E' D'BGA BGD'B A_BD'
+__

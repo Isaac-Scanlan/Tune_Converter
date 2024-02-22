@@ -1,0 +1,32 @@
+Vas-y-Mimile
+Waltz
+B minor
+Double
+Marc Perrone
+__
+F'BD'F'E'F' E'D'B'D'E'D' F'BD'F'E'F' C_CE'BC
+D'BE'D'CB CABCD'E' F'D'E'F'E'D' C_A_D'E'
+F'BD'F'E'F' E'D'B'D'E'D' F'BD'F'E'F' C___BC
+D'BE'D'CB CABCD'C B_BCAC B__CD'E'
+|B___F'_
+__
+E'D'CD'BA B___F'_ E'ACD'BA B___F'_
+E'D'CD'BA BFBCED' F'E'D'E'D'C D'CBCAB
+B___F'_
+|B_BCD'E'
+__
+F'E'D'E'F'D' E'_B___ BFBE'CE' F'E'D'E'*F'G#'A'*
+B_A'_G#'E' F'_E'F'CF' B_BCD'F' E'_*D'E'D'*CB
+D'_*CD'C*BA B_BCD'E'
+|B___F'_
+__
+E'D'CD'BA B___F'_ E'ACD'BA B___F'_
+E'D'CD'BA BFBCED' F'E'D'E'D'C D'CBCAB
+B___F'_
+|B__CD'E'
+__
+F'D'BF'D'B G'D'BF'D'B E'_D'_E'_ F'CACAF
+D'BGE'BG E'CAF'CA F'CAF'CA C_D'_E'_
+F'D'BF'D'B G'D'BF'D'B E'_D'_E'_ F'CACAF
+D'BGE'BG E'CAF'CA B_BCAC B__CD'E'
+__

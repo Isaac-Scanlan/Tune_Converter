@@ -1,0 +1,16 @@
+The Avonmore
+Reel
+G major
+Double
+
+__
+BGGF G_AC BGGB G'D'E'D'
+BGGF GrlC AD*EFG* ABCA
+BGGF G_AC BGGB G'E'F'G'
+A'F'G'E' F'D'E'C AD*EFG* ABCA
+__
+BABC D'E'D'C BGBD' GD'E'D'
+BD'D'C# D'rlC AD*EFG* ABCA
+BABC D'E'D'C BGBD' GD'E'D'
+A'F'G'E' F'D'E'C AD*EFG* ABCA
+__

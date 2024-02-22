@@ -6,14 +6,101 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Big_Logo_Clear.png" />
+    <None Remove="Big_Logo_White.png" />
+    <None Remove="Big_Logo_White_Clear.png" />
     <None Remove="default_image.png" />
+    <None Remove="Fonts\Montserrat Black 900.ttf" />
+    <None Remove="Fonts\Montserrat Black Italic 900.ttf" />
+    <None Remove="Fonts\Montserrat Bold 700.ttf" />
+    <None Remove="Fonts\Montserrat Bold Italic 700.ttf" />
+    <None Remove="Fonts\Montserrat ExtraBold 800.ttf" />
+    <None Remove="Fonts\Montserrat ExtraBold Italic 800.ttf" />
+    <None Remove="Fonts\Montserrat ExtraLight 275.ttf" />
+    <None Remove="Fonts\Montserrat ExtraLight Italic 275.ttf" />
+    <None Remove="Fonts\Montserrat Italic 400.ttf" />
+    <None Remove="Fonts\Montserrat Light 300.ttf" />
+    <None Remove="Fonts\Montserrat Light Italic 300.ttf" />
+    <None Remove="Fonts\Montserrat Medium 500.ttf" />
+    <None Remove="Fonts\Montserrat Medium Italic 500.ttf" />
+    <None Remove="Fonts\Montserrat Regular 400.ttf" />
+    <None Remove="Fonts\Montserrat SemiBold 600.ttf" />
+    <None Remove="Fonts\Montserrat SemiBold Italic 600.ttf" />
+    <None Remove="Fonts\Montserrat Thin 250.ttf" />
+    <None Remove="Fonts\Montserrat Thin Italic 250.ttf" />
+    <None Remove="Logo.png" />
+    <None Remove="Quaver.svg" />
+    <None Remove="View\Pages\Double Logo.png" />
+    <None Remove="View\Pages\Logo_Flip.png" />
+    <None Remove="View\Pages\Logo_White.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fonts\Montserrat Black 900.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Black Italic 900.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Bold 700.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Bold Italic 700.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat ExtraBold 800.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat ExtraBold Italic 800.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat ExtraLight 275.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat ExtraLight Italic 275.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Italic 400.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Light 300.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Light Italic 300.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Medium 500.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Medium Italic 500.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Regular 400.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat SemiBold 600.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat SemiBold Italic 600.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Thin 250.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Montserrat Thin Italic 250.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SharpVectors" Version="1.8.4" />
+    <PackageReference Include="XamlEssentials" Version="3.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +113,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Big_Logo_Clear.png" />
+    <Resource Include="Big_Logo_White.png" />
+    <Resource Include="Big_Logo_White_Clear.png" />
     <Resource Include="default_image.png" />
+    <Resource Include="Logo.png" />
+    <Resource Include="Quaver.svg" />
+    <Resource Include="View\Pages\Double Logo.png" />
+    <Resource Include="View\Pages\Logo_Flip.png" />
+    <Resource Include="View\Pages\Logo_White.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>

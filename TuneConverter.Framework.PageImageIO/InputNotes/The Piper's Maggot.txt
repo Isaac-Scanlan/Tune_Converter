@@ -1,0 +1,16 @@
+The Piper's Maggot
+Slipjig
+A major
+Double
+
+__
+C_A ABA CBA
+CE'C A'E'C F'G'A'
+C_A ABA CBA
+Brl F'D'B BCD'
+__
+C_E' A'E'C AE'C
+C_E' A'E'C F'G'A'
+C_E' A'E'C AE'C
+Brl F'D'B BCD'
+__
