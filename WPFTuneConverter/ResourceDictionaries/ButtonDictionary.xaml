@@ -20,7 +20,7 @@
     <SolidColorBrush x:Key="TertiaryColor_L">#E5FFF9</SolidColorBrush>
 
     <Style TargetType="Separator">
-        <Setter Property="Margin" Value="10,7,10,7"/>
+        <Setter Property="Margin" Value="10,15,10,15"/>
         <Setter Property="Focusable" Value="false"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -51,7 +51,7 @@
     </Style>
 
     <Style TargetType="StackPanel" x:Key="MainStack">
-        <Setter Property="Background" Value="#00176b"/>
+        <Setter Property="Background" Value="#577bff"/>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="20" Opacity="0.4" ShadowDepth="5" Color="DarkSlateGray"/>
@@ -59,87 +59,39 @@
         </Setter>
     </Style>
 
-    
-    
-
-
-    <Style TargetType="TabControl">
-        <Setter Property="Background" Value="{StaticResource BackgroundColour}" />
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
-
-        
-        
-        <Setter Property="Padding" Value="3" />
-        
-
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="#0024a8"/>
+        <Setter Property="Foreground" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Placement" Value="Right"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="MinHeight" Value="15"/>
+        <Setter Property="MinWidth" Value="30"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="TabControl">
-                    <Grid KeyboardNavigation.TabNavigation="Local">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <TabPanel x:Name="HeaderPanel" Grid.Row="0" Panel.ZIndex="1" Background="{StaticResource PrimaryColor_L}" IsItemsHost="True"/>
-                        <Border x:Name="ContentPanel" Grid.Row="1" Background="{TemplateBinding Background}" BorderThickness="0" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" Margin="0">
-                            <ContentPresenter x:Name="PART_SelectedContentHost" Margin="2" ContentSource="SelectedContent"/>
+                <ControlTemplate TargetType="ToolTip">
+                    <Grid Margin="10">
+                        <Border Background="#0024a8" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        <TextBlock Text="{TemplateBinding Content}" 
+                            Foreground="White"
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center" 
+                            FontFamily="Segoe UI Semibold"  
+                            Margin="7" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style TargetType="TabItem">
-        <Setter Property="Background" Value="{StaticResource PrimaryColor_D}" />
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="Padding" Value="6,1,6,1"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor_D}"/>
-        <Setter Property="HorizontalAlignment" Value="Right" />
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TabItem">
-                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true" CornerRadius="10, 10, 0, 0">
-                        <ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Panel.ZIndex" Value="0"/>
-                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource PrimaryColor}"/>
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-        <Setter Property="HeaderTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <ContentPresenter Content="{TemplateBinding Content}">
-                        <ContentPresenter.LayoutTransform>
-                            <RotateTransform Angle="90" />
-                        </ContentPresenter.LayoutTransform>
-                    </ContentPresenter>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-
-    </Style>
-
     <Style TargetType="Label">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="18"/>
-        <Setter Property="FontFamily" Value="Fonts/#Montserrat ExtraBold 800"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="5" Color="DarkSlateGray"/>
@@ -148,35 +100,34 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource SecondaryColor_M}"/>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                    <GradientStop Color="#C59FFF" Offset="0"/>
-                    <GradientStop Color="#C59FFF" Offset="0.5"/>
-                    <GradientStop Color="#E0CCFF" Offset="4"/>
+                    <GradientStop Color="#577bff" Offset="0"/>
+                    <GradientStop Color="#577bff" Offset="0.5"/>
+                    <GradientStop Color="#9FB3FF" Offset="4"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="2.5" Color="Gray"/>
+                <DropShadowEffect BlurRadius="20" Opacity="0.5" ShadowDepth="2.5" Color="Black"/>
             </Setter.Value>
         </Setter>
 
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Padding" Value="10"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontSize" Value="15"/>
-        <Setter Property="FontFamily" Value="Arial Strong"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
-                            CornerRadius="14">
+                    CornerRadius="14">
                         <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
+                                  VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

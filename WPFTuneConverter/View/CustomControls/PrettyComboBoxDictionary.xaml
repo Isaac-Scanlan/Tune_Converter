@@ -7,10 +7,10 @@
     <SolidColorBrush x:Key="PrimaryColor_L">#E5EBFF</SolidColorBrush>
 
 
-    <SolidColorBrush x:Key="SecondaryColor_D">#6F10FF</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor">#9a57ff</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor_M">#C59FFF</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor_L">#E0CCFF</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_D">#710cac</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor">#a524f0</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_M">#be62f4</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_L">#d496f8</SolidColorBrush>
 
     <SolidColorBrush x:Key="TertiaryColor_D">#10FFCB</SolidColorBrush>
     <SolidColorBrush x:Key="TertiaryColor">#57ffdb</SolidColorBrush>
@@ -82,6 +82,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -89,7 +90,7 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="5" Color="DarkSlateGray"/>
+                <DropShadowEffect BlurRadius="20" Opacity="0.6" ShadowDepth="5" Color="DarkSlateGray"/>
             </Setter.Value>
         </Setter>
 
@@ -142,7 +143,7 @@
                             Name="Popup"
                             Placement="Bottom"
                             IsOpen="{TemplateBinding IsDropDownOpen}"
-                            AllowsTransparency="True" 
+                            AllowsTransparency="True"
                             Focusable="False"
                             PopupAnimation="Slide"
                             VerticalOffset="8"

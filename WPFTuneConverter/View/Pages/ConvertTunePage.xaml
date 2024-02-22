@@ -17,7 +17,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="#577bff">
+    <Grid Background="#00114d">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="TopBar" Height="40"/>
             <RowDefinition x:Name="MainPage"/>
@@ -26,7 +26,7 @@
         <!--00176b-->
         <Rectangle Fill="Transparent"  Grid.Row="0"/>
 
-        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/Logo.png" Grid.Row="1"/>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/View/Pages/Double Logo.png" Grid.Row="1"/>
 
         <Grid Background="Transparent" Grid.Row="1">
 
@@ -126,9 +126,18 @@
 
             <Image x:Name="tuneImage" Source="/default_image.png" Grid.Column="18" Grid.ColumnSpan="12"  Grid.RowSpan="30" Grid.Row="2"/>
 
-            <Button x:Name="previousPageButton" Content="←" Grid.Column="20" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="20,0,0,0" Click="PreviousPageButton"/>
+            <Button x:Name="previousPageButton" Grid.Column="20" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="20,0,0,0" Click="PreviousPageButton">
+                <Path Name="previousPgPath"  Height="20" Width="30"
+                  Fill="White" Stretch="Fill" Data="M63.94,24.28a14.28,14.28,0,0,0-20.36-20L4.1,44.42a14.27,14.27,0,0,0,0,20l38.69,39.35a14.27,14.27,0,0,0,20.35-20L48.06,68.41l60.66-.29a14.27,14.27,0,1,0-.23-28.54l-59.85.28,15.3-15.58Z" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 5, 5, 5"/>
+            </Button>
             <Label  x:Name="pageCountLabel" Grid.Column="22"  Grid.ColumnSpan="4" Grid.RowSpan="2" Grid.Row="33" Content="0 out of 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <Button x:Name="nextPageButton" Content="→" Grid.Column="26" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="0,0,20,0" Click="NextPageButton"/>
+            <Button x:Name="nextPageButton" Grid.Column="26" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="0,0,20,0" Click="NextPageButton">
+
+                <Path Name="nextPgPath"  Height="20" Width="30"
+                  Fill="White" Stretch="Fill" Data="M -63.94 -24.28 a 14.28 14.28 180 0 0 20.36 20 L -4.1 -44.42 a 14.27 14.27 180 0 0 -0 -20 l -38.69 -39.35 a 14.27 14.27 180 0 0 -20.35 20 L -48.06 -68.41 l -60.66 0.29 a 14.27 14.27 180 1 0 0.23 28.54 l 59.85 -0.28 l -15.3 15.58 Z" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 5, 5, 5"/>
+            </Button>
 
 
         </Grid>

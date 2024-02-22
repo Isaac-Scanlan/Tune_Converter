@@ -17,7 +17,7 @@
         <TextBox x:Name="textInput" VerticalAlignment="Center" Height="35"  
                  TextChanged="textInput_TextChanged"/>
         <TextBlock x:Name="tbPlaceHolder" Text="{Binding PlaceHolder}" VerticalAlignment="Center" FontWeight="Light"
-                   Margin="13,2,30,0" Panel.ZIndex="-1" Height="20"/>
+                   Margin="13,3,30,0" Panel.ZIndex="-1" Height="20"/>
         <Rectangle Panel.ZIndex="-2"/>
         <Button x:Name="buttonClear" Content="X" Click="buttonClear_Click" Margin="0,5,5,5" HorizontalAlignment="Right" Width="30"/>
     </Grid>

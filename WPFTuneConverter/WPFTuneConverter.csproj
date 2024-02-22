@@ -34,6 +34,9 @@
     <None Remove="Fonts\Montserrat Thin Italic 250.ttf" />
     <None Remove="Logo.png" />
     <None Remove="Quaver.svg" />
+    <None Remove="View\Pages\Double Logo.png" />
+    <None Remove="View\Pages\Logo_Flip.png" />
+    <None Remove="View\Pages\Logo_White.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -96,6 +99,8 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SharpVectors" Version="1.8.4" />
+    <PackageReference Include="XamlEssentials" Version="3.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -114,6 +119,9 @@
     <Resource Include="default_image.png" />
     <Resource Include="Logo.png" />
     <Resource Include="Quaver.svg" />
+    <Resource Include="View\Pages\Double Logo.png" />
+    <Resource Include="View\Pages\Logo_Flip.png" />
+    <Resource Include="View\Pages\Logo_White.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="#577bff">
+    <Grid Background="#00114d">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="TopBar" Height="40"/>
             <RowDefinition x:Name="MainPage"/>

@@ -127,6 +127,16 @@ namespace WPFTuneConverter
         {
             mainFrame.Content = new TuneRepository();
         }
+
+        private void MenuButton_Loaded_3(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new TeachingTracking();
+        }
+
+        private void MenuButton_Loaded_4(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new UserSettings();
+        }
         //    private void ConvertButton(object sender, RoutedEventArgs e)
         //    {
         //        var tuneLine = tuneTextBlock.textInput.Text.Replace("\n", "");

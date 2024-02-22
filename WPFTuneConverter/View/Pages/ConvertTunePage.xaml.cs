@@ -183,7 +183,11 @@ namespace WPFTuneConverter.View.Pages
 
         private void NextPageButton(object sender, RoutedEventArgs e)
         {
-            pageNumber += pageNumber == maxPageNumber ? 0 : 1;
+            if (pageNumber != 0)
+            {
+                pageNumber += pageNumber == maxPageNumber ? 0 : 1;
+            }
+
             pageCountLabel.Content = pageNumber + " out of " + maxPageNumber;
 
             if (maxPageNumber > 1)
@@ -212,7 +216,10 @@ namespace WPFTuneConverter.View.Pages
 
         private void PreviousPageButton(object sender, RoutedEventArgs e)
         {
-            pageNumber -= pageNumber == 1 ? 0 : 1;
+            if (pageNumber != 0)
+            {
+                pageNumber -= pageNumber == 1 ? 0 : 1;
+            }
             pageCountLabel.Content = pageNumber + " out of " + maxPageNumber;
 
             if (maxPageNumber > 1)

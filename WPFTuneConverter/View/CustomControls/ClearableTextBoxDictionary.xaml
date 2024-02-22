@@ -27,9 +27,9 @@
         <Setter Property="Fill">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                    <GradientStop Color="#9FFFEA" Offset="0"/>
-                    <GradientStop Color="#9FFFEA" Offset="0.5"/>
-                    <GradientStop Color="#E5FFF9" Offset="5"/>
+                    <GradientStop Color="#10FFCB" Offset="0"/>
+                    <GradientStop Color="#10FFCB" Offset="0.5"/>
+                    <GradientStop Color="#57ffdb" Offset="5"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -37,7 +37,7 @@
         <Setter Property="RadiusY" Value="10"/>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="5" Color="DarkSlateGray"/>
+                <DropShadowEffect BlurRadius="20" Opacity="0.6" ShadowDepth="5" Color="DarkSlateGray"/>
             </Setter.Value>
         </Setter>
     </Style>
@@ -79,7 +79,7 @@
         <Setter Property="Padding" Value="10"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="Arial Strong"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">

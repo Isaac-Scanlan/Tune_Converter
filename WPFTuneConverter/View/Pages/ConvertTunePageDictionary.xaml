@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <SolidColorBrush x:Key="BackgroundColour_D">#00114d</SolidColorBrush>
     <SolidColorBrush x:Key="BackgroundColour">#00176b</SolidColorBrush>
     <!--00114d-->
     <SolidColorBrush x:Key="PrimaryColor_D">#1044FF</SolidColorBrush>
@@ -9,10 +10,10 @@
     <SolidColorBrush x:Key="PrimaryColor_L">#E5EBFF</SolidColorBrush>
 
 
-    <SolidColorBrush x:Key="SecondaryColor_D">#6F10FF</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor">#9a57ff</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor_M">#C59FFF</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor_L">#E0CCFF</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_D">#710cac</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor">#a524f0</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_M">#be62f4</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_L">#d496f8</SolidColorBrush>
 
     <SolidColorBrush x:Key="TertiaryColor_D">#10FFCB</SolidColorBrush>
     <SolidColorBrush x:Key="TertiaryColor">#57ffdb</SolidColorBrush>
@@ -47,5 +48,7 @@
         </Setter>
 
     </Style>
+
     
+
 </ResourceDictionary>
