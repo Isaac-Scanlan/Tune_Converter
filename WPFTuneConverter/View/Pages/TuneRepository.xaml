@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFTuneConverter.View.Pages"
+      xmlns:customControls="clr-namespace:WPFTuneConverter.View.CustomControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TuneRepository">
@@ -18,14 +19,16 @@
 
     <Grid Background="#00114d">
         <Grid.RowDefinitions>
-            <RowDefinition x:Name="TopBar" Height="90"/>
+            <RowDefinition x:Name="TopBar" Height="30"/>
             <RowDefinition x:Name="MainPage"/>
-            <RowDefinition x:Name="BottomBar" Height="90"/>
+            <RowDefinition x:Name="BottomBar" Height="30"/>
         </Grid.RowDefinitions>
 
         <Rectangle Fill="Transparent"  Grid.Row="0"/>
 
-        <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Tune Repository TBI" FontSize="90"/>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/View/Pages/Double_Logo_Darker.png" Grid.Row="0" Grid.RowSpan="3"/>
+        <customControls:TuneDisplayTable Grid.Row="1"/>
+
         <!--00176b-->
         <Rectangle Fill="Transparent" Grid.Row="2"/>
     </Grid>

@@ -1,0 +1,431 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="BackgroundColour_D">#00114d</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundColour">#00176b</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundColour_L">#002094</SolidColorBrush>
+    <!--00114d-->
+    <SolidColorBrush x:Key="PrimaryColor_D">#1044FF</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor">#577bff</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor_M">#9FB3FF</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor_ML">#b3c2ff</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor_L">#E5EBFF</SolidColorBrush>
+
+
+    <SolidColorBrush x:Key="SecondaryColor_D">#710cac</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor">#a524f0</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_M">#be62f4</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_L">#d496f8</SolidColorBrush>
+
+    <SolidColorBrush x:Key="TertiaryColor_D">#10FFCB</SolidColorBrush>
+    <SolidColorBrush x:Key="TertiaryColor">#57ffdb</SolidColorBrush>
+    <SolidColorBrush x:Key="TertiaryColor_M">#9FFFEA</SolidColorBrush>
+    <SolidColorBrush x:Key="TertiaryColor_L">#E5FFF9</SolidColorBrush>
+
+    
+    
+    <!--#region Button Styles-->
+    <Style TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#577bff" Offset="0"/>
+                    <GradientStop Color="#577bff" Offset="0.5"/>
+                    <GradientStop Color="#9FB3FF" Offset="4"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.5" ShadowDepth="2.5" Color="Black"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="12">
+                        <ContentPresenter HorizontalAlignment="Center"
+                  VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryColor_D}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryColor_M}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="Edit">
+
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Margin" Value="50,0,10,0"/>
+        <Setter Property="ToolTip" Value="Edit Tune"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#37c851" Offset="0"/>
+                    <GradientStop Color="#37c851" Offset="0.5"/>
+                    <GradientStop Color="#5fd374" Offset="4"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.5" ShadowDepth="2.5" Color="Black"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="12">
+                        <Path Data="M 25.50,4.50
+                                C 26.27,3.73 27.33,3.26 28.50,3.26
+                                  30.84,3.26 32.74,5.16 32.74,7.50
+                                  32.74,8.67 32.27,9.73 31.50,10.50
+                                  31.50,10.50 11.25,30.75 11.25,30.75
+                                  11.25,30.75 3.00,33.00 3.00,33.00
+                                  3.00,33.00 5.25,24.75 5.25,24.75
+                                  5.25,24.75 25.50,4.50 25.50,4.50 Z"
+                          Fill="Transparent"
+                          Stretch="Fill"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Margin="10,10,10,10"
+                          Stroke="White"
+                          StrokeThickness="1.5"
+                          StrokeStartLineCap="Round"
+                          StrokeEndLineCap="Round"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#238034"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#53e46e"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="Button" x:Key="View">
+
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
+        <Setter Property="ToolTip" Value="View Tune"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#d3c836" Offset="0"/>
+                    <GradientStop Color="#d3c836" Offset="0.5"/>
+                    <GradientStop Color="#ded668" Offset="4"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.5" ShadowDepth="2.5" Color="Black"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="12">
+                        <Path Fill="Transparent" StrokeThickness="1.5" Stretch="Fill" Stroke="White"
+                        StrokeStartLineCap="Round" StrokeEndLineCap="Round" Margin="7,10,7,10"
+                        Data="M 22.50,18.00
+                               C 22.50,20.49 20.49,22.50 18.00,22.50
+                                 15.51,22.50 13.50,20.49 13.50,18.00
+                                 13.50,15.51 15.51,13.50 18.00,13.50
+                                 20.49,13.50 22.50,15.51 22.50,18.00 Z
+                               M 1.50,18.00
+                               C 1.50,18.00 7.50,6.00 18.00,6.00
+                                 28.50,6.00 34.50,18.00 34.50,18.00
+                                 34.50,18.00 28.50,30.00 18.00,30.00
+                                 7.50,30.00 1.50,18.00 1.50,18.00 Z"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#afa61d"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#d0c853"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="Button" x:Key="Delete">
+
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
+        <Setter Property="ToolTip" Value="Delete Tune"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#dd3936" Offset="0"/>
+                    <GradientStop Color="#dd3936" Offset="0.5"/>
+                    <GradientStop Color="#e56866" Offset="4"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.5" ShadowDepth="2.5" Color="Black"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="12">
+                        <Path Name="xSVG" 
+                              Data="M 9.00,9.00
+                                    C 9.00,9.00 27.00,27.00 27.00,27.00
+                                    M 27.00,9.00
+                                    C 27.00,9.00 9.00,27.00 9.00,27.00"
+                          Stretch="Fill"
+                          Stroke="White"
+                          Fill="White"
+                          Margin="12,12,12,12"
+                          StrokeThickness="2.5"
+                          StrokeStartLineCap="Round"
+                          StrokeEndLineCap="Round"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#bc1c1a"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#d25856"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style TargetType="Button" x:Key="SearchButton">
+    
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="Margin" Value="7"/>
+        <Setter Property="Width" Value="36"/>
+        <Setter Property="Height" Value="36"/>
+
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#577bff" Offset="0"/>
+                    <GradientStop Color="#577bff" Offset="0.5"/>
+                    <GradientStop Color="#9FB3FF" Offset="4"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.5" ShadowDepth="2.5" Color="Black"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="20">
+                        <Path Fill="Transparent" StrokeThickness="1.5" Stretch="Fill" Stroke="White"
+                              StrokeStartLineCap="Round" StrokeEndLineCap="Round" Margin="10"
+                              Data="M 31.50,31.50
+                                     C 31.50,31.50 24.97,24.97 24.97,24.97M 28.50,16.50
+                                     C 28.50,23.13 23.13,28.50 16.50,28.50
+                                       9.87,28.50 4.50,23.13 4.50,16.50
+                                       4.50,9.87 9.87,4.50 16.50,4.50
+                                       23.13,4.50 28.50,9.87 28.50,16.50 Z"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryColor_D}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryColor_M}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BrowseButton">
+
+        <Setter Property="Grid.Column" Value="14"/>
+        <Setter Property="Grid.ColumnSpan" Value="2"/>
+        <Setter Property="Grid.RowSpan" Value="3"/>
+        <Setter Property="Grid.Row" Value="35"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="ToolTip" Value="Export Tune"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="Background" Value="#00176b"/>
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.5" ShadowDepth="2.5" Color="Black"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                     BorderBrush="{TemplateBinding BorderBrush}"
+                     BorderThickness="{TemplateBinding BorderThickness}"
+                     CornerRadius="12">
+                        <Path Data="M8.71,7.71,11,5.41V15a1,1,0,0,0,2,0V5.41l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-4-4a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-4,4A1,1,0,1,0,8.71,7.71ZM21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Z"
+                          Fill="White"
+                          Stretch="Fill"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Margin="10,10,10,10"
+                          Stroke="White"
+                          StrokeThickness="0.3"
+                          StrokeStartLineCap="Round"
+                          StrokeEndLineCap="Round"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource BackgroundColour_D}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource BackgroundColour_L}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!--#endregion-->
+
+    <Style TargetType="DataGrid">
+        <Setter Property="FontFamily" Value="Segoe UI Light"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="RowBackground" Value="Transparent"/>
+        <Setter Property="AlternatingRowBackground" Value="Transparent"/>
+        <Setter Property="GridLinesVisibility" Value="All"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+        <Setter Property="CanUserResizeColumns" Value="True"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="SelectionMode" Value="Extended"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="ColumnHeaderHeight" Value="30"/>
+        <Setter Property="RowHeight" Value="30"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#e2e2e2"/>
+        <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="10,0,0,0"/>
+        <Setter Property="RowHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="Background" Value="{StaticResource PrimaryColor_D}"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Width" Value="30"/>
+                    
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ColumnHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="#c2c2c2"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,2"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Padding" Value="2, 2, 0,0"/>
+                    
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CellStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderBrush" Value="#e2e2e2"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,0"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,0"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

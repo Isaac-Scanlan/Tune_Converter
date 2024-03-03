@@ -1,0 +1,71 @@
+﻿<Window x:Class="WPFTuneConverter.View.Windows.TunePageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFTuneConverter.View.Windows"
+        mc:Ignorable="d"
+        Title="TunePageWindow" Height="800" Width="550">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="TunePageWindowDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Name="MainGrid" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Image Name="TuneImage" Grid.Row="0">
+            <Image.Effect>
+                <DropShadowEffect BlurRadius="20" Opacity="0.4" ShadowDepth="5" Color="DarkSlateGray"/>
+            </Image.Effect>
+        </Image>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Width="160" Background="Transparent"
+                    Margin="0,20,0,0" Height="40">
+            <Button x:Name="previousPageButton" Grid.Column="21" Grid.RowSpan="3" Grid.Row="35" Margin="0,0,5,0" Grid.ColumnSpan="1"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SideArrow}"
+                    Click="previousPageButton_Click">
+
+                <Path Name="previousPgPath"  Height="30" Width="30" 
+                        Fill="Transparent" StrokeThickness="2" Stretch="Fill" Stroke="SlateGray"
+                            Data="M 24.00,18.00
+                            C 24.00,18.00 12.00,18.00 12.00,18.00M 18.00,12.00
+                            C 18.00,12.00 12.00,18.00 12.00,18.00
+                                12.00,18.00 18.00,24.00 18.00,24.00M 33.00,18.00
+                            C 33.00,26.28 26.28,33.00 18.00,33.00
+                                9.72,33.00 3.00,26.28 3.00,18.00
+                                3.00,9.72 9.72,3.00 18.00,3.00
+                                26.28,3.00 33.00,9.72 33.00,18.00 Z" 
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+
+             </Button>
+             <Label  x:Name="pageCountLabel" Grid.Column="22"  Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="35" Content="0 out of 0" 
+                                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="SlateGray"
+                     Margin="0,0,0,1"/>
+             <Button x:Name="nextPageButton" Grid.Column="26" Grid.RowSpan="3" Grid.Row="35" Margin="5,0,0,0"  Grid.ColumnSpan="1"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SideArrow}"
+                        Click="nextPageButton_Click">
+
+             <Path Name="nextPgPath"  Height="30" Width="30"
+                    Fill="Transparent" StrokeThickness="2" Stretch="Fill" Stroke="SlateGray"
+                        StrokeStartLineCap="Round" StrokeEndLineCap="Round" 
+          
+                        Data="M 12.00,18.00
+                    C 12.00,18.00 24.00,18.00 24.00,18.00M 18.00,24.00
+                    C 18.00,24.00 24.00,18.00 24.00,18.00
+                        24.00,18.00 18.00,12.00 18.00,12.00M 33.00,18.00
+                    C 33.00,26.28 26.28,33.00 18.00,33.00
+                        9.72,33.00 3.00,26.28 3.00,18.00
+                        3.00,9.72 9.72,3.00 18.00,3.00
+                        26.28,3.00 33.00,9.72 33.00,18.00 Z" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

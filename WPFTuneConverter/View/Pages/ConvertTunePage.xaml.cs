@@ -28,12 +28,15 @@ namespace WPFTuneConverter.View.Pages
         string fileName = string.Empty;
         List<string> tune = new List<string>();
 
-        int pageNumber = 0;
-        int maxPageNumber = 0;
+        public int pageNumber = 0;
+        public int maxPageNumber = 0;
 
-        string file_ext = "";
+        public string file_ext = "";
 
         int resizeFactor = 6;
+
+        
+        
 
         List<KeyNote> keys = new() {
             new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
@@ -91,9 +94,11 @@ namespace WPFTuneConverter.View.Pages
                 bm = new Bitmap(bmpTemp, new System.Drawing.Size(bmpTemp.Width / 4, bmpTemp.Height / 4));
             }
 
-            tuneImage.Source = new BitmapImage(new Uri("C:/Users/Isaac/source/repos/TuneConverter/TuneConverterAppInterface/default_image.png"));
+            //tuneImage.Source = new BitmapImage(new Uri("C:/Users/Isaac/source/repos/TuneConverter/TuneConverterAppInterface/default_image.png"));
 
             pageCountLabel.Content = pageNumber + " out of " + maxPageNumber;
+
+            tuneImage.Opacity = 0.5;
         }
 
 
@@ -158,6 +163,9 @@ namespace WPFTuneConverter.View.Pages
             file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + tune[1] + tuneDirec + "/" + fileName;
             var file = file_ext + page_num + ".png";
 
+            TuneWriter tw = new TuneWriter();
+            tw.WriteFile(tune);
+
             //using (var bmpTemp = new Bitmap(file))
             //{
             //    bm = new Bitmap(bmpTemp, new Size(bmpTemp.Width / resizeFactor, bmpTemp.Height / resizeFactor));
@@ -172,13 +180,14 @@ namespace WPFTuneConverter.View.Pages
             bmpTemp.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
             bmpTemp.UriSource = new Uri(file);
             bmpTemp.EndInit();
+            tuneImage.Opacity = 1;
             tuneImage.Source = bmpTemp;
 
 
             pageCountLabel.Content = pageNumber + " out of " + maxPageNumber;
 
-            TuneWriter tw = new TuneWriter();
-            tw.WriteFile(tune);
+            //TuneWriter tw = new TuneWriter();
+            //tw.WriteFile(tune);
         }
 
         private void NextPageButton(object sender, RoutedEventArgs e)
@@ -353,6 +362,7 @@ namespace WPFTuneConverter.View.Pages
                 bmpTemp.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
                 bmpTemp.UriSource = new Uri(file1);
                 bmpTemp.EndInit();
+                tuneImage.Opacity = 1;
                 tuneImage.Source = bmpTemp;
             }
             catch (Exception es)
@@ -374,9 +384,15 @@ namespace WPFTuneConverter.View.Pages
             typeComboBox.textInput.Text = "";
             titleTextBox.textInput.Clear();
             tuneTextBlock.textInput.Text = "";
+            tuneImage.Opacity = 0.5;
 
-            tuneImage.Source = new BitmapImage(new Uri("C:/Users/Isaac/source/repos/TuneConverter/TuneConverterAppInterface/default_image.png"));
+            tuneImage.Source = new BitmapImage(new Uri("C:/Users/Isaac/source/repos/TuneConverter/WPFTuneConverter/default_image.png"));
         }
 
+        private void previousPageButton_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var butt = previousPageButton.Background;
+            previousPageButton.Background = (System.Windows.Media.Brush)System.Windows.Media.ColorConverter.ConvertFromString("#EA1515");;
+        }
     }
 }

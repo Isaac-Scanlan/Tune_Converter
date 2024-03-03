@@ -11,60 +11,55 @@
     <SolidColorBrush x:Key="PrimaryColor_L">#E5EBFF</SolidColorBrush>
 
 
-    <SolidColorBrush x:Key="SecondaryColor_D">#6F10FF</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor">#9a57ff</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor_M">#C59FFF</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryColor_L">#E0CCFF</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_D">#710cac</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor">#a524f0</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_M">#be62f4</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_L">#d496f8</SolidColorBrush>
 
     <SolidColorBrush x:Key="TertiaryColor_D">#10FFCB</SolidColorBrush>
     <SolidColorBrush x:Key="TertiaryColor">#57ffdb</SolidColorBrush>
     <SolidColorBrush x:Key="TertiaryColor_M">#9FFFEA</SolidColorBrush>
     <SolidColorBrush x:Key="TertiaryColor_L">#E5FFF9</SolidColorBrush>
 
-
-    <Style TargetType="Label">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
-        <Setter Property="Effect">
+    
+    <Style TargetType="Button" x:Key="SideArrow">
+        <Setter Property="Background">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="5" Color="DarkSlateGray"/>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#eeeeee" Offset="0"/>
+                    <GradientStop Color="#eeeeee" Offset="0.5"/>
+                    <GradientStop Color="white" Offset="4"/>
+                </LinearGradientBrush>
             </Setter.Value>
         </Setter>
-    </Style>
-
-    <Style TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource SecondaryColor_M}"/>
-        <Setter Property="Background" Value="#00176b"/>
-        <!--<Setter Property="Effect">
+        <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="2.5" Color="Gray"/>
+                <DropShadowEffect BlurRadius="15" Opacity="0.3" ShadowDepth="2.5" Color="SlateGray"/>
             </Setter.Value>
-        </Setter>-->
+        </Setter>
 
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Padding" Value="0, 0, 0, 0"/>
+        <Setter Property="Padding" Value="10"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
-        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                        CornerRadius="8">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="14">
                         <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
+                  VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource BackgroundColour_D}"/>
+                <Setter Property="Background" Value="#bbbbbb"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource BackgroundColour_L}"/>
+                <Setter Property="Background" Value="White"/>
             </Trigger>
         </Style.Triggers>
     </Style>

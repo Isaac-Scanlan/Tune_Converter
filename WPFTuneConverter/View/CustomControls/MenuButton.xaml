@@ -17,12 +17,17 @@
 
     <Grid>
         <Button Name="menuButtn" Margin="0,0,0,0"  
-               Click="OnButtonClick">
+               Click="OnButtonClick" >
 
             <!--<Image Name="ButtonImage"  Height="40" Width="40" Source="{svgc:SvgImage svgPath}" />-->
-            <Path Name="ButtonSVG"  Height="30" Width="30"
-                  Fill="White" Stretch="Fill" Data="{Binding IconName}" 
-                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+            <Path Name="ButtonSVG"  Height="30" Width="30" 
+                  Data="{Binding IconName}"
+                  Fill="Transparent" Stretch="Fill"  
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                  Stroke="White"
+                  StrokeThickness="1.5"
+                  StrokeStartLineCap="Round"
+                  StrokeEndLineCap="Round"/>
 
         </Button>
 
