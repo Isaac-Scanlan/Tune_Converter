@@ -8,16 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Emgu.CV.Bitmap" Version="4.8.1.5350" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\TuneConverter.Framework.ABCConverter\TuneConverter.Framework.ABCConverter.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.PageComponents\TuneConverter.Framework.PageComponents.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.PageImageIO\TuneConverter.Framework.PageImageIO.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.TuneComponents\TuneConverter.Framework.TuneComponents.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.TuneIO\TuneConverter.Framework.TuneIO.csproj" />
-    <ProjectReference Include="..\TuneConverter.Framework.TuneStorage\TuneConverter.Framework.TuneStorage.csproj" />
   </ItemGroup>
 
 </Project>

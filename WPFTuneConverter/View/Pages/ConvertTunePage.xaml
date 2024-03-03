@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFTuneConverter.View.Pages"
       xmlns:customControls="clr-namespace:WPFTuneConverter.View.CustomControls"
+      
       mc:Ignorable="d" 
       d:DesignHeight="710" d:DesignWidth="1280"
       Title="ConvertTunePage">
@@ -17,16 +18,16 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="#00114d">
+    <Grid Background="#00114d" >
         <Grid.RowDefinitions>
-            <RowDefinition x:Name="TopBar" Height="40"/>
+            <RowDefinition x:Name="TopBar" Height="30"/>
             <RowDefinition x:Name="MainPage"/>
-            <RowDefinition x:Name="BottomBar" Height="40"/>
+            <RowDefinition x:Name="BottomBar" Height="30"/>
         </Grid.RowDefinitions>
         <!--00176b-->
         <Rectangle Fill="Transparent"  Grid.Row="0"/>
 
-        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/View/Pages/Double Logo.png" Grid.Row="1"/>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/View/Pages/Double_Logo_Darker.png" Grid.Row="1"/>
 
         <Grid Background="Transparent" Grid.Row="1">
 
@@ -67,6 +68,9 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -104,10 +108,10 @@
             </Grid.ColumnDefinitions>
 
             <Label x:Name="titleLabel" Content="Title" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="0"/>
-            <customControls:ClearableTextBox x:Name="titleTextBox" PlaceHolder="Tune Title" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="2"/>
+            <customControls:ClearableTextBox x:Name="titleTextBox" PlaceHolder="- - Tune Title - -" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="2"/>
 
             <Label x:Name="writtenByLabel" Content="Composer" Grid.Column="10" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="0"/>
-            <customControls:ClearableTextBox x:Name="writtenByBox" PlaceHolder="Composer Name" Grid.Column="10" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="2"/>
+            <customControls:ClearableTextBox x:Name="writtenByBox" PlaceHolder="- - Composer Name - -" Grid.Column="10" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="2"/>
 
             <Label x:Name="typeLabel" Content="Type" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="5"/>
             <customControls:PrettyComboBox x:Name="typeComboBox" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="7"/>
@@ -118,27 +122,129 @@
             <Label x:Name="keyLabel" Content="Key" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="10"/>
             <customControls:PrettyComboBox x:Name="keyComboBox" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Grid.Row="12"/>
 
-            <customControls:TuneTextBox x:Name="tuneTextBlock" Grid.Column="2" Grid.ColumnSpan="14" Grid.RowSpan="16" Grid.Row="16" />
+            <Label x:Name="tuneTextBoxLabel" Content="Tune Content" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="2" Grid.Row="15"/>
+            <customControls:TuneTextBox x:Name="tuneTextBlock" Grid.Column="2" Grid.ColumnSpan="14" Grid.RowSpan="17" Grid.Row="17" />
 
-            <Button x:Name="convertButton" Content="Convert" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="33" Margin="3,3,3,3" Click="ConvertButton" MaxHeight="46" MaxWidth="117"/>
-            <Button x:Name="browseButton" Content="Browse" Grid.Column="7" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="33" Margin="16,3,16,3" Click="BrowseButton_Click" MaxHeight="46" MaxWidth="117"/>
-            <Button x:Name="clearButton" Content="Clear" Grid.Column="13" Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Row="33" Margin="3,3,3,3" Click="Clear_Click" MaxHeight="46" MaxWidth="117"/>
-
-            <Image x:Name="tuneImage" Source="/default_image.png" Grid.Column="18" Grid.ColumnSpan="12"  Grid.RowSpan="30" Grid.Row="2"/>
-
-            <Button x:Name="previousPageButton" Grid.Column="20" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="20,0,0,0" Click="PreviousPageButton">
-                <Path Name="previousPgPath"  Height="20" Width="30"
-                  Fill="White" Stretch="Fill" Data="M63.94,24.28a14.28,14.28,0,0,0-20.36-20L4.1,44.42a14.27,14.27,0,0,0,0,20l38.69,39.35a14.27,14.27,0,0,0,20.35-20L48.06,68.41l60.66-.29a14.27,14.27,0,1,0-.23-28.54l-59.85.28,15.3-15.58Z" 
-                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 5, 5, 5"/>
+            <Button x:Name="convertButton"  Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="35" 
+                    Margin="0,0,0,0" Click="ConvertButton" Height="50" Width="50" ToolTip="Build Tune"
+                    VerticalAlignment="Center">
+                <Path Data=
+                      "M 25.50,4.50
+                       C 26.27,3.73 27.33,3.26 28.50,3.26
+                         30.84,3.26 32.74,5.16 32.74,7.50
+                         32.74,8.67 32.27,9.73 31.50,10.50
+                         31.50,10.50 11.25,30.75 11.25,30.75
+                         11.25,30.75 3.00,33.00 3.00,33.00
+                         3.00,33.00 5.25,24.75 5.25,24.75
+                         5.25,24.75 25.50,4.50 25.50,4.50 Z"
+                       Fill="Transparent" Stretch="Fill"  
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                       Stroke="White"
+                       StrokeThickness="1.5"
+                       StrokeStartLineCap="Round"
+                       StrokeEndLineCap="Round"
+                      />  
             </Button>
-            <Label  x:Name="pageCountLabel" Grid.Column="22"  Grid.ColumnSpan="4" Grid.RowSpan="2" Grid.Row="33" Content="0 out of 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <Button x:Name="nextPageButton" Grid.Column="26" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="0,0,20,0" Click="NextPageButton">
-
-                <Path Name="nextPgPath"  Height="20" Width="30"
-                  Fill="White" Stretch="Fill" Data="M -63.94 -24.28 a 14.28 14.28 180 0 0 20.36 20 L -4.1 -44.42 a 14.27 14.27 180 0 0 -0 -20 l -38.69 -39.35 a 14.27 14.27 180 0 0 -20.35 20 L -48.06 -68.41 l -60.66 0.29 a 14.27 14.27 180 1 0 0.23 28.54 l 59.85 -0.28 l -15.3 15.58 Z" 
-                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5, 5, 5, 5"/>
+            <Button x:Name="browseButton" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="35" 
+                    Margin="0,0,0,0" Click="BrowseButton_Click" Height="50" Width="50" ToolTip="Browse">
+                <Path Data="M 13.50,22.50
+                   C 13.50,22.50 22.50,22.50 22.50,22.50M 18.00,27.00
+                   C 18.00,27.00 18.00,18.00 18.00,18.00M 21.00,3.00
+                   C 21.00,3.00 21.00,12.00 21.00,12.00
+                     21.00,12.00 30.00,12.00 30.00,12.00M 21.00,3.00
+                   C 21.00,3.00 9.00,3.00 9.00,3.00
+                     7.34,3.00 6.00,4.34 6.00,6.00
+                     6.00,6.00 6.00,30.00 6.00,30.00
+                     6.00,31.66 7.34,33.00 9.00,33.00
+                     9.00,33.00 27.00,33.00 27.00,33.00
+                     28.66,33.00 30.00,31.66 30.00,30.00
+                     30.00,30.00 30.00,12.00 30.00,12.00
+                     30.00,12.00 21.00,3.00 21.00,3.00 Z"
+                      Fill="Transparent" Stretch="Fill"  
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Margin="13,10,13,10"
+                      Stroke="White"
+                      StrokeThickness="1.5"
+                      StrokeStartLineCap="Round"
+                      StrokeEndLineCap="Round"
+                      />
+            </Button>
+            <Button x:Name="clearButton" Grid.Column="7" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="35" 
+                    Margin="0,0,0,0" Click="Clear_Click" Height="50" Width="50" ToolTip="Clear">
+                <Path Data="M 13.50,13.50
+                               C 13.50,13.50 22.50,22.50 22.50,22.50M 22.50,13.50
+                               C 22.50,13.50 13.50,22.50 13.50,22.50M 33.00,18.00
+                               C 33.00,26.28 26.28,33.00 18.00,33.00
+                                 9.72,33.00 3.00,26.28 3.00,18.00
+                                 3.00,9.72 9.72,3.00 18.00,3.00
+                                 26.28,3.00 33.00,9.72 33.00,18.00 Z"
+                      Fill="Transparent" Stretch="Fill"  
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                      Stroke="White"
+                      StrokeThickness="1.5"
+                      StrokeStartLineCap="Round"
+                      StrokeEndLineCap="Round"
+                      />
             </Button>
 
+            <Button x:Name="BrowseButton" Grid.Column="14" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="35" 
+                    Margin="0,0,0,0" Height="50" Width="50" ToolTip="Browse" Style="{StaticResource BrowseButton}">
+                <Path Data="M 18.00,3.00
+                       C 21.63,6.97 23.88,12.22 24.00,18.00
+                         23.88,23.77 21.63,29.03 18.00,33.00
+                         14.37,29.03 12.12,23.78 12.00,18.00
+                         12.12,12.23 14.37,6.97 18.00,3.00
+                         18.00,3.00 18.00,3.00 18.00,3.00 Z
+                       M 3.00,18.00
+                       C 3.00,18.00 33.00,18.00 33.00,18.00M 33.00,18.00
+                       C 33.00,26.28 26.28,33.00 18.00,33.00
+                         9.72,33.00 3.00,26.28 3.00,18.00
+                         3.00,9.72 9.72,3.00 18.00,3.00
+                         26.28,3.00 33.00,9.72 33.00,18.00 Z"
+                    Fill="Transparent" Stretch="Fill"  
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                    Stroke="White"
+                    StrokeThickness="1.5"
+                    StrokeStartLineCap="Round"
+                    StrokeEndLineCap="Round"
+                    />
+            </Button>
+
+            <Image x:Name="tuneImage" Source="/View/Pages/default_image.png" Grid.Column="18" Grid.ColumnSpan="12"  Grid.RowSpan="30" Grid.Row="4"/>
+
+            <Button x:Name="previousPageButton" Grid.Column="21" Grid.RowSpan="3" Grid.Row="35" Margin="0,0,0,0" Click="PreviousPageButton" Grid.ColumnSpan="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SideArrow}">
+
+                <Path Name="previousPgPath"  Height="30" Width="30" 
+                  Fill="Transparent" StrokeThickness="1.5" Stretch="Fill" Stroke="White"
+                      Data="M 24.00,18.00
+                       C 24.00,18.00 12.00,18.00 12.00,18.00M 18.00,12.00
+                       C 18.00,12.00 12.00,18.00 12.00,18.00
+                         12.00,18.00 18.00,24.00 18.00,24.00M 33.00,18.00
+                       C 33.00,26.28 26.28,33.00 18.00,33.00
+                         9.72,33.00 3.00,26.28 3.00,18.00
+                         3.00,9.72 9.72,3.00 18.00,3.00
+                         26.28,3.00 33.00,9.72 33.00,18.00 Z" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                
+            </Button>
+            <Label  x:Name="pageCountLabel" Grid.Column="22"  Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="35" Content="0 out of 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Button x:Name="nextPageButton" Grid.Column="26" Grid.RowSpan="3" Grid.Row="35" Margin="0,0,0,0" Click="NextPageButton" Grid.ColumnSpan="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SideArrow}">
+
+                <Path Name="nextPgPath"  Height="30" Width="30"
+                  Fill="Transparent" StrokeThickness="1.5" Stretch="Fill" Stroke="White"
+                      StrokeStartLineCap="Round" StrokeEndLineCap="Round" 
+                      
+                      Data="M 12.00,18.00
+                    C 12.00,18.00 24.00,18.00 24.00,18.00M 18.00,24.00
+                    C 18.00,24.00 24.00,18.00 24.00,18.00
+                      24.00,18.00 18.00,12.00 18.00,12.00M 33.00,18.00
+                    C 33.00,26.28 26.28,33.00 18.00,33.00
+                      9.72,33.00 3.00,26.28 3.00,18.00
+                      3.00,9.72 9.72,3.00 18.00,3.00
+                      26.28,3.00 33.00,9.72 33.00,18.00 Z" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+            </Button>
 
         </Grid>
 

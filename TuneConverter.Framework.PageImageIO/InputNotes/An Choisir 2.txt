@@ -1,0 +1,18 @@
+An Choisir 2
+Slide
+A minor
+Double
+
+__
+E_A AGA C_D' E'_C
+D'E'D' D'E'D' B_D' G'__
+E_A AGA C_D' E'_C
+D'_C A_G A__ A_G
+|A_B C_D'
+__
+E'__ D'E'D' C_D' B_C
+ABA B_A GED E_D
+E_A AGA C_D' E'_C
+D'_C A_G A_B C_D'
+|A__ A_G
+__

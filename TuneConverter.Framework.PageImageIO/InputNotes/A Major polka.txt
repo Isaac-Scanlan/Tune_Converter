@@ -1,0 +1,18 @@
+A Major polka
+Polka
+A major
+Double
+
+__
+AE AB C_ CB
+AE AB C_ CE'
+F'E' CA B_ BE'
+F'E' CB AD' CB
+|AB CE'
+__
+A'_ A'F' G'_ G'E'
+F'_ A'F' E'A CE'
+F'E' CA B_ BE'
+F'E' CB AB CE'
+|AD' CB
+__
