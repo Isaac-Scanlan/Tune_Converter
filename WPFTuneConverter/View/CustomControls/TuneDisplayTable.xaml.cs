@@ -1,30 +1,15 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Numerics;
+﻿using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TuneConverter.Framework.PageImageIO.ImageComponents;
 using TuneConverter.Framework.TuneComponents.TuneComponents;
 using TuneConverter.Framework.TuneIO.TuneReader;
 using TuneConverter.Framework.TuneStorage;
 using WPFTuneConverter.View.Pages;
 using WPFTuneConverter.View.Windows;
-using static Emgu.CV.Dai.OpenVino;
+
 
 namespace WPFTuneConverter.View.CustomControls
 {
@@ -48,11 +33,8 @@ namespace WPFTuneConverter.View.CustomControls
             tuneFullList = TuneSerializer.ConvertByteArrayListToTuneFullList("data.dat");
             tuneFullList = tuneFullList.OrderBy(record => record.Title).ToList();
 
-
-
             foreach (TuneFull tune in tuneFullList)
             {
-
                 var keyNote = tune.Key.NoteType.ToString();
                 string accidentalType = tune.Key.AccidentalType.ToString().Equals("Flat")? "b" :
                                         tune.Key.AccidentalType.ToString().Equals("Sharp") ? "#" : "";
@@ -66,9 +48,7 @@ namespace WPFTuneConverter.View.CustomControls
                 });
             }
 
-
             FullTableRecord = TableRecord;
-
             dataGrid.ItemsSource = TableRecord;
 
             SearchOptionsCombobox.textInput.Items.Add("Title");
@@ -76,8 +56,6 @@ namespace WPFTuneConverter.View.CustomControls
             SearchOptionsCombobox.textInput.Items.Add("Key");
             SearchOptionsCombobox.textInput.Items.Add("Composer");
 
-            
-           //mainTable. = tableRecord;
         }
 
         private void TuneRepo_Unloaded(object sender, RoutedEventArgs e)
@@ -89,7 +67,6 @@ namespace WPFTuneConverter.View.CustomControls
                 stringsList.Add(TuneSerializer.SerializeTune(tune));
             }
 
-            // Save list of byte arrays to a file
             TuneSerializer.SaveByteArrayListToFile(
                 TuneSerializer.ConvertStringListToByteArrayList(stringsList), "data.dat");
         }
@@ -236,12 +213,7 @@ namespace WPFTuneConverter.View.CustomControls
             dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = TableRecord;
 
-            tuneFullList = tuneFullList.Where(tune => 
-            !tune.Title.Equals(selectedItem.Title) 
-            //||
-            //!tune.Key.Equals(selectedItem.Key) ||
-            //!tune.TuneType.ToString().Equals(selectedItem.Type)
-            ).ToList();
+            tuneFullList = tuneFullList.Where(tune => !tune.Title.Equals(selectedItem.Title)).ToList();
             tuneFullList = tuneFullList.OrderBy(record => record.Title).ToList();
 
             
@@ -280,7 +252,6 @@ namespace WPFTuneConverter.View.CustomControls
                 {
                     string pattern = @"\\(.+)\.";
 
-                    // Use Regex.Matches to find all matches
                     MatchCollection matches = Regex.Matches(sa, pattern);
                     var s = matches[0].Groups[1].Value;
                     bmpTemp = new BitmapImage();
@@ -299,17 +270,13 @@ namespace WPFTuneConverter.View.CustomControls
 
         static void SaveBitmapImageToFile(BitmapImage bitmapImage, string filePath)
         {
-            // Create a BitmapEncoder based on the provided file extension
-            BitmapEncoder encoder = new PngBitmapEncoder(); // For PNG format, change to JpegBitmapEncoder or other encoders if needed
+            BitmapEncoder encoder = new PngBitmapEncoder(); 
 
-            // Create a MemoryStream to hold the encoded image data
             MemoryStream memoryStream = new MemoryStream();
 
-            // Encode the BitmapImage and save it to the MemoryStream
             encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
             encoder.Save(memoryStream);
 
-            // Write the encoded image data from the MemoryStream to a file using a FileStream
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
                 memoryStream.WriteTo(fileStream);
@@ -318,11 +285,8 @@ namespace WPFTuneConverter.View.CustomControls
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the parent window
             var mainWindow = Window.GetWindow(this) as MainWindow;
-
             var convertPage = new ConvertTunePage();
-
             var selectedItem = (TableRecord)dataGrid.SelectedItem;
 
             if (selectedItem is null)
@@ -331,8 +295,6 @@ namespace WPFTuneConverter.View.CustomControls
             }
 
             var inTuneDirec = "c:\\Users\\Isaac\\source\\repos\\TuneConverter\\TuneConverter.Framework.PageImageIO\\InputNotes/" + selectedItem.Title + ".txt";
-
-            bool multiPage = false;
 
             if (true)
             {
@@ -379,7 +341,6 @@ namespace WPFTuneConverter.View.CustomControls
 
                 if (file.Count > 2)
                 {
-                    multiPage = true;
                     double cou = file.Count / 2.0;
                     convertPage.maxPageNumber = (int)Math.Round(cou, 0, MidpointRounding.AwayFromZero);
                 }
@@ -391,8 +352,6 @@ namespace WPFTuneConverter.View.CustomControls
                 convertPage.tuneTextBlock.textInput.Text = disp;
             }
 
-
-
             string tuneDirec = convertPage.maxPageNumber > 1 ? "/" + convertPage.titleTextBox.textInput.Text : "";
             string page_num = convertPage.maxPageNumber > 1 ? "_page_1" : "";
 
@@ -402,12 +361,6 @@ namespace WPFTuneConverter.View.CustomControls
             convertPage.file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + convertPage.typeComboBox.textInput.Text + tuneDirec + "/" + convertPage.titleTextBox.textInput.Text;
             var file1 = convertPage.file_ext + page_num + ".png";
 
-            //using (var bmpTemp = new Bitmap(file))
-            //{
-            //    bm = new Bitmap(bmpTemp, new Size(bmpTemp.Width / resizeFactor, bmpTemp.Height / resizeFactor));
-            //}
-
-            //tuneImage.Source = new BitmapImage(new Uri(file));
 
             try
             {
@@ -425,12 +378,8 @@ namespace WPFTuneConverter.View.CustomControls
 
             }
 
-
             convertPage.pageCountLabel.Content = convertPage.pageNumber + " out of " + convertPage.maxPageNumber;
 
-
-
-            // Navigate to Page 2
             mainWindow?.mainFrame.Navigate(convertPage);
 
         }
