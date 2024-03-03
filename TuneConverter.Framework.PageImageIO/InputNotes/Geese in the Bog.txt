@@ -1,16 +1,14 @@
 Geese in the Bog
 Jig
 C major
-Double
-
 __
 CEE GEE CEE GAB
 CEE GED EAA A_B
 CEE GEE CEE GAB
-CBA GED EAA A_B
+CEE GED EAA A_B
 __
 CD'E' G'E'D' E'A'A' G'E'D'
 CD'E' G'E'D' E'A'A' A'_B
 CD'E' G'E'D' E'A'A' G'E'D'
-CBA GED EAA A_B
+CEE GED EAA A_B
 __

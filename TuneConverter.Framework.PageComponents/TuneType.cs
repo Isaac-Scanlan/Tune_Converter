@@ -11,11 +11,11 @@ public enum TuneType
     Polka = (13 * 10),
     Slipjig = (14 * 20),
     Jig = (17 * 30),
-    Slide = (17 * 40),
-    Reel = (21 * 50),
-    Hornpipe = 21 * 60,
-    Barndance = 21 * 70,
-    Fling = 21 * 80,
+    Reel = (21 * 40),
+    Hornpipe = 21 * 50,
+    Barndance = 21 * 60,
+    Fling = 21 * 70,
+    Slide = (29 * 80),
     Waltz = (29 * 90),
     Mazurka = Waltz * 100
 }

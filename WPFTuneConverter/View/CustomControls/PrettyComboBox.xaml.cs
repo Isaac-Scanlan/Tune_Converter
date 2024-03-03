@@ -20,12 +20,9 @@ namespace WPFTuneConverter.View.CustomControls
     /// </summary>
     public partial class PrettyComboBox : UserControl
     {
-        public int popupOffset = 0;
         public PrettyComboBox()
         {
             InitializeComponent();
-
-            
         }
 
     }

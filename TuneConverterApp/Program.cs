@@ -10,7 +10,6 @@ using TuneConverter.Framework.TuneIO.TuneReader;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
-using TuneConverter.Framework.TuneStorage;
 
 namespace Main.TuneConverterApp;
 
@@ -18,21 +17,21 @@ public class Program
 { 
     public static void Main(string[] args)
     {
-        //var file = ReadTune("An Choisir 2.txt");
+        //var file = ReadTune("Cooley's.txt");
 
         var file = ArrangeTuneList(args);
 
         var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
 
-        //var jsonString = JsonConvert.SerializeObject(tuneFull);
-        //var hash = GetHashString(jsonString);
+        var jsonString = JsonConvert.SerializeObject(tuneFull);
+        var hash = GetHashString(jsonString);
 
 
-        //var obj = JsonConvert.DeserializeObject<TuneFull>(jsonString);
+        var obj = JsonConvert.DeserializeObject<TuneFull>(jsonString);
 
-        //var foo = tuneFull == obj;
-        //var foo2 = tuneFull == tuneFull with { };
+        var foo = tuneFull == obj;
+        var foo2 = tuneFull == tuneFull with { };
 
         var middle = DateTime.Now;
         var assembledPage = AssemblePage(tuneFull);
@@ -47,17 +46,6 @@ public class Program
         //DisplayImage(assembledPage);
 
         WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
-
-        var tuneDataList = TuneSerializer.ConvertByteArrayListToStringList("data.dat");
-        tuneDataList.Add(TuneSerializer.SerializeTune(tuneFull));
-
-
-
-        // Convert list of strings to list of byte arrays
-        List<byte[]> byteArrayList = TuneSerializer.ConvertStringListToByteArrayList(tuneDataList);
-
-        // Save list of byte arrays to a file
-        TuneSerializer.SaveByteArrayListToFile(byteArrayList, "data.dat");
     }
 
     public static List<List<string>> ReadTune(string fileName)

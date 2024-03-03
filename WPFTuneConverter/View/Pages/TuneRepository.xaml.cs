@@ -23,9 +23,6 @@ namespace WPFTuneConverter.View.Pages
         public TuneRepository()
         {
             InitializeComponent();
-
-
-
         }
     }
 }

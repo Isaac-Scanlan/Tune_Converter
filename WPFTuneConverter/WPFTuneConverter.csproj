@@ -33,9 +33,8 @@
     <None Remove="Fonts\Montserrat Thin 250.ttf" />
     <None Remove="Fonts\Montserrat Thin Italic 250.ttf" />
     <None Remove="Logo.png" />
-    <None Remove="View\Pages\default_image.png" />
+    <None Remove="Quaver.svg" />
     <None Remove="View\Pages\Double Logo.png" />
-    <None Remove="View\Pages\Double_Logo_Darker.png" />
     <None Remove="View\Pages\Logo_Flip.png" />
     <None Remove="View\Pages\Logo_White.png" />
   </ItemGroup>
@@ -110,7 +109,6 @@
     <ProjectReference Include="..\TuneConverter.Framework.PageImageIO\TuneConverter.Framework.PageImageIO.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.TuneComponents\TuneConverter.Framework.TuneComponents.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.TuneIO\TuneConverter.Framework.TuneIO.csproj" />
-    <ProjectReference Include="..\TuneConverter.Framework.TuneStorage\TuneConverter.Framework.TuneStorage.csproj" />
     <ProjectReference Include="..\TuneConverterApp\Main.TuneConverterApp.csproj" />
   </ItemGroup>
 
@@ -120,9 +118,8 @@
     <Resource Include="Big_Logo_White_Clear.png" />
     <Resource Include="default_image.png" />
     <Resource Include="Logo.png" />
-    <Resource Include="View\Pages\default_image.png" />
+    <Resource Include="Quaver.svg" />
     <Resource Include="View\Pages\Double Logo.png" />
-    <Resource Include="View\Pages\Double_Logo_Darker.png" />
     <Resource Include="View\Pages\Logo_Flip.png" />
     <Resource Include="View\Pages\Logo_White.png" />
   </ItemGroup>

@@ -40,8 +40,7 @@
             <Path
               x:Name="Arrow2"
               Grid.Column="1"    
-              Fill="Transparent"
-              Stroke="White"
+              Fill="White"
               Stretch="Fill" 
               Height="10"
               Width="17"
@@ -49,11 +48,7 @@
               StrokeThickness="0.5"
               HorizontalAlignment="Right"
               VerticalAlignment="Center"
-              StrokeStartLineCap="Round"
-              StrokeEndLineCap="Round"
-              Data="M 9.00,13.50
-           C 9.00,13.50 18.00,22.50 18.00,22.50
-             18.00,22.50 27.00,13.50 27.00,13.50"
+              Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
              />
             
         </Grid>
@@ -79,7 +74,7 @@
     </Style>
 
     <Style TargetType="ComboBox">
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="{StaticResource PrimaryColor_M}"/>
         <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor_M}"/>
         <Setter Property="BorderThickness" Value="3"/>
@@ -98,7 +93,6 @@
                 <DropShadowEffect BlurRadius="20" Opacity="0.6" ShadowDepth="5" Color="DarkSlateGray"/>
             </Setter.Value>
         </Setter>
-
 
         <Setter Property="Template">
             <Setter.Value>
@@ -128,26 +122,21 @@
                             Margin="4,3,23,3"
                             Focusable="True" 
                             Background="{StaticResource SecondaryColor_M}"
-                            Foreground="White"
+                            Foreground="Black"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
 
                         <Path
                           x:Name="Arrow2"
                           Grid.Column="1"    
-                          Stroke="White"
-                          Fill="Transparent"
+                          Fill="White"
                           Stretch="Fill" 
                           Height="10"
                           Width="17"
                           Margin="0,2,10,0"
-                          StrokeThickness="2.5"
+                          StrokeThickness="0.5"
                           HorizontalAlignment="Right"
                           VerticalAlignment="Center"
-                          StrokeStartLineCap="Round"
-                          StrokeEndLineCap="Round"
-                          Data="M 9.00,13.50
-                                C 9.00,13.50 18.00,22.50 18.00,22.50
-                                  18.00,22.50 27.00,13.50 27.00,13.50"
+                          Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
                             />
 
                         <Popup 
@@ -163,18 +152,16 @@
                             <Grid Name="DropDown"
                                 SnapsToDevicePixels="True"                
                                 MinWidth="{TemplateBinding ActualWidth}"
-                                MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                FocusVisualStyle="{x:Null}">
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 
                                 <Border 
                                     x:Name="DropDownBorder"
                                     Background="{StaticResource SecondaryColor_L}"
                                     BorderThickness="0"
-                                    BorderBrush="#888888" 
-                                    FocusVisualStyle="{x:Null}" />
+                                    BorderBrush="#888888"/>
 
-                                <ScrollViewer Name="ScrollViewer" Margin="10" SnapsToDevicePixels="True">
-                                    <StackPanel Name="SPanel" IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                <ScrollViewer Margin="10" SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
 
                             </Grid>
@@ -184,10 +171,10 @@
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                            <Setter TargetName="Arrow2" Property="Stroke" Value="{StaticResource SecondaryColor_D}"/>
+                            <Setter TargetName="Arrow2" Property="Fill" Value="{StaticResource SecondaryColor_D}"/>
                         </Trigger>
                         <Trigger Property="ToggleButton.IsMouseOver" Value="false">
-                            <Setter TargetName="Arrow2" Property="Stroke" Value="White"/>
+                            <Setter TargetName="Arrow2" Property="Fill" Value="White"/>
                         </Trigger>
 
                         <Trigger Property="HasItems" Value="false">
@@ -215,7 +202,11 @@
 
                     </ControlTemplate.Triggers>
 
+
+
                 </ControlTemplate>
+
+
 
             </Setter.Value>
         </Setter>

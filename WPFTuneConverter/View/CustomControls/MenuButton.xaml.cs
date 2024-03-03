@@ -30,8 +30,7 @@ namespace WPFTuneConverter.View.CustomControls
             { "Convert", SvgIcons.ConvertIcon},
             { "Repository", SvgIcons.DatabaseIcon},
             { "Settings", SvgIcons.SettingsIcon},
-            { "Teaching", SvgIcons.TeachingIcon },
-            { "Help", SvgIcons.HelpIcon }
+            { "Teaching", SvgIcons.TeachingIcon }
         };
 
         public MenuButton()
@@ -95,18 +94,6 @@ namespace WPFTuneConverter.View.CustomControls
                 //path.Data = (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), "M 0,0 L 23,0 L 31,16 L 23,31 L 0,31 Z"); ;
 
                 ButtonSVG.Data = Geometry.Parse(iconDictionary[iconName]);
-
-                if(iconName.Equals("Convert") || iconName.Equals("Repository") || iconName.Equals("Teaching"))
-                {
-                    ButtonSVG.Width = 25;
-                }
-                else if (iconName.Equals("Help"))
-                {
-                    //ButtonSVG.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
-                    //ButtonSVG.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00114d"));
-                    ButtonSVG.StrokeThickness = 2;
-                    
-                }
   
                 //menuButtn.Content = path;
                 //ButtonSVG.Data = path;
@@ -128,11 +115,6 @@ namespace WPFTuneConverter.View.CustomControls
         }
 
         private void menuButtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void menuButtn_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
         }

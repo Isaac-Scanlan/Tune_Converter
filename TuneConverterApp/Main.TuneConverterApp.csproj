@@ -17,7 +17,6 @@
     <ProjectReference Include="..\TuneConverter.Framework.PageImageIO\TuneConverter.Framework.PageImageIO.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.TuneComponents\TuneConverter.Framework.TuneComponents.csproj" />
     <ProjectReference Include="..\TuneConverter.Framework.TuneIO\TuneConverter.Framework.TuneIO.csproj" />
-    <ProjectReference Include="..\TuneConverter.Framework.TuneStorage\TuneConverter.Framework.TuneStorage.csproj" />
   </ItemGroup>
 
 </Project>

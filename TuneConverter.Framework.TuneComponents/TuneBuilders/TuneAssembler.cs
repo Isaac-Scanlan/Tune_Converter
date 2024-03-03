@@ -57,15 +57,7 @@ public static partial class TuneAssembler
 
     public static void AssembleTitle(TuneFull tune, List<List<string>> rawTune)
     {
-        List<string>? titlePage = new();
-        try
-        {
-            titlePage = rawTune[0];
-        }
-        catch (Exception ex)
-        {
-
-        }
+        var titlePage = rawTune[0];
         tune.Title = titlePage[0];
         tune.TuneType = (TuneType)Enum.Parse(typeof(TuneType), titlePage[1]);
 

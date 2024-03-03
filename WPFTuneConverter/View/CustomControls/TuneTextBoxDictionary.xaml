@@ -38,8 +38,7 @@
         
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="BorderBrush" Value="#57ffdb"/>
+                <Setter Property="BorderBrush" Value="{StaticResource TertiaryColor_M}"/>
             </Trigger>
         </Style.Triggers>
         <Style.Resources>

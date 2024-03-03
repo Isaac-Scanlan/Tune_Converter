@@ -7,7 +7,7 @@
         xmlns:customControls="clr-namespace:WPFTuneConverter.View.CustomControls"
         xmlns:customPages="clr-namespace:WPFTuneConverter.View.Pages"
         mc:Ignorable="d"
-        Title="Tune Scribe" MinHeight ="680" Height="760" MinWidth="1100" Width="1245" Background="#FFE8E8E8" 
+        Title="Tune Scribe" Height="760" Width="1245" Background="#FFE8E8E8" 
         Icon="C:\Users\Isaac\source\repos\TuneConverter\WPFTuneConverter\Logo.ico">
 
     <Grid>
@@ -49,11 +49,6 @@
                                        CustomClick="MenuButton_Loaded_3" Width="50" 
                                        ToolTip="Teaching" IconName="Teaching"/>
 
-            <Separator  />
-
-            <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
-                           CustomClick="MenuButton_Loaded_4" Width="50" 
-                           ToolTip="Help" IconName="Help"/>
             <Separator  />
 
             <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 

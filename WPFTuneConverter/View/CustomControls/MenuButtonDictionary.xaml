@@ -3,7 +3,7 @@
 
     <SolidColorBrush x:Key="BackgroundColour_D">#00114d</SolidColorBrush>
     <SolidColorBrush x:Key="BackgroundColour">#00176b</SolidColorBrush>
-    <SolidColorBrush x:Key="BackgroundColour_L">#002094</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundColour_L">#0023a3</SolidColorBrush>
     <!--00114d-->
     <SolidColorBrush x:Key="PrimaryColor_D">#1044FF</SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryColor">#577bff</SolidColorBrush>

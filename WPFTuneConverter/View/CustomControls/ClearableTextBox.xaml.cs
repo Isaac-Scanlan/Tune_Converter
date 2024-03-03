@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TuneConverter.Framework.PageImageIO.ImageComponents;
 
 namespace WPFTuneConverter.View.CustomControls
 {
@@ -51,7 +50,6 @@ namespace WPFTuneConverter.View.CustomControls
         {
             textInput.Clear();
             textInput.Focus();
-            
         }
 
         private void textInput_TextChanged(object sender, TextChangedEventArgs e)
@@ -64,20 +62,6 @@ namespace WPFTuneConverter.View.CustomControls
             {
                 tbPlaceHolder.Visibility = Visibility.Hidden;
             }
-        }
-
-
-        private void buttonClear_MouseEnter(object sender, MouseEventArgs e)
-        {
-
-            xSVG.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00b38c"));
-            xSVG.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00b38c"));
-        }
-
-        private void buttonClear_MouseLeave(object sender, MouseEventArgs e)
-        {
-            xSVG.Fill = new SolidColorBrush(Colors.White);
-            xSVG.Stroke = new SolidColorBrush(Colors.White);
         }
     }
 }
