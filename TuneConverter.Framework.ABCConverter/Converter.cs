@@ -8,8 +8,23 @@ using System.Threading.Tasks;
 
 namespace TuneConverter.Framework.ABCConverter;
 
+/// <summary>
+/// This class is for converting tunes that are written in the standard ABC notation as seen on
+/// thesession.org and converts it into an easier to manipulate internal ABC format
+/// </summary>
 public partial class Converter
 {
+    /// <summary>
+    /// This converts the standard ABC notation used for writing Irish music to the internally used
+    /// ABC notation. 
+    /// </summary>
+    /// <param name="file">The first integer to add.</param>
+    /// <returns>The converted tine in the internal ABC format</returns>
+    /// <example>
+    /// <code>
+    /// List&lt;string&gt; convertedTune = ConvertToInternalABC(inputTuneFile);
+    /// </code>
+    /// </example>
     public List<string> ConvertToInternalABC(List<string> file)
     {
         List<string> tune = new();
@@ -79,6 +94,12 @@ public partial class Converter
         return tune;
     }
 
+
+    /// <summary>
+    /// Converts a part of a Jig (or any tune of the same time signature) that is in Standard ABC notation into the internal format
+    /// </summary>
+    /// <param name="part">The part of the tune in standard ABC notation</param>
+    /// <returns>The converted part</returns>
     private List<string> ConvertJigPart(string part, List<string> tune)
     {
         var part2 = ByBar().Split(part).ToList();
@@ -93,6 +114,12 @@ public partial class Converter
         return tune;
     }
 
+
+    /// <summary>
+    /// Converts a part of a Reel (or any tune of the same time signature) that is in Standard ABC notation into the internal format
+    /// </summary>
+    /// <param name="part">The part of the tune in standard ABC notation</param>
+    /// <returns>The converted part</returns>
     private List<string> ConvertReelPart(string part, List<string> tune)
     {
         var part2 = ByBigBar().Split(part).ToList();
@@ -134,8 +161,6 @@ public partial class Converter
                 bar = first + " " + second;
             }
 
-            
-
             line += ConvertString(bar);
             line += " ";
             if(i % 2 == 0 && i != 0)
@@ -148,6 +173,12 @@ public partial class Converter
         return tune;
     }
 
+
+    /// <summary>
+    /// Converts a part of a Polka (or any tune of the same time signature) that is in Standard ABC notation into the internal format
+    /// </summary>
+    /// <param name="part">The part of the tune in standard ABC notation</param>
+    /// <returns>The converted part</returns>
     private List<string> ConvertPolkaPart(string part, List<string> tune)
     {
         var part2 = ByBigBar().Split(part).ToList();
@@ -185,7 +216,12 @@ public partial class Converter
         return tune;
     }
 
-    private string ConvertString(string bar)
+    /// <summary>
+    /// Converts a bar of the standard ABC notation to the internal forma
+    /// </summary>
+    /// <param name="bar">The bar of the tune in standard ABC notation</param>
+    /// <returns>The converted bar</returns>
+    private static string ConvertString(string bar)
     {
         string returnBar = "";
         bool isSharp = false;
@@ -212,7 +248,6 @@ public partial class Converter
                 }
                 else
                 {
-                   
                     dupTripCount++;
                 }
             }
