@@ -1,0 +1,16 @@
+Thomond Bridge
+Hornpipe
+C major
+Double
+
+__
+CGEG FAGF ECLEG CBAG
+AD'D'E' F'D'E'C *ABA*AG ACGF
+EGCB CGECL DD'D'E' *F'E'D'*BD'
+CE'G'E' A'F'D'B *CE'C*BD' C_*GAB*
+__
+CE'G'E' A'F'D'B CE'G'E' *F'E'D'*BD'
+CE'G'A' F'D'E'C *ABA*AG ACGF
+EGCB CGECL DD'D'E' *F'E'D'*BD'
+CE'G'E' A'F'D'B *CE'C*BD' C_*GAB*
+__

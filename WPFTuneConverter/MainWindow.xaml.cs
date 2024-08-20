@@ -81,6 +81,7 @@ namespace WPFTuneConverter
         public MainWindow()
         {
             InitializeComponent();
+            MainWindow_Loaded();
 
             //foreach (var item in Enum.GetNames(typeof(TuneType)))
             //{
@@ -108,34 +109,157 @@ namespace WPFTuneConverter
             //pageCountLabel.Content = pageNumber + " out of " + maxPageNumber;
         }
 
+        private async void MainWindow_Loaded()
+        {
+            // Simulate loading process
+            await Task.Delay(1000); // Simulate loading for 3 seconds
+            progressBar.Value = 8;
+
+            int mult = 9;
+            while (progressBar.Value < 100)
+            {
+                if (progressBar.Value < 20)
+                {
+                    progressBar.Value += (0.05 * mult);
+                    await Task.Delay(1);
+                }
+                else if (progressBar.Value < 40)
+                {
+                    progressBar.Value += (0.3 * mult);
+                    await Task.Delay(1);
+                }
+                else if (progressBar.Value < 60)
+                {
+                    progressBar.Value += (0.2 * mult);
+                    await Task.Delay(1);
+                }
+                else if (progressBar.Value < 80)
+                {
+                    progressBar.Value += (0.15 * mult);
+                    await Task.Delay(1);
+                }
+                else if (progressBar.Value < 90)
+                {
+                    progressBar.Value += (0.1 * mult);
+                    await Task.Delay(1);
+                }
+                else if (progressBar.Value < 93)
+                {
+                    progressBar.Value += (0.05 * mult);
+                    await Task.Delay(1);
+                }
+                else if (progressBar.Value < 97)
+                {
+                    progressBar.Value += (0.025 * mult);
+                    await Task.Delay(1);
+                }
+                else
+                {
+                    progressBar.Value += (0.01 * mult);
+                    await Task.Delay(1);
+                }
+            }
+
+            await Task.Delay(700);
+
+            while (Logo.Opacity < 1)
+            {
+                Logo.Opacity += (0.005 * mult);
+                await Task.Delay(1);
+            }
+
+            while (progressBar.Opacity > 0)
+            {
+                progressBar.Opacity -= (0.01 * mult);
+                await Task.Delay(1);
+            }
+
+            await Task.Delay(900);
+
+            while (LoadingGrid.Opacity > 0)
+            {
+                LoadingGrid.Opacity -= (0.005 * mult);
+                await Task.Delay(1);
+            }
+
+            // Hide the loading control when the main content is ready
+            LoadingGrid.Visibility = Visibility.Collapsed;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void MenuButton_Loaded(object sender, RoutedEventArgs e)
+        private async void MenuButton_Loaded(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = new ConvertTunePage();
+
+            var content = new ConvertTunePage();
+            content.Opacity = 0;
+            mainFrame.Content = content;
+            while (content.Opacity < 1)
+            {
+                content.Opacity += (0.08);
+                mainFrame.Content = content;
+                await Task.Delay(1);
+            }
+            content.Opacity = 1;
         }
 
-        private void MenuButton_Loaded_1(object sender, RoutedEventArgs e)
+        private async void MenuButton_Loaded_1(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = new ABCConvertTune();
+            var content = new ABCConvertTune();
+            content.Opacity = 0;
+            mainFrame.Content = content;
+            while (content.Opacity < 1)
+            {
+                content.Opacity += (0.08);
+                mainFrame.Content = content;
+                await Task.Delay(1);
+            }
+            content.Opacity = 1;
         }
 
-        private void MenuButton_Loaded_2(object sender, RoutedEventArgs e)
+        private async void MenuButton_Loaded_2(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = new TuneRepository();
+            var content = new TuneRepository();
+            content.Opacity = 0;
+            mainFrame.Content = content;
+            while (content.Opacity < 1)
+            {
+                content.Opacity += (0.08);
+                mainFrame.Content = content;
+                await Task.Delay(1);
+            }
+            content.Opacity = 1;
         }
 
-        private void MenuButton_Loaded_3(object sender, RoutedEventArgs e)
+        private async void MenuButton_Loaded_3(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = new TeachingTracking();
+            var content = new TeachingTracking();
+            content.Opacity = 0;
+            mainFrame.Content = content;
+            while (content.Opacity < 1)
+            {
+                content.Opacity += (0.08);
+                mainFrame.Content = content;
+                await Task.Delay(1);
+            }
+            content.Opacity = 1;
         }
 
-        private void MenuButton_Loaded_4(object sender, RoutedEventArgs e)
-        {
-            mainFrame.Content = new UserSettings();
+        private async void MenuButton_Loaded_4(object sender, RoutedEventArgs e)
+        { 
+            var content = new UserSettings();
+            content.Opacity = 0;
+            mainFrame.Content = content;
+            while (content.Opacity < 1)
+            {
+                content.Opacity += (0.08);
+                mainFrame.Content = content;
+                await Task.Delay(1);
+            }
+            content.Opacity = 1;
         }
         //    private void ConvertButton(object sender, RoutedEventArgs e)
         //    {

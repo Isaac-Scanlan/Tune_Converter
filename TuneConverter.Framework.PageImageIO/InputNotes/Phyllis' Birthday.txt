@@ -1,0 +1,18 @@
+Phyllis' Birthday
+Reel
+F major
+Double
+
+__
+AFrl ACD'C A_GB AGFD
+CLDFG ACrl D'CAF G_FG
+AFrl ACD'C A_GB AGFD
+CLDFG ACrl D'CAG F_FG
+|F_F'D'
+__
+CD'F'G' A'F'G'F' D'F'CB AFrl
+CD'F'G' A'F'G'F' D'G'G'A' G'D'F'D'
+CD'F'G' A'F'G'F' D'F'CB AFFD
+CLDFG ACrl D'CAG F_F'D'
+|F_FG
+__

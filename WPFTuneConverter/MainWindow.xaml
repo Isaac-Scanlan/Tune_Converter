@@ -8,67 +8,82 @@
         xmlns:customPages="clr-namespace:WPFTuneConverter.View.Pages"
         mc:Ignorable="d"
         Title="Tune Scribe" MinHeight ="680" Height="760" MinWidth="1100" Width="1245" Background="#FFE8E8E8" 
-        Icon="C:\Users\Isaac\source\repos\TuneConverter\WPFTuneConverter\Logo.ico">
+        Icon="Logo.ico">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="1" Panel.ZIndex="0" Background="#00114d">
+            <Grid Grid.Column="1" Panel.ZIndex="0" Background="#00114d">
 
-            <Frame Name="mainFrame" Source="View/Pages/ConvertTunePage.xaml" NavigationUIVisibility="Hidden" BorderThickness="0" Margin="0,0,0,0"/>
-            
+                <Frame Name="mainFrame" Source="View/Pages/ConvertTunePage.xaml" NavigationUIVisibility="Hidden" BorderThickness="0" Margin="0,0,0,0"/>
 
-        </Grid>
 
-        <Rectangle Grid.Column="0" Panel.ZIndex="1" Fill="#00176b"/>
+            </Grid>
 
-        <StackPanel Grid.Column="0" Panel.ZIndex="1" Name="MainStack">
-            <Image HorizontalAlignment="Center" Height="99" Width="99" Source="/Big_Logo_White_Clear.png" Margin="0, 30, 0, 30"/>
-            <Separator  />
-            <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
+            <Rectangle Grid.Column="0" Panel.ZIndex="1" Fill="#00176b"/>
+
+            <StackPanel Grid.Column="0" Panel.ZIndex="1" Name="MainStack">
+                <Image HorizontalAlignment="Center" Height="99" Width="99" Source="/Big_Logo_White_Clear.png" Margin="0, 30, 0, 30"/>
+                <Separator  />
+                <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
                                        CustomClick="MenuButton_Loaded" Width="50"
                                        ToolTip="Write Tune" IconName="Write"/>
-            
-            <Separator />
 
-            <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
+                <Separator />
+
+                <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
                                        CustomClick="MenuButton_Loaded_1" Width="50"
                                        ToolTip="Convert ABC" IconName="Convert"/>
-            <Separator  />
+                <Separator  />
 
-            <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
+                <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
                                        CustomClick="MenuButton_Loaded_2" Width="50"
                                        ToolTip="Tune Repository" IconName="Repository"/>
 
-            <Separator  />
+                <Separator  />
 
-            <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
+                <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
                                        CustomClick="MenuButton_Loaded_3" Width="50" 
                                        ToolTip="Teaching" IconName="Teaching"/>
 
-            <Separator  />
+                <Separator  />
 
-            <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
+                <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
                            CustomClick="MenuButton_Loaded_4" Width="50" 
                            ToolTip="Help" IconName="Help"/>
-            <Separator  />
+                <Separator  />
 
-            <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
+                <customControls:MenuButton Height="50" Margin="0, 0, 0, 0" 
                                        CustomClick="MenuButton_Loaded_4" Width="50" 
                                        ToolTip="Preferences" IconName="Settings"/>
-            <Separator  />
- 
+                <Separator  />
 
+
+
+            </StackPanel>
+
+
+
+        </Grid>
+
+        <Grid x:Name="LoadingGrid" Background="#00176b" Visibility="Visible" Panel.ZIndex="3" HorizontalAlignment="Left" Width="1245">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="440"/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+            <Image Source="/Big_Logo_White_Clear_1.png" Name="Logo" Grid.Row="0" Width="400" Height="235" Margin="0,180,0,0"
+                   Opacity="0"/>
             
-        </StackPanel>
-
-        
-
+            <ProgressBar Name="progressBar" Grid.Row="1" IsIndeterminate="False" VerticalAlignment="Top" HorizontalAlignment="Center"
+                         Width="450" Height="15" Style="{StaticResource CustomProgressBarStyle}"/>
+        </Grid>
     </Grid>
-
 
 
 

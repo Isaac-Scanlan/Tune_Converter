@@ -1,0 +1,16 @@
+Gan Ainm Polca (D)
+Polka
+D major
+Double
+
+__
+D-E FD *BC*D'B* AF
+D-E FA AF E_
+D-E FD *BC*D'B* AF
+AD *EF*GE* FD D_
+__
+D-*E'D'* CA BC*D'B* AF
+D-E FA AF E_
+D-*E'D'* CA BC*D'B* AF
+AD *EF*GE* FD D_
+__

@@ -1,0 +1,24 @@
+Tom Carty's
+Jig
+D major
+Double
+
+__
+FDF ABC D'AG FED
+*GBG*E FGA BGE EFG
+FDF ABC D'AG FED
+D'CD' ABC D'AF D_E
+|D_A
+__
+D'CD' F'A'F' D'CD' F'A'F'
+CnBCn E'G'E' CnBCn E'F'G'
+A'G'F' G'F'E' F'E'D' CBA
+D'CD' ABC D'AF D_A
+|D_B
+__
+AFF DFF AFF DFF
+GEE CLEE GEE CLEE
+D'BC CBA BAG FED
+D'CD' ABC D'AF D_B
+|D_E
+__

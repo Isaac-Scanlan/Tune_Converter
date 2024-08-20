@@ -22,6 +22,12 @@ namespace WPFTuneConverter.View.CustomControls
         internal List<TableRecord> FullTableRecord { get; set; }
         internal List<TuneFull> tuneFullList { get; set; }
 
+        private static string runningDirectory = Directory.GetCurrentDirectory();
+        private static readonly string outImageFilePath = Path.GetFullPath(Path.Combine(runningDirectory,
+            Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "OutImages/")));
+        private static readonly string exportFilePath = Path.GetFullPath(Path.Combine(runningDirectory,
+            Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "ExportFolder/")));
+
         public TuneDisplayTable()
         {
             InitializeComponent();
@@ -31,10 +37,16 @@ namespace WPFTuneConverter.View.CustomControls
             TuneSerializer tf = new();
 
             tuneFullList = TuneSerializer.ConvertByteArrayListToTuneFullList("data.dat");
+            tuneFullList = tuneFullList.Where(tune => tune.Title is not null).ToList();
             tuneFullList = tuneFullList.OrderBy(record => record.Title).ToList();
 
             foreach (TuneFull tune in tuneFullList)
             {
+                if (tune.Title is null)
+                {
+                    
+                    continue;
+                }
                 var keyNote = tune.Key.NoteType.ToString();
                 string accidentalType = tune.Key.AccidentalType.ToString().Equals("Flat")? "b" :
                                         tune.Key.AccidentalType.ToString().Equals("Sharp") ? "#" : "";
@@ -106,6 +118,8 @@ namespace WPFTuneConverter.View.CustomControls
 
                 System.Drawing.Image bm;
                 var file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title;
+
+                //var file_ext = outImageFilePath + selectedItem.Type + "/" + selectedItem.Title;
                 var file1 = file_ext + ".png";
 
                 
@@ -125,7 +139,11 @@ namespace WPFTuneConverter.View.CustomControls
                 {
                     bmpTemp = new BitmapImage();
                     file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title + "/" + selectedItem.Title;
+
+                    //file_ext = outImageFilePath + selectedItem.Type + "/" + selectedItem.Title + "/" + selectedItem.Title;
+                    //maxFileTotal = Directory.GetFiles(outImageFilePath + selectedItem.Type + "/" + selectedItem.Title).Length;
                     maxFileTotal = Directory.GetFiles("C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title).Length;
+
                     file1 = file_ext + "_page_1.png";
                     pageDirectory = file_ext;
                     multipage = true;
@@ -158,6 +176,8 @@ namespace WPFTuneConverter.View.CustomControls
 
             System.Drawing.Image bm;
             var file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title;
+
+            //var file_ext =  outImageFilePath + selectedItem.Type + "/" + selectedItem.Title;
             var file1 = file_ext + ".png";
 
 
@@ -176,8 +196,11 @@ namespace WPFTuneConverter.View.CustomControls
             catch (Exception es)
             {
                 bmpTemp = new BitmapImage();
+                //file_ext = outImageFilePath + selectedItem.Type + "/" + selectedItem.Title + "/" + selectedItem.Title;
+                //maxFileTotal = Directory.GetFiles(outImageFilePath + selectedItem.Type + "/" + selectedItem.Title).Length;
                 file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title + "/" + selectedItem.Title;
                 maxFileTotal = Directory.GetFiles("C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title).Length;
+
                 file1 = file_ext + "_page_1.png";
                 pageDirectory = file_ext;
                 multipage = true;
@@ -230,6 +253,8 @@ namespace WPFTuneConverter.View.CustomControls
 
             System.Drawing.Image bm;
             var file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title;
+
+            //var file_ext = outImageFilePath + selectedItem.Type + "/" + selectedItem.Title;
             var file1 = file_ext + ".png";
 
 
@@ -243,10 +268,14 @@ namespace WPFTuneConverter.View.CustomControls
                 bmpTemp.UriSource = new Uri(file1);
                 bmpTemp.EndInit();
                 SaveBitmapImageToFile(bmpTemp, "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/ExportFolder/" + selectedItem.Title + ".png");
+
+                //SaveBitmapImageToFile(bmpTemp, exportFilePath + selectedItem.Title + ".png");
             }
             catch (Exception es)
             {
                 string[] files = Directory.GetFiles("C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title, "*.*", SearchOption.TopDirectoryOnly);
+
+                //string[] files = Directory.GetFiles(outImageFilePath + selectedItem.Type + "/" + selectedItem.Title, "*.*", SearchOption.TopDirectoryOnly);
                 
                 foreach(var sa in files)
                 {
@@ -255,13 +284,17 @@ namespace WPFTuneConverter.View.CustomControls
                     MatchCollection matches = Regex.Matches(sa, pattern);
                     var s = matches[0].Groups[1].Value;
                     bmpTemp = new BitmapImage();
-                    file1 = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title + "/" + s + ".png"; 
+                    file1 = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + selectedItem.Type + "/" + selectedItem.Title + "/" + s + ".png";
+
+                    //file1 =     outImageFilePath + selectedItem.Type + "/" + selectedItem.Title + "/" + s + ".png"; 
                     bmpTemp.BeginInit();
                     bmpTemp.CacheOption = BitmapCacheOption.OnLoad;
                     bmpTemp.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
                     bmpTemp.UriSource = new Uri(file1);
                     bmpTemp.EndInit();
                     SaveBitmapImageToFile(bmpTemp, "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/ExportFolder/" + s + ".png");
+
+                    //SaveBitmapImageToFile(bmpTemp, exportFilePath + s + ".png");
                 }
                 
             }
@@ -283,10 +316,11 @@ namespace WPFTuneConverter.View.CustomControls
             }
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+        private async void EditButton_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
             var convertPage = new ConvertTunePage();
+            //convertPage.Opacity = 0;
             var selectedItem = (TableRecord)dataGrid.SelectedItem;
 
             if (selectedItem is null)
@@ -359,6 +393,8 @@ namespace WPFTuneConverter.View.CustomControls
 
             System.Drawing.Image bm;
             convertPage.file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + convertPage.typeComboBox.textInput.Text + tuneDirec + "/" + convertPage.titleTextBox.textInput.Text;
+
+            //convertPage.file_ext = outImageFilePath + convertPage.typeComboBox.textInput.Text + tuneDirec + "/" + convertPage.titleTextBox.textInput.Text;
             var file1 = convertPage.file_ext + page_num + ".png";
 
 
@@ -381,6 +417,16 @@ namespace WPFTuneConverter.View.CustomControls
             convertPage.pageCountLabel.Content = convertPage.pageNumber + " out of " + convertPage.maxPageNumber;
 
             mainWindow?.mainFrame.Navigate(convertPage);
+
+
+            //while (convertPage.pageCountLabel.Opacity < 1)
+            //{
+            //    convertPage.pageCountLabel.Opacity += (0.08);
+            //    mainWindow?.mainFrame.Navigate(convertPage);
+            //    await Task.Delay(1);
+            //}
+            //convertPage.pageCountLabel.Opacity = 1;
+            //mainWindow?.mainFrame.Navigate(convertPage);
 
         }
     }

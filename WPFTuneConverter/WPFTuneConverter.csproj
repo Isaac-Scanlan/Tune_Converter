@@ -13,6 +13,7 @@
     <None Remove="Big_Logo_Clear.png" />
     <None Remove="Big_Logo_White.png" />
     <None Remove="Big_Logo_White_Clear.png" />
+    <None Remove="Big_Logo_White_Clear_1.png" />
     <None Remove="default_image.png" />
     <None Remove="Fonts\Montserrat Black 900.ttf" />
     <None Remove="Fonts\Montserrat Black Italic 900.ttf" />
@@ -101,6 +102,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SharpVectors" Version="1.8.4" />
+    <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
     <PackageReference Include="XamlEssentials" Version="3.6.0" />
   </ItemGroup>
 
@@ -118,6 +120,7 @@
     <Resource Include="Big_Logo_Clear.png" />
     <Resource Include="Big_Logo_White.png" />
     <Resource Include="Big_Logo_White_Clear.png" />
+    <Resource Include="Big_Logo_White_Clear_1.png" />
     <Resource Include="default_image.png" />
     <Resource Include="Logo.png" />
     <Resource Include="View\Pages\default_image.png" />
@@ -132,5 +135,10 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
+
+    <ItemGroup>
+	    <Reference Include="System.Windows.Forms" />
+	    <Reference Include="WindowsBase" />
+    </ItemGroup>
 
 </Project>

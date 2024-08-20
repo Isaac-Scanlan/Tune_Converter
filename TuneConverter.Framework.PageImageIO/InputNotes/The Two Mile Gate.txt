@@ -1,0 +1,18 @@
+The Two Mile Gate
+Jig
+D major
+Double
+Damien Connolly
+__
+DFA D'_A *BCD'*A BAF
+DFA D'F'E' D'AF E_A
+DFA D'_A BGB G'rl
+F'A'F' E'F'E' D'AF E_F
+|EFA
+__
+Brl BCD' CBA BCD'
+AFF FAB AFA DFA
+Brl BCD' CBA G'rl
+F'A'F' E'F'E' D'AF EFA
+|E_A
+__

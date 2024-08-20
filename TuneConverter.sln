@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{26EB1105-5CEA-42A6-895F-EA5017339F46}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{1979D730-A0DA-4DD8-A356-64A8D92D62C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{6B3F0CDA-6B71-465D-9765-5705B786E670}"
@@ -29,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFTuneConverter", "WPFTune
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.ABCConverter", "TuneConverter.Framework.ABCConverter\TuneConverter.Framework.ABCConverter.csproj", "{396CC281-905B-4FA0-A836-9705BB1C048E}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TuneConverterDatabase", "TuneDatabase\TuneConverterDatabase.sqlproj", "{BDDF1063-5AA1-4D30-AC76-867409751A3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.TuneStorage", "TuneConverter.Framework.TuneStorage\TuneConverter.Framework.TuneStorage.csproj", "{B213CDFB-3901-4560-9526-69B5D8AAA7A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuneConverter.Framework.TuneStorage", "TuneConverter.Framework.TuneStorage\TuneConverter.Framework.TuneStorage.csproj", "{B213CDFB-3901-4560-9526-69B5D8AAA7A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TuneConverter.Framework.MIDIConverter", "TuneConverter.Framework.MIDIConverter\TuneConverter.Framework.MIDIConverter.csproj", "{1ACF0B79-2AB2-41B8-AB15-FCF2734BD35D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,16 +69,14 @@ Global
 		{396CC281-905B-4FA0-A836-9705BB1C048E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{396CC281-905B-4FA0-A836-9705BB1C048E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{396CC281-905B-4FA0-A836-9705BB1C048E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDDF1063-5AA1-4D30-AC76-867409751A3A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{B213CDFB-3901-4560-9526-69B5D8AAA7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B213CDFB-3901-4560-9526-69B5D8AAA7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B213CDFB-3901-4560-9526-69B5D8AAA7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B213CDFB-3901-4560-9526-69B5D8AAA7A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ACF0B79-2AB2-41B8-AB15-FCF2734BD35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ACF0B79-2AB2-41B8-AB15-FCF2734BD35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ACF0B79-2AB2-41B8-AB15-FCF2734BD35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ACF0B79-2AB2-41B8-AB15-FCF2734BD35D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,8 +90,8 @@ Global
 		{803AF2FA-6954-4A6B-9D8A-57F9D929CD2D} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
 		{0AFD198D-5066-4312-BB72-2903F8408E91} = {6B3F0CDA-6B71-465D-9765-5705B786E670}
 		{396CC281-905B-4FA0-A836-9705BB1C048E} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
-		{BDDF1063-5AA1-4D30-AC76-867409751A3A} = {26EB1105-5CEA-42A6-895F-EA5017339F46}
 		{B213CDFB-3901-4560-9526-69B5D8AAA7A5} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
+		{1ACF0B79-2AB2-41B8-AB15-FCF2734BD35D} = {1979D730-A0DA-4DD8-A356-64A8D92D62C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {656D544E-CE0E-4867-A0A0-5A63E7C6E850}

@@ -1,0 +1,113 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="BackgroundColour_D">#00114d</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundColour">#00176b</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundColour_L">#002094</SolidColorBrush>
+
+    <SolidColorBrush x:Key="PrimaryColor_D">#1044FF</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor">#577bff</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor_M">#9FB3FF</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryColor_L">#E5EBFF</SolidColorBrush>
+
+
+    <SolidColorBrush x:Key="SecondaryColor_D">#6F10FF</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor">#9a57ff</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_M">#C59FFF</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryColor_L">#E0CCFF</SolidColorBrush>
+
+    <SolidColorBrush x:Key="TertiaryColor_DD">#00e0b0</SolidColorBrush>
+    <SolidColorBrush x:Key="TertiaryColor_D">#10FFCB</SolidColorBrush>
+    <SolidColorBrush x:Key="TertiaryColor">#57ffdb</SolidColorBrush>
+    <SolidColorBrush x:Key="TertiaryColor_M">#9FFFEA</SolidColorBrush>
+    <SolidColorBrush x:Key="TertiaryColor_L">#E5FFF9</SolidColorBrush>
+
+    <Style TargetType="Grid">
+
+
+    </Style>
+
+    <Style TargetType="Rectangle">
+        <!--<Setter Property="Fill" Value="{StaticResource TertiaryColor_M}"/>-->
+        <Setter Property="Fill">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#002094" Offset="0"/>
+                    <GradientStop Color="#002094" Offset="0.5"/>
+                    <GradientStop Color="#001D93" Offset="5"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="RadiusX" Value="10"/>
+        <Setter Property="RadiusY" Value="10"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.6" ShadowDepth="5" Color="DarkSlateGray"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Segoe UI Light"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="5" Color="DarkSlateGray"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Margin" Value="0,3,0,0"/>
+        <!--<Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="#00e0b0"/>
+            </Trigger>
+        </Style.Triggers>-->
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10,10,10,10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        CornerRadius="0, 10, 10, 0">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#00176b"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+</ResourceDictionary>

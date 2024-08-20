@@ -36,6 +36,8 @@ namespace WPFTuneConverter.View.Pages
 
             int resizeFactor = 6;
 
+            tuneImage.Opacity = 0.5;
+
             List<KeyNote> keys = new() {
             new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
             ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}

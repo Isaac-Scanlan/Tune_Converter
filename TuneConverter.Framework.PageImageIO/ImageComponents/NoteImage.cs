@@ -11,6 +11,15 @@ namespace TuneConverter.Framework.PageImageIO.ImageComponents;
 public class NoteImage
 {
     private static readonly string _imagePath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/Images/";
+    private static readonly string localDirec = Directory.GetParent(
+                                                    Directory.GetParent(
+                                                        Directory.GetParent(
+                                                            Directory.GetParent(Directory.GetCurrentDirectory()).FullName)
+                                                        .FullName)
+                                                    .FullName)
+                                                .FullName;
+    private static readonly string _imagePath2 = localDirec + "/TuneConverter.Framework.PageImageIO/Images/";
+
 
     public static readonly Image<Gray, byte> A = new(@"" + _imagePath + "A.png"); 
     public static readonly Image<Gray, byte> B = new(@"" + _imagePath + "B.png"); 

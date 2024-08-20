@@ -1,0 +1,16 @@
+An Londubh
+Hornpipe
+D major
+Single
+
+__
+B_BD' A_*ABC* D'_AG F_D_
+*EFG*AF GBAG F_D_ DFGA
+B_BD' A_*ABC* D'_AG F_D_
+*EFG*AF GBAG F_D_ DEFG
+__
+AD'D'C D'_*E'F'G'* F'D'E'D' CAGB
+AD'D'C D'_A'G' F'_D'_ D'_F'E'
+D'CAF G_*ABC* D'_AG F_D_
+*EFG*AF GBAG F_D_ DEFG
+__

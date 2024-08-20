@@ -1,18 +1,18 @@
 Ballydesmond #1(Bm)
 Polka
-B minor
+B dor
 Hello
 
 __
-F#B BC# D'E' F#'_
-A-G# AB AF# F#E
-F#B BC# D'E' F#'G#'
-A'F#' E'C# B_ BA
+FB BC D'E' F'_
+A-G AB AF FE
+FB BC D'E' F'G'
+A'F' E'C B_ BA
 |BA'
 __
-B'-A' B'C#' B'A' F#'G#'
-A'-G#' A'B' A'F#' F#'E'
-F#'B' B'C#' B'A' F#'G#'
-A'F#' E'C# B_ BA'
+B'-A' B'C' B'A' F'G'
+A'-G' A'B' A'F#' F'E'
+F'B' B'C' B'A' F'G'
+A'F' E'C B_ BA'
 |BA
 __

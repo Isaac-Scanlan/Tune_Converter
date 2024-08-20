@@ -1,0 +1,17 @@
+Gan Ainm Jig 1
+Jig
+D major
+Double
+
+__
+Drl DFA GEF GAB
+CD'E' D'CA D'E'F' E'CA
+Drl DFA GEF GAB
+CD'E' D'CA GEA D_A
+|DFA
+__
+D'E'F' E'CA F'G'F' E'CA
+*BCD'*E' G'_F' E'CA AD'Cn
+Brl AFD D'F'E' E'CA
+*BCD'*E' D'CA GEA DFA
+__

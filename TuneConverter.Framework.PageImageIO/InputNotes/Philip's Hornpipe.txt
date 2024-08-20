@@ -1,0 +1,19 @@
+Philip's Hornpipe
+Hornpipe
+D major
+Double
+
+__
+D'_F'D' CD'BC *ABA*GA FGEF
+DAD'A BD'E'G' F'D'BC D'AFA
+D'G'F'D' CD'BC *ABA*GA FGEF
+DAD'A BD'E'G' F'D'BC D'_*ABC*
+|D'_D'E'
+__
+F'D'AD' F'A'G'F' G'D'BD' G'B'A'G'
+F'D'AD' F'A'G'F' *E'F'E'**D'CB* ABD'E'
+F'D'AD' F'A'G'F' G'D'BD' G'B'A'G'
+F'AD'F' E'D'CE' D'F'E'C D'_D'E'
+__
+
+__

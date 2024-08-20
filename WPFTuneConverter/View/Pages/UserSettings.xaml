@@ -4,8 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFTuneConverter.View.Pages"
+      xmlns:customControls="clr-namespace:WPFTuneConverter.View.CustomControls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="710" d:DesignWidth="1280"
       Title="UserSettings">
 
     <Page.Resources>
@@ -16,17 +17,135 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="#00114d">
-        <Grid.RowDefinitions>
-            <RowDefinition x:Name="TopBar" Height="90"/>
-            <RowDefinition x:Name="MainPage"/>
-            <RowDefinition x:Name="BottomBar" Height="90"/>
-        </Grid.RowDefinitions>
 
+
+    <Grid Background="#00114d" >
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TopBar" Height="30"/>
+            <RowDefinition x:Name="MainPage"/>
+            <RowDefinition x:Name="BottomBar" Height="30"/>
+        </Grid.RowDefinitions>
+        <!--00176b-->
         <Rectangle Fill="Transparent"  Grid.Row="0"/>
 
-        <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Settings TBI" FontSize="90"/>
-        <!--00176b-->
+
+        <Grid Background="Transparent" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="exportDirectoryLabel" Content="Tune Output Folder" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <customControls:UserFolderBrowserDialog x:Name="outputFolder"  Grid.Column="2" Grid.ColumnSpan="22" Grid.RowSpan="3" Grid.Row="3" Margin="0,17,0,0"/>
+
+            <Label x:Name="exportDirectoryLabel2" Content="Export Folder" Grid.Column="2" Grid.ColumnSpan="6"  Grid.RowSpan="3" Grid.Row="8" VerticalAlignment="Center"/>
+            <customControls:UserFolderBrowserDialog x:Name="exportFolder" Grid.Column="2" Grid.ColumnSpan="22" Grid.RowSpan="3" Grid.Row="10" Margin="0,17,0,0"/>
+
+            <Label x:Name="saveDisplay" Content="Saved" FontSize="50" Grid.Column="10" Grid.ColumnSpan="10"  Grid.RowSpan="9" Grid.Row="16" Margin="41,4,0,0" Height="133" Opacity="0"/>
+
+            <Button x:Name="convertButton"  Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="35" 
+                Margin="0,0,0,0" Height="50" Width="50" ToolTip="Save"
+                VerticalAlignment="Center" Click="convertButton_Click">
+                <Path Data=
+                  "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21V13H7v8M7 3v5h8V8"
+                   Fill="Transparent" Stretch="Fill"  
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                   Stroke="White"
+                   StrokeThickness="1.5"
+                   StrokeStartLineCap="Round"
+                   StrokeEndLineCap="Round"
+                  />
+            </Button>
+
+            <Button x:Name="clearButton" Grid.Column="7" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="35" 
+                Margin="0,0,10,0"  Height="50" Width="50" ToolTip="Reset" Click="clearButton_Click">
+                <Path Data="M22.3 4 L22 9.5 L17 9 M1.7 18.5 L2 13 L7 15 M22.0 9.5 l-3.64 -4.36 A9 9 0 0 0 3.51 9 
+                      M2.35 14 l3.64 4.36 A9 9 0 0 0 20.49 15"
+                  Fill="Transparent" Stretch="Fill"  
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                  Stroke="White"
+                  StrokeThickness="1.5"
+                  StrokeStartLineCap="Round"
+                  StrokeEndLineCap="Round"
+                  />
+            </Button>
+
+
+        </Grid>
+
         <Rectangle Fill="Transparent" Grid.Row="2"/>
     </Grid>
+
 </Page>

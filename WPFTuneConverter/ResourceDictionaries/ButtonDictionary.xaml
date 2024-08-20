@@ -160,6 +160,11 @@
     </Style>
 
     <Style TargetType="Image">
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="30" Opacity="0.7" ShadowDepth="8" Color="DarkSlateGray"/>
+            </Setter.Value>
+        </Setter>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="BorderBrush" Value="#FFC5C5C5"/>
@@ -174,10 +179,31 @@
             </Style>
         </Style.Resources>
     </Style>
-    
-    
+
+    <Style x:Key="CustomProgressBarStyle" TargetType="ProgressBar">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+        <!-- Change the color as desired -->
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <!-- Change the color as desired -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <!-- Background rectangle -->
+                            <Rectangle x:Name="PART_Track" Fill="{TemplateBinding Background}" RadiusX="7" RadiusY="7"/>
+                            <!-- Progress indicator rectangle -->
+                            <Rectangle x:Name="PART_Indicator" Fill="{TemplateBinding Foreground}" RadiusX="7" RadiusY="7" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
-    
+
 
 </ResourceDictionary>

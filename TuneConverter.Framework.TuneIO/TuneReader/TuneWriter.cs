@@ -11,6 +11,10 @@ public class TuneWriter
 {
     private static readonly string _notesPath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/InputNotes/";
 
+    //public static string runningDirectory = Directory.GetCurrentDirectory();
+    //public static readonly string _notesPath = Path.GetFullPath(Path.Combine(runningDirectory,
+    //    Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "InputNotes/")));
+
     public void WriteFile(List<string> lines)
     {
         TextWriter tw = new StreamWriter(_notesPath + lines[0] + ".txt");

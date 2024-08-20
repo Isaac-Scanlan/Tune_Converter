@@ -1,0 +1,18 @@
+The Old School Master
+Reel
+C major
+Single
+
+__
+G__A *BCD'*E'D' CArl CAAG
+EGrl *BCD'*E'G' G'E'CE' D'BCA
+G__A *BCD'*E'D' CArl CAAG
+EGrl *BCD'*E'G' G'E'CE' D'A*BCD'*
+__
+E'G'G'Fn' G'E'D'G' E'A'A'G' A'_A'G'
+E'G'G'Fn' G'D'*E'F'G'* A'G'E'C D'E'CD'
+E'G'G'Fn' G'E'D'G' E'A'A'G' A'_A'G'
+G'E'D'E' *BCD'*E'A' G'E'CE' D'BCA
+__
+
+__

@@ -101,18 +101,84 @@
 
             <Label Content="Standard ABC Format" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="6" Grid.RowSpan="2"/>
             <customControls:TuneTextBox x:Name="tuneTextBlock" Grid.Column="2" Grid.ColumnSpan="7" Grid.RowSpan="28" Grid.Row="4" />
-            <Button x:Name="convertButton" Content="Convert" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="0"/>
+
+            <Button x:Name="convertButton"  Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="33"
+                Margin="0,0,0,0"  Height="50" Width="50" ToolTip="Build Tune" VerticalAlignment="Center">
+                <Path Data="M 25.50,4.50
+                           C 26.27,3.73 27.33,3.26 28.50,3.26
+                             30.84,3.26 32.74,5.16 32.74,7.50
+                             32.74,8.67 32.27,9.73 31.50,10.50
+                             31.50,10.50 11.25,30.75 11.25,30.75
+                             11.25,30.75 3.00,33.00 3.00,33.00
+                             3.00,33.00 5.25,24.75 5.25,24.75
+                             5.25,24.75 25.50,4.50 25.50,4.50 Z"
+                       Fill="Transparent" Stretch="Fill"  
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                       Stroke="White"
+                       StrokeThickness="1.5"
+                       StrokeStartLineCap="Round"
+                       StrokeEndLineCap="Round"
+                      />    
+            </Button>
 
             <Label Content="New ABC Format" Grid.Column="10" Grid.Row="2" Grid.ColumnSpan="6" Grid.RowSpan="2"/>
             <customControls:TuneTextBox x:Name="tuneTextBlock2" Grid.Column="10" Grid.ColumnSpan="7" Grid.RowSpan="28" Grid.Row="4" />
-            <Button x:Name="convertButton2" Content="Convert" Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="33" Margin="0"/>
-
+            
+            <Button x:Name="convertButton2"  Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="33"
+                Margin="0,0,0,0" Height="50" Width="50" ToolTip="Build Tune" VerticalAlignment="Center">
+                <Path Data="M 25.50,4.50
+                               C 26.27,3.73 27.33,3.26 28.50,3.26
+                                 30.84,3.26 32.74,5.16 32.74,7.50
+                                 32.74,8.67 32.27,9.73 31.50,10.50
+                                 31.50,10.50 11.25,30.75 11.25,30.75
+                                 11.25,30.75 3.00,33.00 3.00,33.00
+                                 3.00,33.00 5.25,24.75 5.25,24.75
+                                 5.25,24.75 25.50,4.50 25.50,4.50 Z"
+                           Fill="Transparent" Stretch="Fill"  
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10"
+                           Stroke="White"
+                           StrokeThickness="1.5"
+                           StrokeStartLineCap="Round"
+                           StrokeEndLineCap="Round"
+                          />
+            </Button>
 
             <Image x:Name="tuneImage" Source="/default_image.png" Grid.Column="18" Grid.ColumnSpan="12"  Grid.RowSpan="30" Grid.Row="2"/>
 
-            <Button x:Name="previousPageButton" Content="←" Grid.Column="21" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="33" Margin="0"/>
-            <Label  x:Name="pageCountLabel" Grid.Column="22"  Grid.ColumnSpan="4" Grid.RowSpan="2" Grid.Row="33" Content="0 out of 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <Button x:Name="nextPageButton" Content="→" Grid.Column="26" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Row="33" Margin="0"/>
+            <Button x:Name="previousPageButton" Grid.Column="21" Grid.RowSpan="3" Grid.Row="33" Margin="0,0,0,0" Grid.ColumnSpan="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SideArrow}">
+
+                <Path Name="previousPgPath"  Height="30" Width="30" 
+                      Fill="Transparent" StrokeThickness="1.5" Stretch="Fill" Stroke="White"
+                          Data="M 24.00,18.00
+                           C 24.00,18.00 12.00,18.00 12.00,18.00M 18.00,12.00
+                           C 18.00,12.00 12.00,18.00 12.00,18.00
+                             12.00,18.00 18.00,24.00 18.00,24.00M 33.00,18.00
+                           C 33.00,26.28 26.28,33.00 18.00,33.00
+                             9.72,33.00 3.00,26.28 3.00,18.00
+                             3.00,9.72 9.72,3.00 18.00,3.00
+                             26.28,3.00 33.00,9.72 33.00,18.00 Z" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+            </Button>
+
+            <Label  x:Name="pageCountLabel" Grid.Column="22"  Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="33" Content="0 out of 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Button x:Name="nextPageButton" Grid.Column="26" Grid.RowSpan="3" Grid.Row="33" Margin="0,0,0,0" Grid.ColumnSpan="1"
+        HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SideArrow}">
+
+                <Path Name="nextPgPath"  Height="30" Width="30"
+                      Fill="Transparent" StrokeThickness="1.5" Stretch="Fill" Stroke="White"
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" 
+          
+                          Data="M 12.00,18.00
+                        C 12.00,18.00 24.00,18.00 24.00,18.00M 18.00,24.00
+                        C 18.00,24.00 24.00,18.00 24.00,18.00
+                          24.00,18.00 18.00,12.00 18.00,12.00M 33.00,18.00
+                        C 33.00,26.28 26.28,33.00 18.00,33.00
+                          9.72,33.00 3.00,26.28 3.00,18.00
+                          3.00,9.72 9.72,3.00 18.00,3.00
+                          26.28,3.00 33.00,9.72 33.00,18.00 Z" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+            </Button>
 
         </Grid>
         

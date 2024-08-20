@@ -1,0 +1,31 @@
+Joe Kilmurray's (Slipjig)
+Slipjig
+E minor
+Double
+
+__
+BGE EDE G_A
+BE'E' E'D'B D'BA
+BGE EDE G_A
+BCD' AD'G FED
+__
+D'E'D' CAF G*ABC*
+D'E'D' D'E'F' G'F'E'
+D'E'D' CAF G_A
+BCD' AD'G FED
+__
+D'E'D' CAF G*ABC*
+D'E'D' D'E'F' G'F'E'
+F'E'D' CAF G_A
+BCD' AD'G FED
+__
+E'__ E'D'E' F'_D'
+E'F'E' E'D'F' A'F'D'
+E'F'E' E'D'E' F'_D'
+E'D'B AD'G FED
+__
+Brl E'D'B G_A
+BE'E' E'F'G' F'E'D'
+BE'E' E'D'B G_A
+BCD' AD'G FED
+__

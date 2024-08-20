@@ -1,0 +1,17 @@
+Four Leaf Shamrock
+Reel
+D major
+Double
+
+__
+F'D'rl E'A'F'E' D'F'E'D' D'BAF
+DEFB ABD'F' *E'F'E'*D'F' E'D'*BCD'*
+F'D'rl E'A'F'E' D'F'E'D' D'BAF
+DEFB ABD'F' E'A'F'E' D'_E'G'
+|D'_BG
+__
+AD'D'C D'E'F'A' B'F'A'F' E'F'D'B
+BAFB ABD'F' E'Brl G'B'F'E'
+D'BAB D'E'F'A' B'F'A'F' E'D'BA
+DEFB ABD'F' E'A'F'E' D'_E'G'
+__

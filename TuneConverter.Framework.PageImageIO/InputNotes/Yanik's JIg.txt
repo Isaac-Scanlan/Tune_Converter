@@ -1,0 +1,18 @@
+Yanik's JIg
+Jig
+C major
+Double
+John Whelan
+__
+C_CL EDCL EFG GEG
+AFD' BGG' E'G'D' E'D'B
+C_CL EDCL EFG GEG
+AFD' Brl CE'D' C*GAB*
+|CG'F'
+__
+E'G'E' CGCL EFG CGG'
+F'FF' D'F'C *BCD'*B GG'F'
+E'G'E' CGCL EFG CGG'
+F'FF' D'F'C *BCD'*B CG'F'
+|C*GAB*
+__

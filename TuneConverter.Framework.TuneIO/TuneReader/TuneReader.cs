@@ -11,9 +11,16 @@ public partial class TuneReader
 {
     private static readonly string _notesPath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/InputNotes/";
 
+    //public static string runningDirectory = Directory.GetCurrentDirectory();
+    //public static readonly string _notesPath = Path.GetFullPath(Path.Combine(runningDirectory,
+    //    Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "InputNotes/")));
+
+
     public List<List<string>> readFile(String tune)
     {
         var lines = ByNewLine().Split(File.ReadAllText(_notesPath + tune)).ToList();
+        TuneWriter tw = new TuneWriter();
+        tw.WriteFile(lines);
 
         var output = arrangeTuneList(lines);
 

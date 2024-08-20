@@ -11,6 +11,7 @@ using TuneConverter.Framework.TuneComponents.TuneBuilders;
 using TuneConverter.Framework.TuneComponents.TuneComponents;
 using TuneConverter.Framework.TuneIO.TuneReader;
 using TuneConverter.Framework.PageImageIO.ImageComponents;
+using System.Reflection;
 
 
 namespace TuneConverter.Framework.TuneIO.TuneReader;
@@ -18,6 +19,9 @@ namespace TuneConverter.Framework.TuneIO.TuneReader;
 public class TuneImageWriter
 {
     string filePath => "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + tuneDirectory + "/";
+    //public static string runningDirectory = Directory.GetCurrentDirectory();
+    //public string filePath => Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(),
+    //    Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "OutImages", tuneDirectory)));
     string filePathCeili => "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/Ceili_Directory/";
     string tuneDirectory {  get; set; }
 

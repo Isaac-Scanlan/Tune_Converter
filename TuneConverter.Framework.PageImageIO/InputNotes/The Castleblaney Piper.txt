@@ -1,0 +1,22 @@
+The Castleblaney Piper
+Jig
+D major
+Double
+
+__
+FDF ABC D'F'D' AGF
+GBG E_G FAF GFE
+FDF ABC D'F'D' *BCD'*E'
+F'A'F' G'E'C E'D'C D'AG
+|D'_E'
+__
+F'E'D' G'F'E' F'E'D' CAF
+GAG FGA BGE ED'E'
+F'E'D' G'F'E' F'E'D' *BCD'*E'
+F'A'F' G'E'C E'D'C D'_E'
+__
+F'E'D' G'F'E' F'E'D' CAF
+GBG E_G FAF GFE
+FDF ABC D'F'D' *BCD'*E'
+F'A'F' G'E'C E'D'C D'AG
+__
