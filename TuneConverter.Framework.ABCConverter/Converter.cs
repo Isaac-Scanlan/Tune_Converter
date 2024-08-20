@@ -12,6 +12,7 @@ namespace TuneConverter.Framework.ABCConverter;
 /// This class is for converting tunes that are written in the standard ABC notation as seen on
 /// thesession.org and converts it into an easier to manipulate internal ABC format
 /// </summary>
+// TODO: Full code cleanup
 public partial class Converter
 {
     /// <summary>
