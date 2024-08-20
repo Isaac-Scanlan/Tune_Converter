@@ -1,0 +1,22 @@
+Robin Kelleher
+Slipjig
+G major
+Double
+
+__
+BAG GDE G__
+BAG GDG D'BG
+BAG GDG D'BG
+ABA ABD' E'_D'
+|E'_F'
+__
+G'_E' D'BB D'BB
+G'_E' D'BD' E'_F'
+G'_E' D'BB D'CB
+ABA ABD' E'_F'
+__
+G'_E' D'BB D'BB
+G'D'E' D'BD' E'_F'
+G'B'E' E'G'E' D'CB
+ABA ABD' E'_F'
+__

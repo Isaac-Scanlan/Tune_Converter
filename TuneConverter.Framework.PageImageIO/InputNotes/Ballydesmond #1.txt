@@ -1,18 +1,18 @@
 Ballydesmond #1
 Polka
-A minor
+A dor
 Single
 
 __
 EA AB CD' E'_
-G-F# GA GE ED
-EA AB CD' E'F#'
+G-F GA GE ED
+EA AB CD' E'F'
 G'E' D'B A_ AG
 |AG'
 __
-A'-G' A'B' A'G' E'F#'
-G'-F#' G'A' G'E' E'D'
-E'A' A'B' A'G' E'F#'
+A'-G' A'B' A'G' E'F'
+G'-F' G'A' G'E' E'D'
+E'A' A'B' A'G' E'F'
 G'E' D'B A_ AG'
 |AG
 __

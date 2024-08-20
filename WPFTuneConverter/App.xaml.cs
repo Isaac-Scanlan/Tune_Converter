@@ -10,6 +10,7 @@ namespace WPFTuneConverter
     /// </summary>
     public partial class App : Application
     {
+
     }
 
 }

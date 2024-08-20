@@ -11,14 +11,38 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
 using TuneConverter.Framework.TuneStorage;
+using System.Data.SqlTypes;
 
 namespace Main.TuneConverterApp;
+
+/* 
+ * Publish Order
+ * _____________
+ * 
+ * TuneConverter.Framework.ABCConverter
+ * TuneConverter.Framework.MIDIConverter
+ * TuneConverter.Framework.PageComponents
+ * 
+ * TuneConverter.Framework.TuneComponents
+ * 
+ * TuneConverter.Framework.PageImageIO
+ * 
+ * TuneConverter.Framework.TuneIO
+ * 
+ * TuneConverter.Framework.TuneStorage
+ * 
+ * Main.TuneConverterApp
+ * 
+ * WPFTuneConverter
+ * 
+ */
 
 public class Program
 { 
     public static void Main(string[] args)
     {
-        //var file = ReadTune("An Choisir 2.txt");
+        //Console.BackgroundColor = ConsoleColor.Green;
+        //var file = ReadTune("An Choisir.txt");
 
         var file = ArrangeTuneList(args);
 
@@ -48,7 +72,11 @@ public class Program
 
         WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
 
+        var subString = "Title\":\"" + tuneFull.Title;
+
         var tuneDataList = TuneSerializer.ConvertByteArrayListToStringList("data.dat");
+        tuneDataList = tuneDataList.Where(s => !s.Contains(subString)).ToList();
+
         tuneDataList.Add(TuneSerializer.SerializeTune(tuneFull));
 
 

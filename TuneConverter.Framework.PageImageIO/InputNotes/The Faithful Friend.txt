@@ -1,0 +1,23 @@
+The Faithful Friend
+Hornpipe
+D major
+Double
+
+__
+FDDAL DEFG AGAB CnG*ABC*
+D'AD'E' F'D'E'D' CAF'E' D'CAG
+FDDAL DEFG AGAB CnG*ABC*
+D'AD'E' F'D'E'D' CABC *D'E'D'*AG
+|D'__E'
+__
+F'D'D'A D'F'A'F' *G'B'G'*E'D' CD'*E'F'G'*
+F'D'D'A D'F'A'F' G'E'CE' D'_D'E'
+F'D'D'A D'F'A'F' *G'B'G'*E'D' CD'*E'F'G'*
+F'rlA' G'B'A'G' *F'G'A'*E'G' F'D'D'E'
+__
+*F'G'F'*F'D' *E'F'E'*E'C D'CAB CnAGA
+FDDAL D_*EFG* ABCA D'AD'E'
+*F'E'D'*E'C D'CAB *CnE'Cn*CA GFEF
+*DED*D'C D'E'F'D' E'D'CE' D'ADE'
+|D'CAG
+__

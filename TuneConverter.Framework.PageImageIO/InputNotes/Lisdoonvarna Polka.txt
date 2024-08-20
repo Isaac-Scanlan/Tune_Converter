@@ -1,0 +1,16 @@
+Lisdoonvarna Polka
+Polka
+D major
+Double
+
+__
+D'A FA D'C D'-F'
+E'D' CD' E'F' G'*F'G'*
+A'F' G'E' D'C A-F
+GB A-G FD D_
+__
+F'_ F'D' G'_ G'E'
+F'_ F'A' G'F' E'*F'G'*
+A'F' G'E' D'C A-F
+GB A-G FD D_
+__

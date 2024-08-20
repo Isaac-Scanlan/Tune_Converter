@@ -1,0 +1,16 @@
+John O'Connors
+Jig
+G major
+Double
+
+__
+GAG FED E_F G_A
+B_G C_A B_G C_A
+BCD' EFG *ABA*G FED
+EFG AFD GAG DEF
+__
+Grl GBD' E'_F' G'_E'
+D'BA GBD' E'_F' G'_E'
+D'BG CBA D'BG FED
+EFG AFD GAG DEF
+__

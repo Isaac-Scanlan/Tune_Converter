@@ -25,6 +25,10 @@ namespace TuneConverter.Framework.TuneStorage
 
         private static readonly string _notesPath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/TuneRepo/";
 
+        //public static string runningDirectory = Directory.GetCurrentDirectory();
+        //public static readonly string _notesPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(),
+        //    Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "TuneRepo/")));
+
         public TuneSerializer()
         {
 

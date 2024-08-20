@@ -1,0 +1,24 @@
+Two Days of Summer
+Jig
+G major
+Double
+Dave Sheridan
+__
+A_D BCB ABA AFG
+ADD' C_A GEA GED
+A_D BCB ABA ABC
+D'G'E' D'BG AGE G*EFG*
+|G*ABC*
+__
+D'_E' D'BG CBC AGE
+DD'E' D'BG CBC ABC
+D'G'E' D'BG CBC AGE
+DGD GAB AGF G*ABC*
+|G_E
+__
+DGG GAB EAA ABC
+D'G'E' D'BG CBC AGE
+DGG GAB EAA ABC
+D'G'E' D'BG AGE G_E
+|G*EFG*
+__

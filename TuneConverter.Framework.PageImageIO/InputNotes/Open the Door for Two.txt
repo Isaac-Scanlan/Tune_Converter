@@ -1,0 +1,22 @@
+Open the Door for Two
+Slipjig
+G major
+Double
+
+__
+G_C BGB AFD
+G_C BGB C_D'
+*E'F'G'*E' D'CB AFD
+E_C BCA G*BGD*
+__
+G_C BGB AFD
+Grl GAB C_D'
+*E'F'G'*E' D'CB AFD
+E_C BCA G*BCD'*
+__
+G'D'B G'D'B AFD
+G'F'E' D'E'F' G'_D'
+*E'F'G'*E' D'CB AFD
+E_C BCA G*BCD'*
+|G*BGD*
+__

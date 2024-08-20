@@ -9,8 +9,9 @@ public class Program
     {
 
 
-        //var file_full = ts.ReadFile();
+        
         string[] fyles = Directory.GetFiles("C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/InputNotes");
+
 
 
         // Sample list of strings

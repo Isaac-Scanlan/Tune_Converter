@@ -1,0 +1,16 @@
+The Hairy Chester Frog
+Reel
+G major
+Single
+
+__
+D'_CA GrlB D'ACA FnG*ABC*
+D'ACA GBD'G' F'D'D'E' F'D'CA
+D'_CA GrlB D'ACA FnG*ABC*
+D'ACA GBD'G' F'D'D'E' F'D'CA
+__
+D'G'G'F' G'_B'G' D'G'G'E' F'G'A'F'
+D'G'G'F' G'_A'G' Fn'D'CA FnG*ABC*
+D'G'G'F' G'_B'G' D'G'G'E' F'_G'A'
+B'G'A'F' G'rlA' B'G'A'G' F'D'CA
+__

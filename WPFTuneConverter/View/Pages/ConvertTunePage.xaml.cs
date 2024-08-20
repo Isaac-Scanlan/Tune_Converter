@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,43 +36,100 @@ namespace WPFTuneConverter.View.Pages
 
         int resizeFactor = 6;
 
-        
-        
+        public static string runningDirectory = Directory.GetCurrentDirectory();
+
+        public readonly string localFilePath;
+        public readonly string filePath;
+        public readonly string outImageFilePath;
+        public readonly string inputNotesFilePath;
+        public readonly string defaultImageFilePath;
+
+
+
 
         List<KeyNote> keys = new() {
-            new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
-            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
-            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Minor}
-            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Minor}
-            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
             ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Dor}
+            ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Major}
             ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.C, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Dor}
+
+            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Dor}
             ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
             ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Minor}
-            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.D, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Dor}
+
+            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
             ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Dor}
+            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.E, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Dor}
+
+            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
             ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Dor}
+            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Major}
             ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.F, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Dor}
+
+            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
             ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Dor}
             ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.G, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Dor}
+
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Dor}
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.A, AccidentalType = AccidentalType.Sharp, Keytype = KeyType.Dor}
+
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Flat, Keytype = KeyType.Dor}
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Major}
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Minor}
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Mix}
+            ,new() { NoteType = NoteType.B, AccidentalType = AccidentalType.Natural, Keytype = KeyType.Dor}
+
         };
 
         public ConvertTunePage()
         {
             InitializeComponent();
+
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            localFilePath = System.IO.Path.GetFullPath(
+                System.IO.Path.Combine(baseDirectory, "..", "..", "..", ".."));
+
+            filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(localFilePath, "TuneConverterAppInterface/"));
+            outImageFilePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(localFilePath, "TuneConverter.Framework.PageImageIO" + "OutImages/"));
+            inputNotesFilePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(localFilePath, "TuneConverter.Framework.PageImageIO" + "InputNotes"));
+            defaultImageFilePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(localFilePath, "WPFTuneConverter/"));
+
+
+           // tuneTextBlock.textInput.Text = filePath + "\n\n" + outImageFilePath;
+
 
             foreach (var item in Enum.GetNames(typeof(TuneType)))
             {
@@ -89,7 +147,9 @@ namespace WPFTuneConverter.View.Pages
             repeatsComboBox.textInput.Items.Add("Triple");
 
             System.Drawing.Image bm;
+            //using (var bmpTemp = new Bitmap(filePath + "default_image.png"))
             using (var bmpTemp = new Bitmap("C:/Users/Isaac/source/repos/TuneConverter/TuneConverterAppInterface/default_image.png"))
+
             {
                 bm = new Bitmap(bmpTemp, new System.Drawing.Size(bmpTemp.Width / 4, bmpTemp.Height / 4));
             }
@@ -160,7 +220,9 @@ namespace WPFTuneConverter.View.Pages
             p.WaitForExit();
 
             System.Drawing.Image bm;
+            //file_ext = outImageFilePath + tune[1] + tuneDirec + "/" + fileName;
             file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + tune[1] + tuneDirec + "/" + fileName;
+
             var file = file_ext + page_num + ".png";
 
             TuneWriter tw = new TuneWriter();
@@ -274,6 +336,8 @@ namespace WPFTuneConverter.View.Pages
             dialog.RestoreDirectory = true;
             dialog.InitialDirectory = "c:\\Users\\Isaac\\source\\repos\\TuneConverter\\TuneConverter.Framework.PageImageIO\\InputNotes";
 
+            //dialog.InitialDirectory = inputNotesFilePath;
+
             // Show open file dialog box
             bool? result = dialog.ShowDialog();
 
@@ -345,6 +409,8 @@ namespace WPFTuneConverter.View.Pages
 
             System.Drawing.Image bm;
             file_ext = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + typeComboBox.textInput.Text + tuneDirec + "/" + titleTextBox.textInput.Text;
+            //file_ext = outImageFilePath + typeComboBox.textInput.Text + tuneDirec + "/" + titleTextBox.textInput.Text;
+
             var file1 = file_ext + page_num + ".png";
 
             //using (var bmpTemp = new Bitmap(file))
@@ -376,6 +442,9 @@ namespace WPFTuneConverter.View.Pages
 
         }
 
+        //string defaultImageFilePath => System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(),
+        //    System.IO.Path.Combine(runningDirectory, "..", "..", "..", "..", "WPFTuneConverter/")));
+
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             writtenByBox.textInput.Clear();
@@ -385,8 +454,10 @@ namespace WPFTuneConverter.View.Pages
             titleTextBox.textInput.Clear();
             tuneTextBlock.textInput.Text = "";
             tuneImage.Opacity = 0.5;
-
+            //tuneImage.Source = new BitmapImage(new Uri(defaultImageFilePath + "default_image.png"));
             tuneImage.Source = new BitmapImage(new Uri("C:/Users/Isaac/source/repos/TuneConverter/WPFTuneConverter/default_image.png"));
+
+            //tuneImage.Source = new BitmapImage(new Uri(defaultImageFilePath + "default_image.png"));
         }
 
         private void previousPageButton_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)

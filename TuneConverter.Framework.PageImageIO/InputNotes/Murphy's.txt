@@ -1,0 +1,18 @@
+Murphy's
+Reel
+D major
+Double
+
+__
+AFrl G_FG AFrl EAFE
+DEFA D'E'F'E' D'BAF E_D'B
+AFrl G_FG AFrl EAFE
+DEFA D'E'F'E' D'BAF D_D'B
+|D_D'E'
+__
+F'rlA' G'_F'G' A'F'D'F' E'D'BD'
+F'G'F'E' D'E'F'E' D'BAF E_F'G'
+A'F'rl B'F'A'F' D'E'F'D' BrlD'E'
+F'G'F'E' D'E'F'E' D'BAF D_D'E'
+|D_D'B
+__

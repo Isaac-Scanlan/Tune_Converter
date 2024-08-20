@@ -1,0 +1,30 @@
+The Wearied Lad
+Jig
+G major
+Double
+
+__
+G_A BAG AGF GFD
+G_A BD'D' CAG FAD
+G_A BAG AGF GFD
+F'A'G' F'E'D' CAG G_D
+|G_B
+__
+D'E'D' D'CA D'GG G*ABC*
+D'E'D' D'CA CAG FAD
+D'E'D' D'CA D'GG GAD'
+F'A'G' F'E'D' CAG G_B
+|GBD'
+__
+G'A'B' A'_G' A'_G' G'_D'
+G'A'B' A'_D' G'_A' F'_D'
+G'A'B' A'_G' A'_G' G'F'D'
+F'A'G' F'E'D' CAG GBD'
+|G_A
+__
+BD'D' CAA D'GG G*ABC*
+BD'D' CAA CAG FAD
+BD'D' CAA D'GG GAD'
+F'A'G' F'E'D' CAG G_A
+|G_D
+__

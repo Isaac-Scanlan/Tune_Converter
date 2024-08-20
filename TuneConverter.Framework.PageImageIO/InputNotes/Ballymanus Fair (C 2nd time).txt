@@ -1,0 +1,26 @@
+Ballymanus Fair (C 2nd time)
+Hornpipe
+C major
+Single
+
+__
+CGEG F_GF ED*EFG* CEFC
+ECLCB CBAG ADDE FA*GAB*
+CCLEG FCLGF ED*EFG* CEFC
+EGCLE FDD'B *CE'C*BD' *CBA**GAB*
+__
+C_EG F_GF ED*EFG* CEFD
+*GECL*CB CBAG AFDE *FAF**GAB*
+*CE'C*EC FAGF ED*EFG* CEFC
+EGCE FF'D'B CCLBD' *CE'C**D'E'F'*
+__
+E'CCB CE'G'E' D'DBC D'E'*F'E'D'*
+E'CD'B CD'E'C *D'E'D'**CBA* GCLEG
+AFFF AFAC GE*GAB* CD'E'C
+GGLE'G AF'D'B *C'E'C'**BC'D'* C_*D'E'F'*
+__
+G'CE'D' CG'E'C D'CBC D'E'*F'E'D'*
+E'G'D'E' CE'G'E' *D'E'D'**CBA* *GBD'*G'_
+AFFF AFCA GE*GAB* CD'E'C
+G_E'G AF'D'B CAGE CL___
+__

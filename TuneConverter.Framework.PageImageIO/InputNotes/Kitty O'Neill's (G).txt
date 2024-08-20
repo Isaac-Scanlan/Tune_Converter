@@ -1,0 +1,46 @@
+Kitty O'Neill's (G)
+Barndance
+G major
+Double
+
+__
+B_BA B_BA BABE' D'BGB
+A_AG *ABA*AG AG'F'E' *D'E'D'**CBA*
+B_BA B_BA BABE' D'BGB
+A_AB AG'F'E' *D'E'D'**CBA* GFGC
+|GFGA
+__
+BD'G'F' G'D'BG C_A'_ ArlB
+CD'E'F' G'F'G'E' *D'E'D'**CBA* BAGA
+BD'G'F' G'D'BG C_A'_ ArlB
+CD'E'F' G'F'G'E' *D'E'D'**CBA* GFGA
+__
+BE'E'D' E'D'CD' BE'E'D' E'D'CD'
+BE'E'D' E'_*D'E'F'* G'D'BG *ABA*GA
+BE'E'D' E'D'CD' BE'E'D' E'D'CD'
+BE'E'D' E'_*D'E'F'* G'D'BG AGFA
+__
+GLBL_D G__C BABD' E'F'G'_
+GLBL_D G__C BAGB AAbAB
+GLBL_D G__C BABD' E'F'G'E
+*F'E'D'**D'E'C* *D'CB**CBG* AGFA GEDBL
+|GD'*D'E'D*
+__
+D'_Eb'_ E'_G'E' E'D'BG DDrl
+D_Eb_ E_CE DCBA GFGD'
+D'_Eb'_ E'_G'E' E'D'BG DDrl
+D_Eb_ E_CE DCBA GFGD'
+|*GAG*EG
+__
+DBBA *BD'B*DB DBBC BAGB
+AF'F'E' *F'G'F'*AF' AF'F'G' *F'E'D'**CBA*
+DBBA *BD'B*DB DBBC BAGB
+AF'rl A'__G' *F'E'D'**CBA* GFGE
+|GFGE'
+__
+*D'B*_BE' *D'B*_BA *GBD'**G'F'E'* *D'B*_BE'
+E'GCE' D'CBG *ABA**GFE* D_DE'
+*D'B*_BE' *D'B*_BA *GBD'**G'F'E'* *D'B*_BE'
+E'GCE' D'CBG AGFA GG'G'E'
+|GE'D'C
+__

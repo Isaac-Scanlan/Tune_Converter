@@ -32,7 +32,7 @@ namespace WPFTuneConverter.View.CustomControls
         public string PlaceHolder
         {
             get { return placeHolder; }
-            set { 
+            set {
                 placeHolder = value;
                 tbPlaceHolder.Text = placeHolder;
             }

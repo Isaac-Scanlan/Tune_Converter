@@ -1,19 +1,21 @@
 Banish Misfortune
 Jig
-D major
+D mix
+Hello
+
 __
-F'E'D' CnAG A_D' CnAG
-F_D DED FEF G_Cn
-AGA CnAG AGA *BCD'*E'
-F'E'D' CNAG AD'C D'_E'
+F'E'D' CAG A_D' CAG
+F_D DED FEF G_C
+AGA CAG AGA *BCD'*E'
+F'E'D' CAG AD'C# D'_E'
 __
 F'_D' D'CD' E'F'G' A'G'F'
-E'_Cn CnBCn E'_F' G'F'E'
+E'_C CBC E'_F' G'F'E'
 F'_G' A'G'F' E'_F' G'F'E'
-F'E'D' CnAG AD'C D'__
+F'E'D' CAG AD'C# D'__
 __
-F'_G' E'_F' D'_E' Cn_D'
+F'_G' E'_F' D'_E' C_D'
 ABA GAG F_F GED
-Cn__ CnAG AGA *BCD'*E'
-F'E'D' CnAG AD'C D'__
+C__ CAG AGA *BCD'*E'
+F'E'D' CAG AD'C# D'__
 __
