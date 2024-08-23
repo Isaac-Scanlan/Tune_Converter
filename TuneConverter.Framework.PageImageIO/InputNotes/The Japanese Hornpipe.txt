@@ -1,0 +1,18 @@
+The Japanese Hornpipe
+Hornpipe
+A major
+Double
+
+__
+*E'F'E'*D#'E' D'E'C_ *BCB*BbB GBFB
+EFGA BCD'E' F'E'*D#'E'F'* E'EAC
+*E'F'E'*D#'E' D'E'C_ *BCB*BbB GBFB
+EFGA BCD'A' *G'F'E'**D'CB* *ACE'*A'_
+|ACE'A'
+__
+C'E'C'_ C'E'A'C' E'E'B'_ B'_E'C'
+B'E'B'_ B'_*E'A'C'* E'_A'_ A'_*CE'A'*
+C'E'C'_ C'E'A'C' E'E'B'_ B'_E'F'
+G'A'G'_ G'E'D'B *ABA*GB ACE'A'
+|AA'G'F'
+__
