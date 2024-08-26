@@ -42,7 +42,7 @@ public class Program
     public static void Main(string[] args)
     {
         //Console.BackgroundColor = ConsoleColor.Green;
-        //var file = ReadTune("An Choisir.txt");
+        //var file = ReadTune("The Japanese Hornpipe.txt");
 
         var file = ArrangeTuneList(args);
 

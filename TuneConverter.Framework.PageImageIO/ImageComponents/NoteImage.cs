@@ -1,60 +1,114 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using TuneConverter.Framework.PageComponents;
 
 namespace TuneConverter.Framework.PageImageIO.ImageComponents;
 
+/// <summary>
+/// Represents an image of a musical note and related symbols.
+/// </summary>
 public class NoteImage
 {
-    private static readonly string _imagePath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/Images/";
-    private static readonly string localDirec = Directory.GetParent(
-                                                    Directory.GetParent(
-                                                        Directory.GetParent(
-                                                            Directory.GetParent(Directory.GetCurrentDirectory()).FullName)
-                                                        .FullName)
-                                                    .FullName)
-                                                .FullName;
-    private static readonly string _imagePath2 = localDirec + "/TuneConverter.Framework.PageImageIO/Images/";
+    /// <summary>
+    /// The path to the directory containing the images.
+    /// </summary>
+    private static readonly string _imagePath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        "source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/Images/");
 
+    /// <summary>
+    /// The local directory path for the project.
+    /// </summary>
+    private static readonly string _localDirec = Directory.GetParent(
+        Directory.GetCurrentDirectory())?.Parent?.Parent?.Parent?.FullName ?? string.Empty;
 
-    public static readonly Image<Gray, byte> A = new(@"" + _imagePath + "A.png"); 
-    public static readonly Image<Gray, byte> B = new(@"" + _imagePath + "B.png"); 
-    public static readonly Image<Gray, byte> C = new(@"" + _imagePath + "C.png"); 
-    public static readonly Image<Gray, byte> D = new(@"" + _imagePath + "D.png");  
-    public static readonly Image<Gray, byte> E = new(@"" + _imagePath + "E.png");  
-    public static readonly Image<Gray, byte> F = new(@"" + _imagePath + "F.png");  
-    public static readonly Image<Gray, byte> G = new(@"" + _imagePath + "G.png");  
-    public static readonly Image<Gray, byte> sharp = new(@"" + _imagePath + "sharp.png"); 
-    public static readonly Image<Gray, byte> flat = new(@"" + _imagePath + "flat.png");
-    public static readonly Image<Gray, byte> natural = new(@"" + _imagePath + "natural.png");
-    public static readonly Image<Gray, byte> high = new(@"" + _imagePath + "high.png");  
-    public static readonly Image<Gray, byte> low = new(@"" + _imagePath + "low.png");  
-    public static readonly Image<Gray, byte> r = new(@"" + _imagePath + "ro.png");  
-    public static readonly Image<Gray, byte> l = new(@"" + _imagePath + "ll.png"); 
-    public static readonly Image<Gray, byte> _ = new(@"" + _imagePath + "long.png");
-    public static readonly Image<Gray, byte> __ = new(@"" + _imagePath + "small_long.png");
-    public static readonly Image<Gray, byte> duplet = new(@"" + _imagePath + "duplet.png");  
-    public static readonly Image<Gray, byte> triplet = new(@"" + _imagePath + "triplet.png");  
-    public static readonly Image<Gray, byte> part1 = new(@"" + _imagePath + "pt_1.png"); 
-    public static readonly Image<Gray, byte> part2 = new(@"" + _imagePath + "pt_2.png"); 
-    public static readonly Image<Gray, byte> part3 = new(@"" + _imagePath + "pt_3.png"); 
-    public static readonly Image<Gray, byte> part4 = new(@"" + _imagePath + "pt_4.png"); 
-    public static readonly Image<Gray, byte> part5 = new(@"" + _imagePath + "pt_5.png"); 
-    public static readonly Image<Gray, byte> part6 = new(@"" + _imagePath + "pt_6.png"); 
-    public static readonly Image<Gray, byte> part7 = new(@"" + _imagePath + "pt_7.png"); 
-    public static readonly Image<Gray, byte> part8 = new(@"" + _imagePath + "pt_8.png"); 
-    public static readonly Image<Gray, byte> part9 = new(@"" + _imagePath + "pt_9.png"); 
-    public static readonly Image<Gray, byte> part10 = new(@"" + _imagePath + "pt_10.png");
-    public static readonly Image<Gray, byte> rep_1 = new(@"" + _imagePath + "rep_1.png");
-    public static readonly Image<Gray, byte> rep_2 = new(@"" + _imagePath + "rep_2.png");
-    public static readonly Image<Gray, byte> rep_3 = new(@"" + _imagePath + "rep_3.png");
-    public static readonly Image<Gray, byte> space = new(@"" + _imagePath + "space.png");
-    public static readonly Image<Gray, byte> x = new(@"" + _imagePath + "x.png");
-    public static readonly Image<Gray, byte> linkStart = new(@"" + _imagePath + "Link_start.png");
-    public static readonly Image<Gray, byte> linkMiddle = new(@"" + _imagePath + "Link_mid.png");
-    public static readonly Image<Gray, byte> linkEnd = new(@"" + _imagePath + "Link_end.png");
+    /// <summary>
+    /// A cache of images loaded from disk, keyed by a string identifier.
+    /// </summary>
+    private static readonly Dictionary<string, Image<Gray, byte>> _imageCache = new()
+    {
+        { "A", LoadImage("A.png") },
+        { "B", LoadImage("B.png") },
+        { "C", LoadImage("C.png") },
+        { "D", LoadImage("D.png") },
+        { "E", LoadImage("E.png") },
+        { "F", LoadImage("F.png") },
+        { "G", LoadImage("G.png") },
+        { "sharp", LoadImage("sharp.png") },
+        { "flat", LoadImage("flat.png") },
+        { "natural", LoadImage("natural.png") },
+        { "high", LoadImage("high.png") },
+        { "low", LoadImage("low.png") },
+        { "r", LoadImage("ro.png") },
+        { "l", LoadImage("ll.png") },
+        { "_", LoadImage("long.png") },
+        { "__", LoadImage("small_long.png") },
+        { "duplet", LoadImage("duplet.png") },
+        { "triplet", LoadImage("triplet.png") },
+        { "part1", LoadImage("pt_1.png") },
+        { "part2", LoadImage("pt_2.png") },
+        { "part3", LoadImage("pt_3.png") },
+        { "part4", LoadImage("pt_4.png") },
+        { "part5", LoadImage("pt_5.png") },
+        { "part6", LoadImage("pt_6.png") },
+        { "part7", LoadImage("pt_7.png") },
+        { "part8", LoadImage("pt_8.png") },
+        { "part9", LoadImage("pt_9.png") },
+        { "part10", LoadImage("pt_10.png") },
+        { "rep_1", LoadImage("rep_1.png") },
+        { "rep_2", LoadImage("rep_2.png") },
+        { "rep_3", LoadImage("rep_3.png") },
+        { "space", LoadImage("space.png") },
+        { "x", LoadImage("x.png") },
+        { "linkStart", LoadImage("Link_start.png") },
+        { "linkMiddle", LoadImage("Link_mid.png") },
+        { "linkEnd", LoadImage("Link_end.png") }
+    };
+
+    /// <summary>
+    /// A dictionary mapping repeat types to their corresponding images.
+    /// </summary>
+    private static readonly Dictionary<RepeatType, Image<Gray, byte>> _repeatsDict = new()
+    {
+        { RepeatType.Single, LoadImage("rep_1.png") },
+        { RepeatType.Double, LoadImage("rep_2.png") },
+        { RepeatType.Triple, LoadImage("rep_3.png") }
+    };
+
+    /// <summary>
+    /// Loads an image from the file system.
+    /// </summary>
+    /// <param name="fileName">The name of the image file to load.</param>
+    /// <returns>The loaded image as an <see cref="Image{Gray, Byte}"/> object.</returns>
+    private static Image<Gray, byte> LoadImage(string fileName)
+    {
+        return new Image<Gray, byte>(Path.Combine(_imagePath, fileName));
+    }
+
+    /// <summary>
+    /// Retrieves an image from the cache based on a string key.
+    /// </summary>
+    /// <param name="key">The key corresponding to the desired image.</param>
+    /// <returns>
+    /// The <see cref="Image{Gray, Byte}"/> associated with the key, or null if the key does not exist.
+    /// </returns>
+    public static Image<Gray, byte>? GetImage(string key)
+    {
+        return _imageCache.TryGetValue(key, out var image) ? image : null;
+    }
+
+    /// <summary>
+    /// Retrieves a repeat image based on the <see cref="RepeatType"/> key.
+    /// </summary>
+    /// <param name="key">The repeat type corresponding to the desired image.</param>
+    /// <returns>
+    /// The <see cref="Image{Gray, Byte}"/> associated with the repeat type, or null if the key does not exist.
+    /// </returns>
+    public static Image<Gray, byte>? GetRepImage(RepeatType key)
+    {
+        return _repeatsDict.TryGetValue(key, out var image) ? image : null;
+    }
 }

@@ -1,6 +1,8 @@
 Armagh Polka
 Polka
 D major
+Double
+
 __
 D'D' *BC#**D'B'* AF# AF#
 D'D' *BC#**D'B'* AF# ED
