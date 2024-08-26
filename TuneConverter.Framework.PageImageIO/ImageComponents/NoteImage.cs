@@ -1,23 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using TuneConverter.Framework.PageComponents;
 
 namespace TuneConverter.Framework.PageImageIO.ImageComponents;
 
+/// <summary>
+/// Represents an image of a musical note and related symbols.
+/// </summary>
 public class NoteImage
 {
+    /// <summary>
+    /// The path to the directory containing the images.
+    /// </summary>
     private static readonly string _imagePath = Path.Combine(
-    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-    "source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/Images/");
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        "source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/Images/");
 
+    /// <summary>
+    /// The local directory path for the project.
+    /// </summary>
     private static readonly string _localDirec = Directory.GetParent(
         Directory.GetCurrentDirectory())?.Parent?.Parent?.Parent?.FullName ?? string.Empty;
 
+    /// <summary>
+    /// A cache of images loaded from disk, keyed by a string identifier.
+    /// </summary>
     private static readonly Dictionary<string, Image<Gray, byte>> _imageCache = new()
     {
         { "A", LoadImage("A.png") },
@@ -58,25 +68,47 @@ public class NoteImage
         { "linkEnd", LoadImage("Link_end.png") }
     };
 
-    private static readonly Dictionary<RepeatType, Image<Gray, byte>> _repeatsDict = new() {
+    /// <summary>
+    /// A dictionary mapping repeat types to their corresponding images.
+    /// </summary>
+    private static readonly Dictionary<RepeatType, Image<Gray, byte>> _repeatsDict = new()
+    {
         { RepeatType.Single, LoadImage("rep_1.png") },
         { RepeatType.Double, LoadImage("rep_2.png") },
         { RepeatType.Triple, LoadImage("rep_3.png") }
     };
 
+    /// <summary>
+    /// Loads an image from the file system.
+    /// </summary>
+    /// <param name="fileName">The name of the image file to load.</param>
+    /// <returns>The loaded image as an <see cref="Image{Gray, Byte}"/> object.</returns>
     private static Image<Gray, byte> LoadImage(string fileName)
     {
         return new Image<Gray, byte>(Path.Combine(_imagePath, fileName));
     }
 
+    /// <summary>
+    /// Retrieves an image from the cache based on a string key.
+    /// </summary>
+    /// <param name="key">The key corresponding to the desired image.</param>
+    /// <returns>
+    /// The <see cref="Image{Gray, Byte}"/> associated with the key, or null if the key does not exist.
+    /// </returns>
     public static Image<Gray, byte>? GetImage(string key)
     {
         return _imageCache.TryGetValue(key, out var image) ? image : null;
     }
 
+    /// <summary>
+    /// Retrieves a repeat image based on the <see cref="RepeatType"/> key.
+    /// </summary>
+    /// <param name="key">The repeat type corresponding to the desired image.</param>
+    /// <returns>
+    /// The <see cref="Image{Gray, Byte}"/> associated with the repeat type, or null if the key does not exist.
+    /// </returns>
     public static Image<Gray, byte>? GetRepImage(RepeatType key)
     {
         return _repeatsDict.TryGetValue(key, out var image) ? image : null;
     }
-
 }

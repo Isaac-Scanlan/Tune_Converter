@@ -14,6 +14,9 @@ using TuneConverter.Framework.PageComponents;
 
 namespace TuneConverter.Framework.PageImageIO.ImageBuilder;
 
+/// <summary>
+/// A class responsible for assembling pages of a tune, combining various components into a structured format.
+/// </summary>
 public class PageAssembler
 {
     private const int DefaultNoteHeight = 80;
@@ -40,6 +43,11 @@ public class PageAssembler
     private static RepeatType _repType = RepeatType.Double;
 
 
+    /// <summary>
+	/// Creates the entire tune as a list of images, each representing a page.
+	/// </summary>
+	/// <param name="tune">The full tune to be assembled.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains a list of images for each page.</returns>
     public async Task<List<Image<Gray, byte>>> CreateTune(TuneFull tune)
     {
         _repType = tune.RepeatType;
@@ -94,6 +102,12 @@ public class PageAssembler
         return await CreatePage(image, pages);
     }
 
+    /// <summary>
+    /// Assembles the segments of a tune part into a list of images.
+    /// </summary>
+    /// <param name="part">The part of the tune to be assembled.</param>
+    /// <param name="tuneType">The type of the tune.</param>
+    /// <returns>A list of images representing the assembled segments of the part.</returns>
     public static List<Image<Gray, byte>> AssemblePageSegments(TunePart part, TuneType tuneType)
     {
         var pieces = new List<Image<Gray, byte>>();
@@ -126,6 +140,12 @@ public class PageAssembler
     }
 
 
+    /// <summary>
+	/// Creates and assembles the pages of a tune.
+	/// </summary>
+	/// <param name="image">The image representing the base of the page.</param>
+	/// <param name="pages">The list of pages to be assembled.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains a list of images for each assembled page.</returns>
     public async Task<List<Image<Gray, byte>>> CreatePage(Image<Gray, byte> image, List<List<Image<Gray, byte>>> pages)
     {
         List<Image<Gray, byte>> outPages = new();
@@ -141,6 +161,12 @@ public class PageAssembler
 
     }
 
+    /// <summary>
+    /// Assembles a single page from a list of images.
+    /// </summary>
+    /// <param name="page">The list of images representing the segments of the page.</param>
+    /// <param name="image">The base image for the page.</param>
+    /// <param name="pageNumber">The number of the page being assembled.</param>
     public void AssemblePage(List<Image<Gray, byte>> page, Image<Gray, byte> image, int pageNumber)
     {
         var pageImage = new Image<Gray, byte>(image.Width, image.Height, White);
@@ -188,6 +214,16 @@ public class PageAssembler
 
 
     #region Title Generation
+
+
+    /// <summary>
+    /// Creates the title page for the tune.
+    /// </summary>
+    /// <param name="title">The title of the tune.</param>
+    /// <param name="tuneType">The type of the tune.</param>
+    /// <param name="key">The key of the tune.</param>
+    /// <param name="composer">The composer of the tune.</param>
+    /// <returns>An image representing the title page.</returns>
     public Image<Gray, byte> CreateTitlePage(string title, TuneType tuneType, string key, string composer)
     {
         int pageHeight = (int)(DefaultNoteHeight * 2) + extraGap;
@@ -206,6 +242,14 @@ public class PageAssembler
         return titlePage;
     }
 
+    /// <summary>
+    /// Creates the Title text for the title page of the tune.
+    /// </summary>
+    /// <param name="titlePage">The title page image of the tune.</param>
+    /// <param name="title">The title of the tune.</param>
+    /// <param name="pageWidth">The page width.</param>
+    /// <param name="pageHeight">The page height.</param>
+    /// <returns>An image representing the title page containing the title text</returns>
     private Image<Gray, byte> CreateTitle(Image<Gray, byte> titlePage, string title, int pageWidth, int pageHeight)
     {
         int baseline = 1;
@@ -231,7 +275,16 @@ public class PageAssembler
         return titlePage;
     }
 
-    private static Image<Gray, byte> CreateTitleLine(Image<Gray, byte> titlePage, int titleStartX, int titleStartY, int width, MCvScalar scale)
+    /// <summary>
+    /// Creates the underline for the title page of the tune.
+    /// </summary>
+    /// <param name="titlePage">The title page image of the tune.</param>
+    /// <param name="titleStartX">The X coord of the start of the line.</param>
+    /// <param name="titleStartY">The Y coord of the start of the line.</param>
+    /// <param name="width">The page width.</param>
+    /// <param name="colour">The line colour.</param>
+    /// <returns>The title page with an underline</returns>
+    private static Image<Gray, byte> CreateTitleLine(Image<Gray, byte> titlePage, int titleStartX, int titleStartY, int width, MCvScalar colour)
     {
         int lineThickness = 3;
 
@@ -242,11 +295,18 @@ public class PageAssembler
         Point startPoint = new(startX, lineHeight);
         Point endPoint = new(endX, lineHeight);
 
-        CvInvoke.Line(titlePage, startPoint, endPoint, scale, lineThickness);
+        CvInvoke.Line(titlePage, startPoint, endPoint, colour, lineThickness);
 
         return titlePage;
     }
 
+    /// <summary>
+    /// Adds tune attributes like the key and the tune type to the left side of the title page
+    /// </summary>
+    /// <param name="titlePage">The title page image of the tune.</param>
+    /// <param name="text">The infirmation being added to the page</param>
+    /// <param name="height">The height at which the text is being inserted at</param>
+    /// <returns>The title page with added information on the left</returns>
     private Image<Gray, byte> CreateTitleSideText(Image<Gray, byte> titlePage, string text, int height)
     {
         double titleFontScale = 0.65;
@@ -259,6 +319,13 @@ public class PageAssembler
         return titlePage;
     }
 
+    /// <summary>
+    /// Adds tune attributes like the key and the tune type to the left side of the title page
+    /// </summary>
+    /// <param name="titlePage">The title page image of the tune.</param>
+    /// <param name="text">The infirmation being added to the page</param>
+    /// <param name="height">The height at which the text is being inserted at</param>
+    /// <returns>The title page with added information on the left</returns>
     private Image<Gray, byte> CreateTitleRightSideText(Image<Gray, byte> titlePage, string text, int height)
     {
         double titleFontScale = 0.65;
@@ -279,6 +346,13 @@ public class PageAssembler
 
     #region Part Generation
 
+    /// <summary>
+    /// Creates a part of the tune as an image.
+    /// </summary>
+    /// <param name="part">The part of the tune.</param>
+    /// <param name="tuneType">The type of the tune.</param>
+    /// <param name="partNumber">The number of the part.</param>
+    /// <returns>An image representing the part of the tune.</returns>
     public static Image<Gray, byte> CreatePart(TunePart part, TuneType tuneType, int partNumber)
     {
         int extra = part.part.Count > 5 ? DefaultNoteWidth : 0;
@@ -344,6 +418,11 @@ public class PageAssembler
         return image;
     }
 
+    /// <summary>
+    /// Creates a bar of the tune as an image.
+    /// </summary>
+    /// <param name="bar">The bar of the tune.</param>
+    /// <returns>An image representing the bar of the tune.</returns>
     public static Image<Gray, byte> CreateBar(TuneBar bar)
     {
         int barWidth = DefaultNoteSpace * bar.CurrentLength;
@@ -357,7 +436,6 @@ public class PageAssembler
         {
             Image<Gray, byte> imageNote;
 
-            // Determine the type of note and create the corresponding image
             switch (bar.bar[i])
             {
                 case Duplet duplet:
@@ -383,19 +461,26 @@ public class PageAssembler
         return image;
     }
 
-    public static Image<Gray, byte> ArrangeNote(Image<Gray, byte> image, Image<Gray, byte> noteImage, Note bar, int highShiftSide = 0, int highShiftDown = 0)
+    /// <summary>
+    /// Constructs an Image of a note using the specified attributes in the provided "Note" object
+    /// </summary>
+    /// <param name="image">A Blank Image</param>
+    /// <param name="noteImage">The note to be returned</param>
+    /// <param name="note">The note to be converted to an Image</param>
+    /// <param name="highShiftSide">The amount of pixels to shift the sharp/flat/low note to the side</param>
+    /// <param name="highShiftDown">The amount of pixels to shift the sharp/flat/ low note down</param>
+    /// <returns>An image representing the part of the tune.</returns>
+    public static Image<Gray, byte> ArrangeNote(Image<Gray, byte> image, Image<Gray, byte> noteImage, Note note, int highShiftSide = 0, int highShiftDown = 0)
     {
-        if (bar.ShortLongNote)
+        if (note.ShortLongNote)
         {
             noteImage = AddShortLong(noteImage);
         }
 
-        bool sharpHit = false;
-
-        switch (bar.OctaveType)
+        switch (note.OctaveType)
         {
             case OctaveType.High:
-                noteImage = bar.AccidentalType switch
+                noteImage = note.AccidentalType switch
                 {
                     AccidentalType.Sharp => AddHighAndSharp(noteImage),
                     AccidentalType.Flat => AddHighAndFlat(noteImage),
@@ -408,7 +493,7 @@ public class PageAssembler
                 break;
 
             default:
-                noteImage = bar.AccidentalType switch
+                noteImage = note.AccidentalType switch
                 {
                     AccidentalType.Sharp => AddSharp(noteImage),
                     AccidentalType.Flat => AddFlat(noteImage, highShiftSide),
@@ -421,31 +506,40 @@ public class PageAssembler
         return noteImage;
     }
 
-    public static Image<Gray, byte> CreateNote(Singlet bar)
+    /// <summary>
+    /// Creates a note of the tune as an image.
+    /// </summary>
+    /// <param name="note">A note from the tune.</param>
+    /// <returns>An image representing the note of the tune.</returns>
+    public static Image<Gray, byte> CreateNote(Singlet note)
     {
-        Image<Gray, byte> noteImage = NoteImage.GetImage(bar.Note.NoteType.ToString());
+        Image<Gray, byte> noteImage = NoteImage.GetImage(key: note.Note.NoteType.ToString());
         var image = new Image<Gray, byte>(DefaultNoteSpace, DefaultNoteHeight + 40, White);
 
         noteImage = SetRoi(image, noteImage, 4, 18);
 
-        if (bar.Note.NoteType == NoteType.r || bar.Note.NoteType == NoteType.l)
+        if (note.Note.NoteType == NoteType.r || note.Note.NoteType == NoteType.l)
         {
             noteImage = ShiftBack(noteImage, 0, 10);
         }
 
-        noteImage = ArrangeNote(image, noteImage, bar.Note, 10, 0);
+        noteImage = ArrangeNote(image, noteImage, note.Note, 10, 0);
 
         return noteImage;
     }
 
+    /// <summary>
+    /// Creates a duplet as an image.
+    /// </summary>
+    /// <param name="bar">A pair of notes from the tune.</param>
+    /// <returns>An image representing a duplet.</returns>
+    /// <remarks>
+    /// A "Duplet" here means two notes that are played quickly to take up the same
+    /// space of time as a normal note
+    /// </remarks>
     public static Image<Gray, byte> CreateDuplet(Duplet bar)
     {
         List<Note> notes = [bar.FirstNote, bar.SecondNote];
-
-        if (bar.FirstNote.OctaveType == OctaveType.Low && bar.SecondNote.OctaveType == OctaveType.Low)
-        {
-
-        }
 
         var foo2 = new NoteImage();
 
@@ -454,7 +548,6 @@ public class PageAssembler
 
         foreach (var note in notes.Select((value, i) => (value, i)))
         {
-            //Image<Gray, byte> noteImage = foo2.GetType().GetField(note.value.NoteType.ToString()).GetValue(foo2) as Image<Gray, byte>;
             Image<Gray, byte> noteImage = NoteImage.GetImage(note.value.NoteType.ToString());
 
             var image = new Image<Gray, byte>(noteImage.Width, DefaultNoteHeight + 40, White);
@@ -476,36 +569,16 @@ public class PageAssembler
         return bigImage;
     }
 
-    public static Image<Gray, byte> CreateTriplet2(Triplet bar)
-    {
-        List<Note> notes = [bar.FirstNote, bar.SecondNote, bar.ThirdNote];
 
-        var foo2 = new NoteImage();
-
-        var fullImage = new Image<Gray, byte>((DefaultNoteWidth + 4) * 3, DefaultNoteWidth + 40, White);
-        var resize = new Image<Gray, byte>((int)(((DefaultNoteWidth + 4) * 3) * 0.79166667), (int)((DefaultNoteHeight + 40) * 0.79166667), White);
-
-        foreach (var note in notes.Select((value, i) => (value, i)))
-        {
-            Image<Gray, byte> noteImage = NoteImage.GetImage(note.value.NoteType.ToString());
-
-            var image = new Image<Gray, byte>(DefaultNoteWidth + 4, DefaultNoteWidth + 40, White);
-
-            noteImage = SetRoi(image, noteImage, 4, 18);
-            noteImage = ArrangeNote(image, noteImage, note.value, 4, 2);
-            fullImage = SetRoi(fullImage, image, (note.i * (DefaultNoteWidth + 4)), 0);
-        }
-
-        CvInvoke.Resize(fullImage, resize, new Size(), 0.79166667, 0.79166667);
-
-        var bigImage = new Image<Gray, byte>((DefaultNoteWidth + 16) * 2, DefaultNoteHeight + 40, White);
-        var tripImage = NoteImage.GetImage("triplet");
-
-        bigImage = SetRoi(SetRoi(bigImage, tripImage), resize, 0, 20);
-
-        return bigImage;
-    }
-
+    /// <summary>
+    /// Creates a triplet as an image.
+    /// </summary>
+    /// <param name="bar">Three notes from the tune.</param>
+    /// <returns>An image representing a triplet.</returns>
+    /// <remarks>
+    /// A "Triplet" here means three notes that are played quickly to take up the same
+    /// space of time as two normal notes
+    /// </remarks>
     public static Image<Gray, byte> CreateTriplet(Triplet bar)
     {
         var notes = new[] { bar.FirstNote, bar.SecondNote, bar.ThirdNote };
@@ -546,6 +619,12 @@ public class PageAssembler
         return bigImage;
     }
 
+    /// <summary>
+    /// Creates a link for a part to transition to another part as an image.
+    /// </summary>
+    /// <param name="line">The line from the tune to be converted to a link image</param>
+    /// <param name="tuneType">TThe type of tune</param>
+    /// <returns>An image representing the link for a part.</returns>
     public static Image<Gray, byte> CreateTuneLink(TuneLine line, TuneType tuneType)
     {
         int middleCount = line.MaxLength * (line.line[0].MaxLength + 1);
@@ -568,18 +647,21 @@ public class PageAssembler
         var lineImage = CreateLine(line, 0, image.Width, 21, true);
         lineImage = ShiftOver(lineImage, 0, 20);
 
-        InsertImageIntoOther(image, lineImage);
+        CvInvoke.BitwiseAnd(image, lineImage, image);
 
         return image;
     }
 
+    /// <summary>
+    /// Inserts a smaller image into a larger image within a specified location within the larger image
+    /// </summary>
+    /// <param name="bigImage">A larger image being changed</param>
+    /// <param name="smallImage">The smaller image being inserted into the ROI</param>
+    /// <param name="shiftWidth">The amount that the ROI is shifted over from the left</param>
+    /// <param name="shiftHeight">The amount that the ROI is shifted over from the top</param>
+    /// <returns>The larger Image with the smaller inserted into it</returns>
     private static Image<Gray, byte> SetRoi(Image<Gray, byte> bigImage, Image<Gray, byte> smallImage, int shiftWidth = 0, int shiftHeight = 0)
     {
-        if(shiftWidth + smallImage.Width > bigImage.Width)
-        {
-
-        }
-
         shiftWidth = shiftWidth + smallImage.Width > bigImage.Width? bigImage.Width - smallImage.Width: shiftWidth;
         shiftHeight = shiftHeight + smallImage.Height > bigImage.Height ? bigImage.Height - smallImage.Height : shiftHeight;
 
@@ -597,15 +679,6 @@ public class PageAssembler
         bigImage.ROI = Rectangle.Empty;
 
         return bigImage;
-    }
-
-
-    private static void InsertImageIntoOther(Image<Gray, byte> firstImage, Image<Gray, byte> secondImage)
-    {
-        CvInvoke.BitwiseNot(firstImage, firstImage);
-        CvInvoke.BitwiseNot(secondImage, secondImage);
-        CvInvoke.BitwiseOr(firstImage, secondImage, firstImage);
-        CvInvoke.BitwiseNot(firstImage, firstImage);
     }
 
     private static Image<Gray, byte> ShiftOver(Image<Gray, byte> image, int shiftWidth = 0, int shiftHeight = 0)
@@ -681,7 +754,7 @@ public class PageAssembler
         symbolImage.CopyTo(newImage);
         newImage.ROI = Rectangle.Empty;
 
-        InsertImageIntoOther(bigImage, newImage);
+        CvInvoke.BitwiseAnd(bigImage, newImage, bigImage);
 
         return bigImage;
     }
@@ -717,16 +790,15 @@ public class PageAssembler
             symbolImage.CopyTo(newImage);
             newImage.ROI = Rectangle.Empty;
 
-            InsertImageIntoOther(bigImage, newImage);
+            CvInvoke.BitwiseAnd(bigImage, newImage, bigImage);
         }
 
         return bigImage;
     }
 
-
     #endregion
 
-    public static void DisplayImage(List<Image<Gray, byte>> assembledPages)
+    private static void DisplayImage(List<Image<Gray, byte>> assembledPages)
     {
         foreach (var assembledPage in assembledPages)
         {
