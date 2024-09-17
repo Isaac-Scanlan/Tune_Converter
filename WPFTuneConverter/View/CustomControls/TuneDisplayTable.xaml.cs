@@ -332,8 +332,7 @@ namespace WPFTuneConverter.View.CustomControls
 
             if (true)
             {
-                TuneReader tr = new();
-                var file = tr.readFileForView(inTuneDirec);
+                var file = TuneReader.ReadFileForView(inTuneDirec);
 
                 convertPage.titleTextBox.textInput.Text = file[0][0];
                 convertPage.typeComboBox.textInput.Text = file[0][1];

@@ -16,26 +16,39 @@ using System.Reflection;
 
 namespace TuneConverter.Framework.TuneIO.TuneReader;
 
+/// <summary>
+/// Used to Save the Tune Images generated
+/// </summary>
 public class TuneImageWriter
 {
-    string filePath => "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/" + tuneDirectory + "/";
-    //public static string runningDirectory = Directory.GetCurrentDirectory();
-    //public string filePath => Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(),
-    //    Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "OutImages", tuneDirectory)));
-    string filePathCeili => "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/Ceili_Directory/";
-    string tuneDirectory {  get; set; }
+    private string FilePath => $"C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/{TuneDirectory}/";
+    private static string filePathCeili => "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/OutImages/Ceili_Directory/";
+    private string TuneDirectory {  get; set; }
 
+    /// <summary>
+    /// Constructor for TuneImageWriter
+    /// </summary>
+    /// <param name="tuneType">Specifies the directory the Tune is written to</param>
     public TuneImageWriter(TuneType tuneType)
     {
-        tuneDirectory = tuneType.ToString();
+        TuneDirectory = tuneType.ToString();
     }
+
+    /// <summary>
+    /// Writes Image to a file
+    /// </summary>
+    /// <param name="assembledPage"></param>
+    /// <param name="fileName"></param>
+    /// <param name="directory"></param>
+    /// <returns></returns>
     public bool WriteImage(Image<Gray, byte> assembledPage, string fileName, string directory = "")
     {
-        if (!Directory.Exists(filePath + directory))
+        string fullDirectory = FilePath + directory;
+        if (!Directory.Exists(fullDirectory))
         {
-            Directory.CreateDirectory(filePath + directory);
+            Directory.CreateDirectory(fullDirectory);
         }
 
-        return CvInvoke.Imwrite(filePath + directory + "/" + fileName + ".png", assembledPage);
+        return CvInvoke.Imwrite($"{fullDirectory}{fileName}.png", assembledPage);
     }
 }

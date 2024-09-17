@@ -345,8 +345,7 @@ namespace WPFTuneConverter.View.Pages
 
             if (!dialog.FileName.Equals("") && !dialog.FileName.Equals("Document"))
             {
-                TuneReader tr = new();
-                var file = tr.readFileForView(dialog.FileName);
+                var file = TuneReader.ReadFileForView(dialog.FileName);
 
                 titleTextBox.textInput.Text = file[0][0];
                 typeComboBox.textInput.Text = file[0][1];
