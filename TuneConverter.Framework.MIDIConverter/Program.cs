@@ -4,6 +4,8 @@ using NAudio.Wave;
 using Sanford.Multimedia.Midi;
 using System.IO;
 
+namespace TuneConverter.Framework.MIDIConverter;
+
 public class Program
 {
     public static void Main(string[] args)
@@ -48,8 +50,8 @@ public class Program
     private static void Decode(string fileName)
     {
         List<string> lines = new List<string>()
-         {
-             "193 land" ,
+     {
+         "193 land" ,
 "284 sun" ,
 "16 too" ,
 "136 huge" ,
@@ -350,9 +352,9 @@ public class Program
 "55 moment" ,
 "148 term" ,
 
-         };
+     };
 
-       // var lines = File.ReadAllLines(fileName);
+        // var lines = File.ReadAllLines(fileName);
 
         Dictionary<int, string> data = lines
             .Select(line => line.Split(' '))
@@ -368,7 +370,7 @@ public class Program
         {
             if (data.ContainsKey(endLineNumber))
             {
-                decryptedMessage +=  data[endLineNumber] + " ";
+                decryptedMessage += data[endLineNumber] + " ";
                 endLineNumberCounter++;
                 endLineNumber += endLineNumberCounter;
                 Console.WriteLine(endLineNumber);
@@ -411,7 +413,7 @@ public class Program
             outDevice.Send(builder.Result);
 
             // Wait for the duration of the note
-            System.Threading.Thread.Sleep(noteDuration - minus);
+            Thread.Sleep(noteDuration - minus);
 
             // Send note off message
             builder.Command = ChannelCommand.NoteOff;
@@ -419,7 +421,7 @@ public class Program
             builder.Build();
             outDevice.Send(builder.Result);
 
-            System.Threading.Thread.Sleep(minus / 20);
+            Thread.Sleep(minus / 20);
 
             if (foo >= 3)
             {

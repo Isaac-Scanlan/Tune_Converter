@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
@@ -32,7 +31,7 @@ public class Program
 
         var dcpTune = TuneCompressor.DeCompressString(cpTune);
 
-        var obj = JsonConvert.DeserializeObject<TuneFull>(dcpTune);
+        //var obj = JsonConvert.DeserializeObject<TuneFull>(dcpTune);
 
 
     }

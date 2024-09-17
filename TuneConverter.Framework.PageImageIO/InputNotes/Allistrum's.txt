@@ -4,13 +4,13 @@ D major
 Double
 
 __
-F#E E*DE* F#D D-E
-F#A D'E' D'B BA
-F#E E*DE* F#D D-E
-F#A D'A B_ BA
+FE E*DE* FD D-E
+FA D'E' D'B BA
+FE E*DE* FD D-E
+FA D'A B_ BA
 __
-F#A D'-E' F#'E' E'F#'
-C#D' D'E' D'C# BA
-F#A D'-E' F#'E' E'F#'
-D'_ C#-A B_ BA
+FA D'-E' F'E' E'F'
+CD' D'E' D'C BA
+FA D'-E' F'E' E'F'
+D'_ C-A B_ BA
 __

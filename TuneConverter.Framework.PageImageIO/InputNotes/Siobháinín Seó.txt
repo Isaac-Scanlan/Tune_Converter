@@ -1,0 +1,21 @@
+Siobháinín Seó
+Slipjig
+D major
+Double
+
+__
+ABA A_G F__
+ABA A_D' CAG
+ABA A_G F_A
+FEF DAD GED
+__
+ABA A_F G_B
+ABA A_D' CAG
+*ABA*D' ABG F_A
+FEF DAD GED
+__
+Drl D_E F_A
+Drl D_D' CAG
+DAD D_E F_A
+FEF DAD GED
+__
