@@ -15,6 +15,9 @@ public class TuneCompressor
     public static string CompressTune(TuneFull tune)
     {
         var jsonString = JsonConvert.SerializeObject(tune);
+        var foo = System.Text.Json.JsonSerializer.Serialize(tune);
+
+
         var cp = CompressString(jsonString);
         return cp;
 

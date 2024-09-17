@@ -766,7 +766,7 @@ public class PageAssembler
     {
         var shortLong = NoteImage.GetImage("__");
         int width = shortLong is null ? 0 : shortLong.Width;
-        return AddBelowNote(bigImage, shortLong, (DefaultNoteWidth + 15 - (width + 1)), DefaultNoteSpace);
+        return AddBelowNote(bigImage, shortLong, (DefaultNoteWidth + 15 - (width + 1)), DefaultNoteSpace + 16);
     }
     
     private static Image<Gray, byte> AddBelowNote(Image<Gray, byte> bigImage, Image<Gray, byte>? symbolImage, int shiftSide = 0, int shiftDown = 0)
