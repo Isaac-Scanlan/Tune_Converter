@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace TuneConverter.Framework.PageImageIO.ImageComponents;
 
-/// <summary>
-/// Used internally to represent the type of a tune
-/// </summary>
-/// <remarks>
-/// Encoded within each value is the with of the page in note widths
-/// </remarks>
 public enum TuneType
 {
     /// <summary>
@@ -43,15 +37,7 @@ public enum TuneType
     /// The page width for a Hornpipe (21 notes including spaces)
     /// </summary>
     Hornpipe = 21 * 60,
-
-    /// <summary>
-    /// The page width for a Barndance (21 notes including spaces)
-    /// </summary>
     Barndance = 21 * 70,
-
-    /// <summary>
-    /// The page width for a Fling (21 notes including spaces)
-    /// </summary>
     Fling = 21 * 80,
 
     /// <summary>
