@@ -297,7 +297,7 @@ namespace TuneConverterAppInterface
             if (!dlg.FileName.Equals(""))
             {
                 TuneReader tr = new();
-                var file = tr.readFileForView(dlg.FileName);
+                var file = tr.ReadFileForView(dlg.FileName);
 
                 tuneName.Text = file[0][0];
                 typeComboBox.Text = file[0][1];

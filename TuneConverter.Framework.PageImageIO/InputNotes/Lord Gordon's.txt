@@ -5,14 +5,14 @@ Double
 
 __
 ADrll ALDFB AD*FED* FAD'C
-BErll DErll BErll BAFA
+BErll CErll BErll BAFA
 D'CD'F' E'CD'B AFD'F *ABA*BC
 D'B*CBA* BD'AF EFGA BCD'B
 |BCD'E'
 __
-*F'B'F'*D'F' A'F'D'E' F'AD'F' A'D'G'F'
+*F'B'F'*D'F' A'F'D'E' *F'B'F'*D'F' A'D'G'F'
 E'F'G'A' B'G'E'C D'CBA G#ABC
-D'F'rl E'CD'B AFD'F AD'CE'
+D'F'rl E'CD'B AFD'F A_BC
 D'B*CBA* BD'AF EFGA BCD'E'
 __
 F'A'rl F'D'A'F' F'A'rl F'D'A'F'
@@ -23,13 +23,13 @@ A'F'E'C BD'AF EFGA BCD'E'
 __
 AD'D'C D'E'F'D' AD'D'C D'E'F'D'
 E'G'G'F' G'rlF' E'G'G'F' G'F'E'G'
-F'G'F'E' D'E'D'B AFD'F ABD'F' 
+F'G'F'E' D'CD'B AFD'F ABD'F' 
 A'F'E'C BD'AF EFGA BCD'B
 |BCD'E'
 __
 F'A'A'G' A'F'D'E' FA'A'G' A_'*D'E'F'*
-G'B'E'F' G'B'E'F' G'B'E'G' B'BE'F'
-G'A'B'G' F'A'A'F' F'E'D'B ABD'F'
+G'B'E'F' G'B'E'F' G'B'E'G' B'GE'F'
+G'A'B'G' F'A'A'G' F'E'D'B ABD'F'
 A'F'E'C BD'AF EFGA BCD'E'
 |BCD'B
 __

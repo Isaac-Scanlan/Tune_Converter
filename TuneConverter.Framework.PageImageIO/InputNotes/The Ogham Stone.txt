@@ -1,0 +1,18 @@
+The Ogham Stone
+Jig
+G major
+Double
+Michael McGoldrick
+__
+G_A B_A GED D_E
+GAB C_A BD'E' E'D'B
+G_A B_A GED D_E
+GAB rlA GEE EDE
+|EDB
+__
+D'__ D'BA BGF G*BCD'*
+E'G'E' G'_A' G'E'D' BAA
+G'E'D' BG'E' D'BA G_D
+EGA B_G AGE EDB
+|EDE
+__

@@ -66,7 +66,7 @@ public class Program
     public static List<List<string>> ReadTune(string fileName)
     {
         TuneReader reader = new();
-        return reader.readFile(fileName);
+        return TuneReader.ReadFile(fileName);
     }
 
 }

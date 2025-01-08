@@ -42,9 +42,9 @@ public class Program
     public static void Main(string[] args)
     {
         //Console.BackgroundColor = ConsoleColor.Green;
-        var file = ReadTune("Cashman's.txt");
+        //var file = ReadTune("Rosco's.txt");
 
-        //var file = ArrangeTuneList(args);
+        var file = ArrangeTuneList(args);
 
         var start = DateTime.Now;
         var tuneFull = TuneAssembler.AssembleTune(file);
@@ -68,9 +68,9 @@ public class Program
 
         //Console.WriteLine("AssembleTune: " + assembleTuneTime.ToString());
         //Console.WriteLine("AssemblePage: " + assemblePageTime.ToString());
-        DisplayImage(assembledPage);
+        //DisplayImage(assembledPage);
 
-        //WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
+        WriteImage(assembledPage, tuneFull.Title, tuneFull.TuneType);
 
         var subString = "Title\":\"" + tuneFull.Title;
 
@@ -91,13 +91,13 @@ public class Program
     public static List<List<string>> ReadTune(string fileName)
     {
         TuneReader reader = new();
-        return reader.readFile(fileName);
+        return TuneReader.ReadFile(fileName);
     }
 
     public static List<List<string>> ArrangeTuneList(string[] lines)
     {
         TuneReader reader = new();
-        return reader.arrangeTuneList(lines.ToList());
+        return TuneReader.ArrangeTuneList(lines.ToList());
     }
 
     public static List<Image<Gray, byte>> AssemblePage(TuneFull tuneFull)
