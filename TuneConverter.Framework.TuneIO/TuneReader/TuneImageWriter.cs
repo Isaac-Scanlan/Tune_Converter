@@ -49,6 +49,18 @@ public class TuneImageWriter
             Directory.CreateDirectory(fullDirectory);
         }
 
-        return CvInvoke.Imwrite($"{fullDirectory}{fileName}.png", assembledPage);
+        return CvInvoke.Imwrite($"{fullDirectory}/{fileName}.png", assembledPage);
+    }
+
+    public static void DisplayImage(Image<Gray, byte> assembledPage)
+    {
+
+        Image<Gray, byte> resizedPage = new(assembledPage.Width, assembledPage.Height);
+
+        CvInvoke.Resize(assembledPage, resizedPage, new Size(), 0.5, 0.5);
+
+        CvInvoke.Imshow("s", resizedPage);
+        CvInvoke.WaitKey();
+        
     }
 }

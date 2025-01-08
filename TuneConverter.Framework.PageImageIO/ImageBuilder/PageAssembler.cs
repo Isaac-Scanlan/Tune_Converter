@@ -490,6 +490,13 @@ public class PageAssembler
 
             case OctaveType.Low:
                 noteImage = AddLow(noteImage, highShiftSide);
+                noteImage = note.AccidentalType switch
+                {
+                    AccidentalType.Sharp => AddSharp(noteImage),
+                    AccidentalType.Flat => AddFlat(noteImage, 2),
+                    AccidentalType.Natural => AddNatural(noteImage, highShiftSide),
+                    _ => noteImage
+                };
                 break;
 
             default:
