@@ -1,0 +1,25 @@
+The Boys of the Town
+Jig
+G major
+Double
+
+__
+G'E'D' B_A BGE G_A
+BD'B ABA GBD' E'_F'
+G'E'D' B_A BGE G_A
+BD'B AGA BGF G*BCD'*
+|G*ABC*
+__
+D'E'F' G'F'G' E'A'A' E'A'A'
+B'A'G' E'_D' E'F'G' E'F'G'
+D'E'F' G'F'G' A'F'D' E'F'G'
+E'D'B AGA BGF G*ABC*
+|G*BCD'*
+__
+
+
+
+
+
+
+

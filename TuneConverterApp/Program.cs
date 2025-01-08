@@ -42,7 +42,7 @@ public class Program
     public static void Main(string[] args)
     {
         //Console.BackgroundColor = ConsoleColor.Green;
-        //var file = ReadTune("An Choisir.txt");
+        //var file = ReadTune("Rosco's.txt");
 
         var file = ArrangeTuneList(args);
 
@@ -91,13 +91,13 @@ public class Program
     public static List<List<string>> ReadTune(string fileName)
     {
         TuneReader reader = new();
-        return reader.readFile(fileName);
+        return TuneReader.ReadFile(fileName);
     }
 
     public static List<List<string>> ArrangeTuneList(string[] lines)
     {
         TuneReader reader = new();
-        return reader.arrangeTuneList(lines.ToList());
+        return TuneReader.ArrangeTuneList(lines.ToList());
     }
 
     public static List<Image<Gray, byte>> AssemblePage(TuneFull tuneFull)

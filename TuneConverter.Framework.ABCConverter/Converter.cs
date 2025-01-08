@@ -79,6 +79,8 @@ public partial class Converter
         return tune;
     }
 
+
+    // Converts a part of a Jig (or any tune of the same time signature) that is in Standard ABC notation into the internal format
     private List<string> ConvertJigPart(string part, List<string> tune)
     {
         var part2 = ByBar().Split(part).ToList();
@@ -93,7 +95,8 @@ public partial class Converter
         return tune;
     }
 
-    private List<string> ConvertReelPart(string part, List<string> tune)
+    // Converts a part of a Reel (or any tune of the same time signature) that is in Standard ABC notation into the internal format
+    private static List<string> ConvertReelPart(string part, List<string> tune)
     {
         var part2 = ByBigBar().Split(part).ToList();
         part2.RemoveAt(0);

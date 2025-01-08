@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,13 +8,20 @@ using TuneConverter.Framework.TuneComponents.TuneComponents;
 using TuneConverter.Framework.TuneIO;
 using TuneConverter.Framework.TuneIO.TuneReader;
 
+/// <summary>
+/// 
+/// </summary>
 public class Program
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="args"></param>
     public static void Main(string[] args)
     {
        
         TuneReader reader = new TuneReader();
-        var file = reader.readFile("Kesh Jig.txt");
+        var file = TuneReader.ReadFile("Kesh Jig.txt");
 
         var tuneFull = TuneAssembler.AssembleTune(file);
 
@@ -32,7 +38,7 @@ public class Program
 
         var dcpTune = TuneCompressor.DeCompressString(cpTune);
 
-        var obj = JsonConvert.DeserializeObject<TuneFull>(dcpTune);
+        //var obj = JsonConvert.DeserializeObject<TuneFull>(dcpTune);
 
 
     }

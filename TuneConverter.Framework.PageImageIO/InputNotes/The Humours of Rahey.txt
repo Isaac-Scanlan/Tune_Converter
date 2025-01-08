@@ -1,0 +1,22 @@
+The Humours of Rahey
+Jig
+A dor
+Double
+
+__
+CAA A_G EFG ABC
+BAG E'D'C BAB GAB
+CAA A_G EFG AGE
+Drl AGE Drl D_B
+|D*EFG*
+__
+AD'C# D'_E' F'E'F' G'E'C#
+AD'D' D'E'D' CAG EFG
+AD'C# D'_E' F'E'F' G'E'C#
+D'E'D' CAG A_G EFG
+__
+AD'C# D'_E' F'E'F' G'E'C#
+AD'D' D'E'D' CAG EFG
+AD'C# D'_E' F'E'F' G'A'B'
+A'G'E' D'E'D' CAG EFG
+__

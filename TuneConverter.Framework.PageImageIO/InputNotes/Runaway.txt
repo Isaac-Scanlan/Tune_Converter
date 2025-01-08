@@ -1,0 +1,24 @@
+Runaway
+Slipjig
+C major
+Double
+Ciorras
+__
+ECG FCG Crl 
+F'CG' CE'C D'CA 
+E'CG G*BAG* F'CG 
+G'E'G G*BAG* F'CG 
+ECG FCG Crl 
+F'CG' CA'C B'CC' 
+C'__ _CF' E'D'C
+ECC FCE' E'D'C
+__
+CGG CGC FCE 
+CAC GCF CEC 
+ACB C_F' F'E'D'
+A'G'F' E'D'C C_F'
+E'D'C A'G'F' B'G'C'
+C'_A' G'F'E' F'E'D'
+A'G'F' G'F'E' E'D'C
+ECC FCE' E'D'C
+__
