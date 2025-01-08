@@ -7,36 +7,47 @@ using System.Threading.Tasks;
 
 namespace TuneConverter.Framework.TuneIO.TuneReader;
 
+/// <summary>
+/// Reads tune .txt and returns a List
+/// </summary>
 public partial class TuneReader
 {
     private static readonly string _notesPath = "C:/Users/Isaac/source/repos/TuneConverter/TuneConverter.Framework.PageImageIO/InputNotes/";
 
-    //public static string runningDirectory = Directory.GetCurrentDirectory();
-    //public static readonly string _notesPath = Path.GetFullPath(Path.Combine(runningDirectory,
-    //    Path.Combine(runningDirectory, "..", "..", "..", "..", "TuneConverter.Framework.PageImageIO", "InputNotes/")));
-
-
-    public List<List<string>> readFile(String tune)
+    /// <summary>
+    /// Reads a tune from a file and returns the converted tune List
+    /// </summary>
+    /// <param name="tune"></param>
+    /// <returns></returns>
+    public static List<List<string>> ReadFile(string tune)
     {
         var lines = ByNewLine().Split(File.ReadAllText(_notesPath + tune)).ToList();
-        TuneWriter tw = new TuneWriter();
+        TuneWriter tw = new();
         tw.WriteFile(lines);
 
-        var output = arrangeTuneList(lines);
+        var output = ArrangeTuneList(lines);
 
         return output;
     }
 
-    public List<List<string>> readFileForView(String tune)
+    /// <summary>
+    /// Reads a tune from a file and returns the converted tune List
+    /// </summary>
+    /// <param name="tune"></param>
+    /// <returns></returns>
+    public static List<List<string>> ReadFileForView(string tune)
     {
         var lines = ByNewLine().Split(File.ReadAllText(tune)).ToList();
 
-        var output = arrangeTuneList(lines);
-
-        return output;
+        return ArrangeTuneList(lines);
     }
 
-    public List<List<string>> arrangeTuneList(List<string> lines)
+    /// <summary>
+    /// Splits read tune into Tune header and parts
+    /// </summary>
+    /// <param name="lines"></param>
+    /// <returns></returns>
+    public static List<List<string>> ArrangeTuneList(List<string> lines)
     {
         List<List<string>> output = new();
         List<string> partlist = new();

@@ -1,0 +1,16 @@
+The Rising Sun
+Reel
+D major
+Single
+
+__
+D'CD'A BAFA *BCD'*E'G' F'D'E'C
+D'E'D'B AFDF EGFE D_*ABC*
+D'E'D'A BAFA *BCD'*E'G' F'D'E'C
+D'E'D'B AFrl EGFE D_*ABC*
+__
+D'E'F'G' A'F'E'D' CAE'A F'AE'A
+D'E'F'G' A'F'B'F' A'F'E'G' F'D'E'C
+D'E'F'G' A'F'E'D' CAE'A F'AE'A
+D'E'F'D' E'F'G'E' F'A'A'F' D'_F'E'
+__
