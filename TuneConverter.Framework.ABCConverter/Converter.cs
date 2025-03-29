@@ -188,7 +188,7 @@ public partial class Converter
         return tune;
     }
 
-    private string ConvertString(string bar)
+    private static string ConvertString(string bar)
     {
         string returnBar = "";
         bool isSharp = false;
